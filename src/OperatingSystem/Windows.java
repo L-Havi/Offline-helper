@@ -2,6 +2,8 @@ package OperatingSystem;
 
 import java.io.IOException;
 
+import FIleSystemTools.AllPathsInFolder;
+import FIleSystemTools.FolderFileCountAndSize;
 import FIleSystemTools.MassChangeFileType;
 import FIleSystemTools.MassCopyOrMoveFolderContents;
 import FIleSystemTools.MassRenameFilesInFolder;
@@ -22,6 +24,8 @@ public class Windows {
 	private MassRenameFilesInFolder massRenameFilesInFolder = new MassRenameFilesInFolder();
 	private UnzipAllZipFilesInFolder unzipAllZipFilesInFolder = new UnzipAllZipFilesInFolder();
 	private MassChangeFileType massChangeFileType = new MassChangeFileType();
+	private AllPathsInFolder allPathsInFolder = new AllPathsInFolder();
+	private FolderFileCountAndSize folderFileCountAndSize = new FolderFileCountAndSize();
 	
 	public void executeGivenCommand(int command) {
 		commandText = cmdScripts.getCmdCommandScript(command);
@@ -46,6 +50,18 @@ public class Windows {
 				}
 			} else if(command == 7) {
 				massChangeFileType.changeAllFileExtensions();
+			} else if(command == 8) {
+				try {
+					allPathsInFolder.getAllPathsInFolder();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else if(command == 9) {
+				try {
+					folderFileCountAndSize.getAllPathsInFolder();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

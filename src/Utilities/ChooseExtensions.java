@@ -25,7 +25,6 @@ public class ChooseExtensions {
 			sourceString = scanner.nextLine();
 			if(!sourceString.trim().equals("exit")) {
 				if(sourceString.trim().equals("*")) {
-					System.out.println("Has *");
 					validExtensions = fileExtension.getUniqueFileExtensions(srcString);
 			        if (!(validExtensions.size() > 0)) {
 			            System.out.println("Source folder is empty.");

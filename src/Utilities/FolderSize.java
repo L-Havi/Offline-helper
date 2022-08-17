@@ -1,6 +1,7 @@
 package Utilities;
 
 import java.io.File;
+import java.util.List;
 
 public class FolderSize {
 	
@@ -18,4 +19,16 @@ public class FolderSize {
         }
         return length;
     }
+    
+    public long getSizeForList(List<String> files){
+        long length = 0;
+        for(String fileString : files) {
+            File file = new File(fileString);
+            if (file.isFile()) {
+                length += file.length();
+            }
+        }
+        return length;
+    }
+    
 }

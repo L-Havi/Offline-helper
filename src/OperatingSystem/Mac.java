@@ -2,16 +2,16 @@ package OperatingSystem;
 
 import java.io.IOException;
 
+import FIleSystemTools.AllPathsInFolder;
+import FIleSystemTools.FolderFileCountAndSize;
 import FIleSystemTools.MassChangeFileType;
 import FIleSystemTools.MassCopyOrMoveFolderContents;
 import FIleSystemTools.MassRenameFilesInFolder;
 import FIleSystemTools.RemoveDuplicateFilesFromFolder;
 import FIleSystemTools.SortFilesToFoldersByExtension;
 import FIleSystemTools.UnzipAllZipFilesInFolder;
-import FIleSystemTools.WindowsExecuteCmd;
 import MacResources.ExecuteMacScripts;
 import MacResources.MacCommandLineScripts;
-import WindowsResources.CmdCommandScripts;
 
 public class Mac {
 
@@ -24,6 +24,8 @@ public class Mac {
 	private MassRenameFilesInFolder massRenameFilesInFolder = new MassRenameFilesInFolder();
 	private UnzipAllZipFilesInFolder unzipAllZipFilesInFolder = new UnzipAllZipFilesInFolder();
 	private MassChangeFileType massChangeFileType = new MassChangeFileType();
+	private AllPathsInFolder allPathsInFolder = new AllPathsInFolder();
+	private FolderFileCountAndSize folderFileCountAndSize = new FolderFileCountAndSize();
 	
 	public void executeGivenCommand(int command) {
 		commandText = macCommandLineScripts.getCmdCommandScript(command);
@@ -48,6 +50,18 @@ public class Mac {
 				}
 			} else if(command == 7) {
 				massChangeFileType.changeAllFileExtensions();
+			} else if(command == 8) {
+				try {
+					allPathsInFolder.getAllPathsInFolder();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else if(command == 9) {
+				try {
+					folderFileCountAndSize.getAllPathsInFolder();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

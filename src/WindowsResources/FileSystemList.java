@@ -3,6 +3,7 @@ package WindowsResources;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import OperatingSystem.ChooseOperatingSystem;
 import OperatingSystem.Linux;
 import OperatingSystem.Mac;
 import OperatingSystem.Windows;
@@ -15,16 +16,21 @@ public class FileSystemList {
 	private Windows windows = new Windows();
 	private Linux linux = new Linux();
 	private Mac mac = new Mac();
+	private ChooseOperatingSystem chooseOperatingSystem = new ChooseOperatingSystem();
 	
 	public void getFileSystemList(int osInt){
         
+		if(!(osInt > 0)) {
+			osInt = chooseOperatingSystem.getOperatingSystem();
+		}
+		
 		while (run) {
 
 			fileSystemTitle.printTitle();
             try {
                 int command = scanner.nextInt();
-                if (command >= 1 && command <= 8) {
-                	if(command >= 1 && command <= 7) {
+                if (command >= 1 && command <= 10) {
+                	if(command >= 1 && command <= 9) {
                 		if(osInt == 0) {
                     		windows.executeGivenCommand(command);
                 		} else if(osInt == 1) {
@@ -33,7 +39,7 @@ public class FileSystemList {
                 			mac.executeGivenCommand(command);
                 		}
                 		run = false;
-                	} else if(command == 8) {
+                	} else if(command == 10) {
                 		run = false;
                 	}
                 } else {
