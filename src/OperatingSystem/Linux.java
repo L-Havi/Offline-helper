@@ -1,7 +1,16 @@
 package OperatingSystem;
 
 import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+
+import Cryptography.AESEncryptFileOrString;
 import FIleSystemTools.AllPathsInFolder;
 import FIleSystemTools.FolderFileCountAndSize;
 import FIleSystemTools.MassChangeFileType;
@@ -26,6 +35,7 @@ public class Linux {
 	private MassChangeFileType massChangeFileType = new MassChangeFileType();
 	private AllPathsInFolder allPathsInFolder = new AllPathsInFolder();
 	private FolderFileCountAndSize folderFileCountAndSize = new FolderFileCountAndSize();
+	private AESEncryptFileOrString aes = new AESEncryptFileOrString();
 	
 	public void executeGivenCommand(int command) {
 		commandText = linuxCommandLineScripts.getCmdCommandScript(command);
@@ -66,4 +76,11 @@ public class Linux {
 		}
 	}
 
+	public void executeGivenEncryptionCommand(int command) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
+		if(command == 1) {
+			aes.encryptOrDecrypt();
+			
+		}
+}
+	
 }

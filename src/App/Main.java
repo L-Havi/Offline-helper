@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import OperatingSystem.ChooseOperatingSystem;
 import Titles.TitleScreen;
+import WindowsResources.EncryptionToolList;
 import WindowsResources.FileSystemList;
 
 public class Main {
@@ -27,6 +28,9 @@ public class Main {
                 		if(command.trim().toLowerCase().equals("1")) {
                 	        FileSystemList fileSystemList = new FileSystemList();
                 			fileSystemList.getFileSystemList(osInt);
+                		} else if(command.trim().toLowerCase().equals("2")) {
+                			EncryptionToolList encryptionToolList = new EncryptionToolList();
+                			encryptionToolList.getEncryptionToolList(osInt);
                 		}
                 	} else {
                 		run = false;
