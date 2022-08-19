@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Scanner;
 
 import App.Main;
-import OperatingSystem.Windows;
+import OperatingSystem.WindowsClasses.Windows;
 
 public class SourceFolder {
 	

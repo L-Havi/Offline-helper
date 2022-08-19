@@ -13,11 +13,11 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 import OperatingSystem.ChooseOperatingSystem;
-import OperatingSystem.Linux;
-import OperatingSystem.Mac;
-import OperatingSystem.Windows;
-import Titles.CryptographyTitle;
-import Titles.FileSystemTitle;
+import OperatingSystem.LinuxClasses.Linux;
+import OperatingSystem.MacClasses.Mac;
+import OperatingSystem.WindowsClasses.Windows;
+import Titles.ToolCollectionTitles.CryptographyTitle;
+import Titles.ToolCollectionTitles.FileSystemTitle;
 
 public class EncryptionToolList {
 	private boolean run = true;

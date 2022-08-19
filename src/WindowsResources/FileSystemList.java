@@ -4,10 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import OperatingSystem.ChooseOperatingSystem;
-import OperatingSystem.Linux;
-import OperatingSystem.Mac;
-import OperatingSystem.Windows;
-import Titles.FileSystemTitle;
+import OperatingSystem.LinuxClasses.Linux;
+import OperatingSystem.MacClasses.Mac;
+import OperatingSystem.WindowsClasses.Windows;
+import Titles.ToolCollectionTitles.FileSystemTitle;
 
 public class FileSystemList {
 	private boolean run = true;

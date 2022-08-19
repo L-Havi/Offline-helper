@@ -1,5 +1,9 @@
 package OperatingSystem;
 
+import OperatingSystem.LinuxClasses.ListLinuxOS;
+import OperatingSystem.MacClasses.ListMacOS;
+import OperatingSystem.WindowsClasses.ListWindowsOS;
+
 public class ChooseOperatingSystem {
 
 	OperatingSystem operatingSystem = new OperatingSystem();
