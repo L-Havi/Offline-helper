@@ -18,12 +18,12 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 
 import Cryptography.AESEncryptionAndDecryption;
-import Cryptography.ConfirmPassword;
-import Cryptography.EncryptOrDecrypt;
-import Cryptography.FileOrText;
-import Cryptography.HasPassword;
-import Cryptography.SourceFolder;
 import Titles.ToolTitles.CryptographyTitles.ActionTitles.AESDecryptFileTitle;
+import Utilities.UserInput.ConfirmPassword;
+import Utilities.UserInput.EncryptOrDecrypt;
+import Utilities.UserInput.FileOrText;
+import Utilities.UserInput.HasPassword;
+import Utilities.UserInput.SourceFolder;
 
 public class AESDecryptFile {
 

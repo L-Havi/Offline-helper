@@ -39,8 +39,8 @@ public class EncryptionToolList {
 			cryptographyTitle.printTitle();
             try {
                 int command = scanner.nextInt();
-                if (command >= 1 && command <= 2) {
-                	if(command >= 1 && command <= 1) {
+                if (command >= 1 && command <= 4) {
+                	if(command >= 1 && command <= 3) {
                 		if(osInt == 0) {
                     		try {
 								windows.executeGivenEncryptionCommand(command);
@@ -67,7 +67,7 @@ public class EncryptionToolList {
 							}
                 		}
                 		run = false;
-                	} else if(command == 2) {
+                	} else if(command == 4) {
                 		run = false;
                 	}
                 } else {

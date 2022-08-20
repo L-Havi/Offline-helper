@@ -11,6 +11,8 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 import Cryptography.ActionChooseMenus.AESChooseAction;
+import Cryptography.ActionChooseMenus.MD5ChooseAction;
+import Cryptography.ActionChooseMenus.PasswordChooseAction;
 import FIleSystemTools.ToolMenus.AllPathsInFolder;
 import FIleSystemTools.ToolMenus.FolderFileCountAndSize;
 import FIleSystemTools.ToolMenus.MassChangeFileType;
@@ -36,6 +38,8 @@ public class Linux {
 	private AllPathsInFolder allPathsInFolder = new AllPathsInFolder();
 	private FolderFileCountAndSize folderFileCountAndSize = new FolderFileCountAndSize();
 	private AESChooseAction aes = new AESChooseAction();
+	private MD5ChooseAction md5 = new MD5ChooseAction();
+	private PasswordChooseAction passwordAction = new PasswordChooseAction();
 	
 	public void executeGivenCommand(int command) {
 		commandText = linuxCommandLineScripts.getCmdCommandScript(command);
@@ -79,7 +83,10 @@ public class Linux {
 	public void executeGivenEncryptionCommand(int command) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
 		if(command == 1) {
 			aes.encryptOrDecrypt();
-			
+		} else if(command == 2) {
+			md5.md5Choose();
+		} else if(command == 3) {
+			passwordAction.passwordChoose();
 		}
 }
 	

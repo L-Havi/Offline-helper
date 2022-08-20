@@ -1,4 +1,4 @@
-package Cryptography;
+package Utilities.UserInput;
 
 import java.io.File;
 import java.util.Scanner;

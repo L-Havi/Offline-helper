@@ -1,28 +1,16 @@
 package Cryptography.ActionChooseMenus;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
 
-import Cryptography.AESEncryptionAndDecryption;
-import Cryptography.ConfirmPassword;
-import Cryptography.EncryptOrDecrypt;
-import Cryptography.FileOrText;
-import Cryptography.HasPassword;
-import Cryptography.SourceFolder;
 import Cryptography.AESActions.AESDecryptFile;
 import Cryptography.AESActions.AESDecryptString;
 import Cryptography.AESActions.AESEncryptFile;

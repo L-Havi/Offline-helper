@@ -15,12 +15,12 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 
 import Cryptography.AESEncryptionAndDecryption;
-import Cryptography.ConfirmPassword;
-import Cryptography.HasPassword;
-import Cryptography.SourceFolder;
 import Titles.ToolTitles.CryptographyTitles.ActionTitles.AESDecryptFileTitle;
 import Titles.ToolTitles.CryptographyTitles.ActionTitles.AESDecryptStringTitle;
 import Utilities.UserInput.ChooseStringInput;
+import Utilities.UserInput.ConfirmPassword;
+import Utilities.UserInput.HasPassword;
+import Utilities.UserInput.SourceFolder;
 
 public class AESDecryptString {
 
