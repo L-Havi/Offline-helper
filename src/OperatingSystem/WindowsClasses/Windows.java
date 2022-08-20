@@ -12,6 +12,7 @@ import javax.crypto.NoSuchPaddingException;
 
 import Cryptography.ActionChooseMenus.AESChooseAction;
 import Cryptography.ActionChooseMenus.MD5ChooseAction;
+import Cryptography.ActionChooseMenus.PGPChooseAction;
 import Cryptography.ActionChooseMenus.PasswordChooseAction;
 import FIleSystemTools.ToolMenus.AllPathsInFolder;
 import FIleSystemTools.ToolMenus.FolderFileCountAndSize;
@@ -40,6 +41,7 @@ public class Windows {
 	private AESChooseAction aes = new AESChooseAction();
 	private MD5ChooseAction md5 = new MD5ChooseAction();
 	private PasswordChooseAction passwordAction = new PasswordChooseAction();
+	private PGPChooseAction pgpChooseAction = new PGPChooseAction();
 	
 	public void executeGivenCommand(int command) {
 		commandText = cmdScripts.getCmdCommandScript(command);
@@ -87,6 +89,11 @@ public class Windows {
 				md5.md5Choose();
 			} else if(command == 3) {
 				passwordAction.passwordChoose();
+			} else if(command == 4) {
+				try {
+					pgpChooseAction.pgpChoose();
+				} catch (Exception e) {
+				}
 			}
 	}
 	
