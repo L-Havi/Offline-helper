@@ -31,6 +31,8 @@ public class PasswordChooseAction {
 			if(actionChoice.toLowerCase().trim().equals("1")) {
 				generatePassword.generate();
 			} else if(actionChoice.toLowerCase().trim().equals("2")) {
+				generatePassword.check();
+			} else if(actionChoice.toLowerCase().trim().equals("3")) {
 				run = false;
 			} else {
 				System.out.println("Command was not recognized! Please type a valid command number");

@@ -9,7 +9,8 @@ public class PasswordChooseActionTitle {
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("Please type one of the following command numbers to start (Only number):\n");
 		System.out.println("1. Generate Random Password");
-		System.out.println("2. Exit to Main Menu");
+		System.out.println("2. Test password strength");
+		System.out.println("3. Exit to Main Menu");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}

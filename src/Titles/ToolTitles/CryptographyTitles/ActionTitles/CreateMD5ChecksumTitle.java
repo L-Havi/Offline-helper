@@ -18,4 +18,22 @@ public class CreateMD5ChecksumTitle {
 		System.out.println("");
 	}
 	
+	public void printCheckChecksumTitle(String sourceString, String checkSum){
+
+		
+		System.out.println("");
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("\t\t\tCheck MD5 Checksum");
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("Please type one of the following numbers to input parameters (Only number):\nAll parameters are mandatory unless stated otherwise");
+		System.out.println("\n1.	Set Source File");
+		System.out.println("	Current Source File: " + sourceString + "\n");
+		System.out.println("2.	Set Checksum");
+		System.out.println("	Current Checksum: " + checkSum + "\n");
+		System.out.println("3. 	Start\n");			
+		System.out.println("4. 	Exit to Main Menu\n");					
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("");
+	}
+	
 }

@@ -47,5 +47,19 @@ public class GeneratePasswordTitle {
 		System.out.println("");
 	}
 	
+	public void printCheckTitle(String password){
+		
+		System.out.println("");
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("\t\t\tCheck Password Strength");
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("Please type one of the following numbers to input parameters (Only number):\nAll parameters are mandatory unless stated otherwise");
+		System.out.println("\n1.	Set Password");
+		System.out.println("	Current Password: " + password + "\n");
+		System.out.println("2. 	Start\n");			
+		System.out.println("3. 	Exit to Main Menu\n");					
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("");
+	}
 	
 }

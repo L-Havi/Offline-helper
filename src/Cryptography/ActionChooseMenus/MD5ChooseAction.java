@@ -35,6 +35,8 @@ public class MD5ChooseAction {
 			} else if(actionChoice.toLowerCase().trim().equals("2")) {
 				md5HashString.hashString();
 			} else if(actionChoice.toLowerCase().trim().equals("3")) {
+				createMD5Checksum.checkChecksum();
+			} else if(actionChoice.toLowerCase().trim().equals("4")) {
 				run = false;
 			} else {
 				System.out.println("Command was not recognized! Please type a valid command number");
