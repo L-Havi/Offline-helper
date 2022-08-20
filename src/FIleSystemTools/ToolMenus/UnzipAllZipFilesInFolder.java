@@ -11,12 +11,14 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import Titles.ToolTitles.FileSystemTitles.UnzipAllZipFilesInFolderTitle;
 import Utilities.UserInput.ChooseFiles;
 import Utilities.UserInput.ZipOrUnzip;
 import Utilities.UserOutput.FindFiles;
@@ -29,26 +31,70 @@ public class UnzipAllZipFilesInFolder {
 	ZipOrUnzip zipOrUnzip = new ZipOrUnzip();
 	ChooseFiles chooseFiles = new ChooseFiles();
 	FindFiles findFiles = new FindFiles();
+	IncludeSubfolders includeSubfolders = new IncludeSubfolders();
+	int subfolders;
+	UnzipAllZipFilesInFolderTitle unzipAllZipFilesInFolderTitle = new UnzipAllZipFilesInFolderTitle();
 	
 	public void choose() throws IOException {
-		String srcFolder = sourceFolder.getSourceFolder();
-		if(!srcFolder.equals("exit")) {
-			String zipChoose = zipOrUnzip.zipUnzip();
-			if(zipChoose.equals("zip")) {
-				String[] files = chooseFiles.getFiles(srcFolder, zipChoose);
-				if(files.length == 1) {
-			    	int i = files[0].lastIndexOf('\\');
-			    	String[] folderName = {files[0].substring(0, i), files[0].substring(i)};
-					String zipPath = files[0] + "\\" + folderName[1] + ".zip";
-					pack(files[0], zipPath);
-				}else {
-					zipChosenFiles(files, srcFolder);
-				}
+		
+		String actionChoice;
+		String[] files = {"*"};
+		String sourceString = "";
+		String zipChoose = "";
+		List<String> realFiles = new ArrayList<String>();
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		boolean run = true;
+		
+		while(run) {
+			unzipAllZipFilesInFolderTitle.printTitle(sourceString, zipChoose, files);
+			actionChoice = scanner.nextLine();
+			if(actionChoice.toLowerCase().trim().equals("1")) {
+				sourceString = sourceFolder.getSourceFolder();
+			} else if(actionChoice.toLowerCase().trim().equals("2")) {
+				zipChoose = zipOrUnzip.zipUnzip();
+			} else if(actionChoice.toLowerCase().trim().equals("3") && sourceString != "" && sourceString != "exit" && zipChoose != "" && zipChoose != "exit") {
+				files = chooseFiles.getFiles(sourceString, zipChoose);
+			} else if(actionChoice.toLowerCase().trim().equals("4") && sourceString != "" && sourceString != "exit" && zipChoose != "" && zipChoose != "exit") {
+				if(files.length == 1 && files[0].trim().equals("*")) {
 
-			} else if(zipChoose.equals("exit")) {
+					if(zipChoose.equals("unzip")) {
+						subfolders = includeSubfolders.includeSubfolders();
+						String [] extensions = {"zip"};
+						try {
+							realFiles = findFiles.findFiles(Paths.get(sourceString), extensions, subfolders);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					} else if(zipChoose.equals("zip")) {
+						realFiles.add(sourceString);
+					}
+			        if (realFiles.size() > 0) {
+			        	files = new String[realFiles.size()];
+			        	realFiles.toArray(files);
+			        }
+				}
+				if(zipChoose.toLowerCase().trim().equals("zip")) {
+					if(files.length == 1) {
+				    	int i = files[0].lastIndexOf('\\');
+				    	String[] folderName = {files[0].substring(0, i), files[0].substring(i)};
+						String zipPath = files[0] + "\\" + folderName[1] + ".zip";
+						pack(files[0], zipPath);
+					}else {
+						zipChosenFiles(files, sourceString);
+					}
+				} else if (zipChoose.toLowerCase().trim().equals("unzip")){
+					unzipAllFiles(files, sourceString);
+				}
+				run = false;
+			} else if(actionChoice.toLowerCase().trim().equals("5")) {
+				run = false;
 			} else {
-				String[] files = chooseFiles.getFiles(srcFolder, zipChoose);
-				unzipAllFiles(files, srcFolder);
+				System.out.println("Command was not recognized! Please type a valid command number");
+			}
+			if((files.length == 1 && files[0].equals("exit")) || sourceString == "exit" || zipChoose == "exit") {
+				run = false;
 			}
 		}
 	}

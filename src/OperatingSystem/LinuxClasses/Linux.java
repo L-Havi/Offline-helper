@@ -10,7 +10,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-import Cryptography.AESEncryptFileOrString;
+import Cryptography.ActionChooseMenus.AESChooseAction;
 import FIleSystemTools.ToolMenus.AllPathsInFolder;
 import FIleSystemTools.ToolMenus.FolderFileCountAndSize;
 import FIleSystemTools.ToolMenus.MassChangeFileType;
@@ -35,7 +35,7 @@ public class Linux {
 	private MassChangeFileType massChangeFileType = new MassChangeFileType();
 	private AllPathsInFolder allPathsInFolder = new AllPathsInFolder();
 	private FolderFileCountAndSize folderFileCountAndSize = new FolderFileCountAndSize();
-	private AESEncryptFileOrString aes = new AESEncryptFileOrString();
+	private AESChooseAction aes = new AESChooseAction();
 	
 	public void executeGivenCommand(int command) {
 		commandText = linuxCommandLineScripts.getCmdCommandScript(command);
