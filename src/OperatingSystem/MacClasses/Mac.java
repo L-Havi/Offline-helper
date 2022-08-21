@@ -25,6 +25,7 @@ import FIleSystemTools.ToolMenus.SortFilesToFoldersByExtension;
 import FIleSystemTools.ToolMenus.UnzipAllZipFilesInFolder;
 import MacResources.ExecuteMacScripts;
 import MacResources.MacCommandLineScripts;
+import SystemInformation.OperatingSystemInfo;
 
 public class Mac {
 
@@ -44,6 +45,7 @@ public class Mac {
 	private PasswordChooseAction passwordAction = new PasswordChooseAction();
 	private PGPChooseAction pgpChooseAction = new PGPChooseAction();
 	private SHAChooseAction shaChooseAction = new SHAChooseAction();
+	private OperatingSystemInfo operatingSystemInfo = new OperatingSystemInfo();
 	
 	public void executeGivenCommand(int command) {
 		commandText = macCommandLineScripts.getCmdCommandScript(command);
@@ -99,6 +101,13 @@ public class Mac {
 		} else if(command == 5) {
 			shaChooseAction.shaChoose();
 		}
-}
+	}
+	public void executeGivenSystemInfoCommand(int command) {
+		if(command == 1) {
+			operatingSystemInfo.printOsInfo();
+		} else if(command == 2) {
+			operatingSystemInfo.javaInfo();
+		}
+	}
 
 }

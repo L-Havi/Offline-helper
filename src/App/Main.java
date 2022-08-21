@@ -7,6 +7,7 @@ import OperatingSystem.ChooseOperatingSystem;
 import Titles.TitleScreen;
 import WindowsResources.EncryptionToolList;
 import WindowsResources.FileSystemList;
+import WindowsResources.SystemToolList;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,6 +32,9 @@ public class Main {
                 		} else if(command.trim().toLowerCase().equals("2")) {
                 			EncryptionToolList encryptionToolList = new EncryptionToolList();
                 			encryptionToolList.getEncryptionToolList(osInt);
+                		} else if(command.trim().toLowerCase().equals("3")) {
+                			SystemToolList systemToolList = new SystemToolList();
+                			systemToolList.getSystemToolList(osInt);
                 		}
                 	} else {
                 		run = false;

@@ -24,6 +24,7 @@ import FIleSystemTools.ToolMenus.RemoveDuplicateFilesFromFolder;
 import FIleSystemTools.ToolMenus.SortFilesToFoldersByExtension;
 import FIleSystemTools.ToolMenus.UnzipAllZipFilesInFolder;
 import FIleSystemTools.ToolMenus.WindowsExecuteCmd;
+import SystemInformation.OperatingSystemInfo;
 import WindowsResources.CmdCommandScripts;
 
 public class Windows {
@@ -44,6 +45,7 @@ public class Windows {
 	private PasswordChooseAction passwordAction = new PasswordChooseAction();
 	private PGPChooseAction pgpChooseAction = new PGPChooseAction();
 	private SHAChooseAction shaChooseAction = new SHAChooseAction();
+	private OperatingSystemInfo operatingSystemInfo = new OperatingSystemInfo();
 	
 	public void executeGivenCommand(int command) {
 		commandText = cmdScripts.getCmdCommandScript(command);
@@ -99,6 +101,14 @@ public class Windows {
 			} else if(command == 5) {
 				shaChooseAction.shaChoose();
 			}
+	}
+
+	public void executeGivenSystemInfoCommand(int command) {
+		if(command == 1) {
+			operatingSystemInfo.printOsInfo();
+		} else if(command == 2) {
+			operatingSystemInfo.javaInfo();
+		}
 	}
 	
 }
