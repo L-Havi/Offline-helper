@@ -8,6 +8,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+import Titles.ToolTitles.CryptographyTitles.SHAChooseActionTitle;
 import Titles.ToolTitles.CryptographyTitles.ActionTitles.SHAHashStringTitle;
 import Utilities.UserInput.ChooseSHAAlgorithm;
 import Utilities.UserInput.ChooseSalt;
@@ -25,6 +26,7 @@ public class SHAHashString {
 	Scanner scanner = new Scanner(System.in);
     
 	public void hashString() {
+		
 		String actionChoice;
 		String hashString = "";
 		String hashingAlgorithm = "SHA-256";
@@ -54,7 +56,7 @@ public class SHAHashString {
 			}
 		}
 	}
-
+	
     public static byte[] digest(byte[] input, String algorithm) {
         MessageDigest md;
         try {
@@ -99,14 +101,19 @@ public class SHAHashString {
 			          .array();
 			
 			String saltString = new String(saltByte);
+			String inputString = new String(input);
 			
-	        System.out.println("Input string: " + hashString);
+	        System.out.println("Input text: " + hashString);
 	        System.out.println("Input length:" + hashString.length());
+	        System.out.println("");
 	        System.out.println("Salt: " + saltString);
 	        System.out.println("Salt length: " + saltString.length());
 	        System.out.println("");
-	        System.out.println(bytesToHex(digest(input, hashingAlgorithm)));
-	        System.out.println(String.format(hashingAlgorithm + " (length): " + digest(input, hashingAlgorithm).length));
+	        System.out.println("Full hashed text: " + inputString);
+	        System.out.println("Full hashed text length: " + inputString.length());
+	        System.out.println("");
+	        System.out.println(hashingAlgorithm + " (hex): " + bytesToHex(digest(input, hashingAlgorithm)));
+	        System.out.println(hashingAlgorithm + " (length): " + digest(input, hashingAlgorithm).length);
 		}
 		
 	}
