@@ -14,6 +14,7 @@ import Cryptography.ActionChooseMenus.AESChooseAction;
 import Cryptography.ActionChooseMenus.MD5ChooseAction;
 import Cryptography.ActionChooseMenus.PGPChooseAction;
 import Cryptography.ActionChooseMenus.PasswordChooseAction;
+import Cryptography.ActionChooseMenus.SHAChooseAction;
 import FIleSystemTools.ToolMenus.AllPathsInFolder;
 import FIleSystemTools.ToolMenus.FolderFileCountAndSize;
 import FIleSystemTools.ToolMenus.MassChangeFileType;
@@ -42,6 +43,7 @@ public class Linux {
 	private MD5ChooseAction md5 = new MD5ChooseAction();
 	private PasswordChooseAction passwordAction = new PasswordChooseAction();
 	private PGPChooseAction pgpChooseAction = new PGPChooseAction();
+	private SHAChooseAction shaChooseAction = new SHAChooseAction();
 	
 	public void executeGivenCommand(int command) {
 		commandText = linuxCommandLineScripts.getCmdCommandScript(command);
@@ -94,6 +96,8 @@ public class Linux {
 				pgpChooseAction.pgpChoose();
 			} catch (Exception e) {
 			}
+		} else if(command == 5) {
+			shaChooseAction.shaChoose();
 		}
 }
 	

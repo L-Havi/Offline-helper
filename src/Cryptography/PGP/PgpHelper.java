@@ -310,11 +310,11 @@ public class PgpHelper {
  
         if (sig.verify()) 
         { 
-            System.out.println("signature verified."); 
+            System.out.println("Signature verified."); 
         } 
         else 
         { 
-            System.out.println("signature verification failed."); 
+            System.out.println("Signature verification failed."); 
         } 
     } 
     

@@ -11,34 +11,32 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-import Cryptography.PGP.PGPActions.PGPActions;
-import Titles.ToolTitles.CryptographyTitles.PGPChooseActionTitle;
+import Cryptography.MD5Actions.MD5HashString;
+import Cryptography.SHAActions.SHAHashString;
+import Titles.ToolTitles.CryptographyTitles.SHAChooseActionTitle;
 
-public class PGPChooseAction {
+public class SHAChooseAction {
 
-	PGPChooseActionTitle pgpchooseActionTitle = new PGPChooseActionTitle();
+
 	Scanner scanner = new Scanner(System.in);
-	PGPActions pgpActions = new PGPActions();
+	SHAChooseActionTitle shaChooseActionTitle = new SHAChooseActionTitle();
+	SHAHashString shaHashString = new SHAHashString();
 	
-	public void pgpChoose() throws Exception {
+	public void shaChoose() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
 		
 		String actionChoice;
 		boolean run = true;
 		
 		while(run) {
-			pgpchooseActionTitle.printTitle();
+			shaChooseActionTitle.printTitle();
 			actionChoice = scanner.nextLine();
 			if(actionChoice.toLowerCase().trim().equals("1")) {
-				pgpActions.generateKeys();
+				
 			} else if(actionChoice.toLowerCase().trim().equals("2")) {
-				pgpActions.encrypt();
+				shaHashString.hashString();
 			} else if(actionChoice.toLowerCase().trim().equals("3")) {
-				pgpActions.decrypt();
+
 			} else if(actionChoice.toLowerCase().trim().equals("4")) {
-				pgpActions.sign();
-			} else if(actionChoice.toLowerCase().trim().equals("5")) {
-				pgpActions.verify();
-			} else if(actionChoice.toLowerCase().trim().equals("6")) {
 				run = false;
 			} else {
 				System.out.println("Command was not recognized! Please type a valid command number");
@@ -46,5 +44,6 @@ public class PGPChooseAction {
 		}
 
 	}
+	
 	
 }
