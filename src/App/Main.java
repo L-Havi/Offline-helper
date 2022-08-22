@@ -7,6 +7,7 @@ import OperatingSystem.ChooseOperatingSystem;
 import Titles.TitleScreen;
 import ToolListMenus.EncryptionToolList;
 import ToolListMenus.FileSystemList;
+import ToolListMenus.PdfToolList;
 import ToolListMenus.SystemToolList;
 
 public class Main {
@@ -35,6 +36,9 @@ public class Main {
                 		} else if(command.trim().toLowerCase().equals("3")) {
                 			SystemToolList systemToolList = new SystemToolList();
                 			systemToolList.getSystemToolList(osInt);
+                		} else if(command.trim().toLowerCase().equals("4")) {
+                			PdfToolList pdfToolList = new PdfToolList();
+                			pdfToolList.getPdfToolList(osInt);
                 		}
                 	} else {
                 		run = false;

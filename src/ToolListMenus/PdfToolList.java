@@ -10,7 +10,7 @@ import OperatingSystem.WindowsClasses.Windows;
 import Titles.ToolCollectionTitles.FileSystemTitle;
 import Titles.ToolCollectionTitles.PdfToolTitle;
 
-public class FileSystemList {
+public class PdfToolList {
 	private boolean run = true;
 	private PdfToolTitle pdfToolTitle = new PdfToolTitle();
 	private Scanner scanner = new Scanner(System.in);
@@ -19,7 +19,7 @@ public class FileSystemList {
 	private Mac mac = new Mac();
 	private ChooseOperatingSystem chooseOperatingSystem = new ChooseOperatingSystem();
 	
-	public void getFileSystemList(int osInt){
+	public void getPdfToolList(int osInt){
         
 		if(!(osInt > 0)) {
 			osInt = chooseOperatingSystem.getOperatingSystem();
@@ -30,17 +30,17 @@ public class FileSystemList {
 			pdfToolTitle.printTitle();
             try {
                 int command = scanner.nextInt();
-                if (command >= 1 && command <= 10) {
-                	if(command >= 1 && command <= 9) {
+                if (command >= 1 && command <= 8) {
+                	if(command >= 1 && command <= 7) {
                 		if(osInt == 0) {
-                    		windows.executeGivenCommand(command);
+                    		windows.executeGivenPdfCommand(command);
                 		} else if(osInt == 1) {
-                			linux.executeGivenCommand(command);
+                			linux.executeGivenPdfCommand(command);
                 		}else if(osInt == 2) {
-                			mac.executeGivenCommand(command);
+                			mac.executeGivenPdfCommand(command);
                 		}
                 		run = false;
-                	} else if(command == 10) {
+                	} else if(command == 8) {
                 		run = false;
                 	}
                 } else {

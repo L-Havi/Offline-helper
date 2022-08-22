@@ -60,4 +60,33 @@ public class ChooseFiles {
 			return finalFilePaths;
 	}
 
+	public String[] getPdfFiles() {
+		Scanner scanner = new Scanner(System.in);
+		boolean isValidinput = false;
+		String sourceString;
+		String[] finalFilePaths = new String[0];
+		
+			while(!isValidinput) {
+				System.out.println("Input all files you want to included separated with a comma (e.g. C:\\folder\\file1.pdf,C:\\folder\\file2.pdf)\nIf file doesn't exist in file it is skipped");
+				sourceString = scanner.nextLine();
+				List<String> realFiles = new ArrayList<String>();
+				List<String> files = Arrays.asList(sourceString.split(","));
+				for(String file : files) {
+					File tempFile = new File(file);
+					if(tempFile.exists() && !realFiles.contains(file)) { 
+						realFiles.add(file);
+					}
+					if (!(realFiles.size() > 0)) {
+						System.out.println("No inputted files exist in folder. Please input files again.");
+					} else {
+						finalFilePaths = new String[realFiles.size()];
+						realFiles.toArray(finalFilePaths);
+						isValidinput = true;
+					}
+				}
+			}
+			
+		return finalFilePaths;
+	}
+
 }

@@ -11,7 +11,7 @@ public class Name {
 	
 	public String getName() {
 		while(!isValidName) {
-			System.out.println("Give new name for files");
+			System.out.println("Give new name for file/files");
 			sourceString = scanner.nextLine();
 			String[] illegalCharacters = {"/","<",">",":","\"","\\","|","?","*"};
 			for(String illegalCharacter : illegalCharacters) {

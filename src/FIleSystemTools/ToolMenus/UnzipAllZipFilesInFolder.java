@@ -1,25 +1,27 @@
 package FIleSystemTools.ToolMenus;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipException;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
+
+import org.apache.commons.compress.archivers.ArchiveEntry;
+import org.apache.commons.compress.archivers.ArchiveException;
+import org.apache.commons.compress.archivers.ArchiveInputStream;
+import org.apache.commons.compress.archivers.ArchiveStreamFactory;
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
+import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
+import org.apache.commons.compress.utils.IOUtils;
 
 import Titles.ToolTitles.FileSystemTitles.UnzipAllZipFilesInFolderTitle;
 import Utilities.UserInput.ChooseFiles;
+import Utilities.UserInput.Name;
 import Utilities.UserInput.ZipOrUnzip;
 import Utilities.UserOutput.FindFiles;
 import WindowsResources.IncludeSubfolders;
@@ -34,172 +36,123 @@ public class UnzipAllZipFilesInFolder {
 	IncludeSubfolders includeSubfolders = new IncludeSubfolders();
 	int subfolders;
 	UnzipAllZipFilesInFolderTitle unzipAllZipFilesInFolderTitle = new UnzipAllZipFilesInFolderTitle();
+	Name name = new Name();
 	
 	public void choose() throws IOException {
 		
 		String actionChoice;
-		String[] files = {"*"};
 		String sourceString = "";
-		String zipChoose = "";
-		List<String> realFiles = new ArrayList<String>();
+		String destinationFolder = "";
+		String zipFileName = "zipFile";
 		
 		Scanner scanner = new Scanner(System.in);
 		
 		boolean run = true;
 		
 		while(run) {
-			unzipAllZipFilesInFolderTitle.printTitle(sourceString, zipChoose, files);
+			unzipAllZipFilesInFolderTitle.printTitle(sourceString, destinationFolder, zipFileName);
 			actionChoice = scanner.nextLine();
 			if(actionChoice.toLowerCase().trim().equals("1")) {
-				sourceString = sourceFolder.getSourceFolder();
+				sourceString = sourceFolder.getSourceFileOrFolder();
 			} else if(actionChoice.toLowerCase().trim().equals("2")) {
-				zipChoose = zipOrUnzip.zipUnzip();
-			} else if(actionChoice.toLowerCase().trim().equals("3") && sourceString != "" && sourceString != "exit" && zipChoose != "" && zipChoose != "exit") {
-				files = chooseFiles.getFiles(sourceString, zipChoose);
-			} else if(actionChoice.toLowerCase().trim().equals("4") && sourceString != "" && sourceString != "exit" && zipChoose != "" && zipChoose != "exit") {
-				if(files.length == 1 && files[0].trim().equals("*")) {
-
-					if(zipChoose.equals("unzip")) {
-						subfolders = includeSubfolders.includeSubfolders();
-						String [] extensions = {"zip"};
-						try {
-							realFiles = findFiles.findFiles(Paths.get(sourceString), extensions, subfolders);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					} else if(zipChoose.equals("zip")) {
-						realFiles.add(sourceString);
-					}
-			        if (realFiles.size() > 0) {
-			        	files = new String[realFiles.size()];
-			        	realFiles.toArray(files);
-			        }
+				destinationFolder = sourceFolder.getSourceFolder();
+			} else if(actionChoice.toLowerCase().trim().equals("3")) {
+				zipFileName = name.getName();
+			} else if(actionChoice.toLowerCase().trim().equals("4") && sourceString != "" && sourceString != "exit" && destinationFolder != "" && destinationFolder != "exit") {
+				if(sourceString.contains(".zip")) {
+					extractZip(sourceString, destinationFolder);
+					run = false;
+				}else {
+					String zipDestination = destinationFolder + "\\" + zipFileName + ".zip";
+					createZipFile(sourceString, zipDestination);
+					run = false;
 				}
-				if(zipChoose.toLowerCase().trim().equals("zip")) {
-					if(files.length == 1) {
-				    	int i = files[0].lastIndexOf('\\');
-				    	String[] folderName = {files[0].substring(0, i), files[0].substring(i)};
-						String zipPath = files[0] + "\\" + folderName[1] + ".zip";
-						pack(files[0], zipPath);
-					}else {
-						zipChosenFiles(files, sourceString);
-					}
-				} else if (zipChoose.toLowerCase().trim().equals("unzip")){
-					unzipAllFiles(files, sourceString);
-				}
-				run = false;
 			} else if(actionChoice.toLowerCase().trim().equals("5")) {
 				run = false;
 			} else {
 				System.out.println("Command was not recognized! Please type a valid command number");
 			}
-			if((files.length == 1 && files[0].equals("exit")) || sourceString == "exit" || zipChoose == "exit") {
+			if(sourceString == "exit") {
 				run = false;
 			}
 		}
 	}
-	
-	public void zipChosenFiles(String[] files, String sourceFolder) throws IOException {
-        List<String> srcFiles = Arrays.asList(files);
-        FileOutputStream fos = new FileOutputStream(sourceFolder + "\\result.zip");
-        ZipOutputStream zipOut = new ZipOutputStream(fos);
-        for (String srcFile : srcFiles) {
-        	try {
-                File fileToZip = new File(srcFile);
-                FileInputStream fis = new FileInputStream(fileToZip);
-                ZipEntry zipEntry = new ZipEntry(fileToZip.getName());
-                try {
-                    zipOut.putNextEntry(zipEntry);               	
-                }catch(ZipException e) {
-                	
-                }
 
+    public void createZipFile(String fileOrDirectoryToZip, String zipFileName) {
+        BufferedOutputStream bufferedOutputStream = null;
+        ZipArchiveOutputStream zipArchiveOutputStream = null;
+        OutputStream outputStream = null;
+        try {
+            Path zipFilePath = Paths.get(zipFileName);
+            outputStream = Files.newOutputStream(zipFilePath);
+            bufferedOutputStream = new BufferedOutputStream(outputStream);
+            zipArchiveOutputStream = new ZipArchiveOutputStream(bufferedOutputStream);
+            File fileToZip = new File(fileOrDirectoryToZip);
 
-                byte[] bytes = new byte[1024];
-                int length;
-                while((length = fis.read(bytes)) >= 0) {
-                    zipOut.write(bytes, 0, length);
-                }
-                fis.close();
-        	}catch(FileNotFoundException e) {
-        		
-        	}
+            addFileToZipStream(zipArchiveOutputStream, fileToZip, "");
 
+            zipArchiveOutputStream.close();
+            bufferedOutputStream.close();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        zipOut.close();
-        fos.close();
-	}
+    }
+
+    private void addFileToZipStream(ZipArchiveOutputStream zipArchiveOutputStream, File fileToZip, String base) throws IOException {
+        String entryName = base + fileToZip.getName();
+        ZipArchiveEntry zipArchiveEntry = new ZipArchiveEntry(fileToZip, entryName);
+        zipArchiveOutputStream.putArchiveEntry(zipArchiveEntry);
+        if(fileToZip.isFile()) {
+            FileInputStream fileInputStream = null;
+            try {
+                fileInputStream = new FileInputStream(fileToZip);
+                IOUtils.copy(fileInputStream, zipArchiveOutputStream);
+                zipArchiveOutputStream.closeArchiveEntry();
+            } finally {
+                IOUtils.closeQuietly(fileInputStream);
+            }
+        } else {
+            zipArchiveOutputStream.closeArchiveEntry();
+            File[] files = fileToZip.listFiles();
+            if(files != null) {
+                for (File file: files) {
+                    addFileToZipStream(zipArchiveOutputStream, file, entryName + "/");
+                }
+            }
+        }
+    }
 	
-	@SuppressWarnings("resource")
-	public void unzipAllFiles(String[] files, String srcFolder) throws IOException {
-		List<String> zipFiles = new ArrayList<String>();
-		for(String file : files) {
-			if (file.endsWith("zip")) {
-				zipFiles.add(file);
-			}
-		}
-		for(String zipFile : zipFiles) {
-	        File destDir = new File(srcFolder);
-	        byte[] buffer = new byte[1024];
-	        ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFile));
-	        ZipEntry zipEntry = zis.getNextEntry();
-	        while (zipEntry != null) {
-	            File newFile = newFile(destDir, zipEntry);
-	            if (zipEntry.isDirectory()) {
-	                if (!newFile.isDirectory() && !newFile.mkdirs()) {
-	                    throw new IOException("Failed to create directory " + newFile);
-	                }
-	            } else {
-	                File parent = newFile.getParentFile();
-	                if (!parent.isDirectory() && !parent.mkdirs()) {
-	                    throw new IOException("Failed to create directory " + parent);
-	                }
-	                FileOutputStream fos = new FileOutputStream(newFile);
-	                int len;
-	                while ((len = zis.read(buffer)) > 0) {
-	                    fos.write(buffer, 0, len);
-	                }
-	                fos.close();
-	            }
-	        zipEntry = zis.getNextEntry();
-	        }
-	        zis.closeEntry();
-	        zis.close();
-
-		}
-	}
-	
-	public static void pack(String sourceDirPath, String zipFilePath) throws IOException {
-	    Path p = Files.createFile(Paths.get(zipFilePath));
-	    Path pp = Paths.get(sourceDirPath);
-	    try (ZipOutputStream zs = new ZipOutputStream(Files.newOutputStream(p));
-	        Stream<Path> paths = Files.walk(pp)) {
-	        paths
-	          .filter(path -> !Files.isDirectory(path))
-	          .forEach(path -> {
-	              ZipEntry zipEntry = new ZipEntry(pp.relativize(path).toString());
-	              try {
-	                  zs.putNextEntry(zipEntry);
-	                  Files.copy(path, zs);
-	                  zs.closeEntry();
-	            } catch (IOException e) {
-	                System.err.println(e);
-	            }
-	          });
-	    }
-	}
-	
-	public static File newFile(File destinationDir, ZipEntry zipEntry) throws IOException {
-	    File destFile = new File(destinationDir, zipEntry.getName());
-
-	    String destDirPath = destinationDir.getCanonicalPath();
-	    String destFilePath = destFile.getCanonicalPath();
-
-	    if (!destFilePath.startsWith(destDirPath + File.separator)) {
-	        throw new IOException("Entry is outside of the target folder: " + zipEntry.getName());
-	    }
-
-	    return destFile;
-	}
+    public void extractZip(String zipFilePath, String extractDirectory) {
+        InputStream inputStream = null;
+        try {
+            Path filePath = Paths.get(zipFilePath);
+            inputStream = Files.newInputStream(filePath);
+            ArchiveStreamFactory archiveStreamFactory = new ArchiveStreamFactory();
+            ArchiveInputStream archiveInputStream = archiveStreamFactory.createArchiveInputStream(ArchiveStreamFactory.ZIP, inputStream);
+            ArchiveEntry archiveEntry = null;
+            while((archiveEntry = archiveInputStream.getNextEntry()) != null) {
+                Path path = Paths.get(extractDirectory, archiveEntry.getName());
+                File file = path.toFile();
+                if(archiveEntry.isDirectory()) {
+                    if(!file.isDirectory()) {
+                        file.mkdirs();
+                    }
+                } else {
+                    File parent = file.getParentFile();
+                    if(!parent.isDirectory()) {
+                        parent.mkdirs();
+                    }
+                    try (OutputStream outputStream = Files.newOutputStream(path)) {
+                        IOUtils.copy(archiveInputStream, outputStream);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ArchiveException e) {
+            e.printStackTrace();
+        }
+    }
 	
 }

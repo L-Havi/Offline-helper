@@ -11,6 +11,7 @@ public class TitleScreen {
 		System.out.println("1. File System Tools");
 		System.out.println("2. Encryption & Hashing Tools");
 		System.out.println("3. System Info");
+		System.out.println("4. PDF Tools");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}

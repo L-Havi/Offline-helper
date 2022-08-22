@@ -25,6 +25,7 @@ import FIleSystemTools.ToolMenus.SortFilesToFoldersByExtension;
 import FIleSystemTools.ToolMenus.UnzipAllZipFilesInFolder;
 import MacResources.ExecuteMacScripts;
 import MacResources.MacCommandLineScripts;
+import PdfTools.ActionChooseMenus.MergePdfAction;
 import SystemInformation.EnvironmentVariables;
 import SystemInformation.OperatingSystemInfo;
 
@@ -48,6 +49,7 @@ public class Mac {
 	private SHAChooseAction shaChooseAction = new SHAChooseAction();
 	private OperatingSystemInfo operatingSystemInfo = new OperatingSystemInfo();
 	private EnvironmentVariables environmentVariables = new EnvironmentVariables();
+	private MergePdfAction mergePdfAction = new MergePdfAction();
 	
 	public void executeGivenCommand(int command) {
 		commandText = macCommandLineScripts.getCmdCommandScript(command);
@@ -118,4 +120,25 @@ public class Mac {
 		}
 	}
 
+	public void executeGivenPdfCommand(int command) {
+		if(command == 1) {
+			try {
+				mergePdfAction.mergePdfFiles();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else if(command == 2) {
+
+		} else if(command == 3) {
+
+		} else if(command == 4) {
+
+		} else if(command == 5) {
+
+		} else if(command == 6) {
+
+		} else if(command == 7) {
+			
+		}
+	}
 }

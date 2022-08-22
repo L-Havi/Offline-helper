@@ -55,4 +55,27 @@ public class SourceFolder {
 		}
         return sourceString;
 	}
+	
+	public String getSourceFileOrFolder() {
+		boolean isValidFolder = false;
+		String sourceString = "";
+		while(!isValidFolder) {
+			System.out.println("Input source file or folder path or type \"exit\" to leave (e.g. C:\\Temp)");
+			sourceString = scanner.nextLine();
+			if(!sourceString.trim().equals("exit")) {
+		        File src = new File(sourceString);
+		        if (!src.isFile() && !src.isDirectory()) {
+		            System.out.println("Source directory does not exist.");
+		        } else {
+		        	isValidFolder = true;
+		        }
+			} else {
+				sourceString = "exit";
+				isValidFolder = true;
+			}
+
+		}
+        return sourceString;
+	}
+	
 }

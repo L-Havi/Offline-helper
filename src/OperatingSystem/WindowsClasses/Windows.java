@@ -24,6 +24,7 @@ import FIleSystemTools.ToolMenus.RemoveDuplicateFilesFromFolder;
 import FIleSystemTools.ToolMenus.SortFilesToFoldersByExtension;
 import FIleSystemTools.ToolMenus.UnzipAllZipFilesInFolder;
 import FIleSystemTools.ToolMenus.WindowsExecuteCmd;
+import PdfTools.ActionChooseMenus.MergePdfAction;
 import SystemInformation.EnvironmentVariables;
 import SystemInformation.OperatingSystemInfo;
 import WindowsResources.CmdCommandScripts;
@@ -48,6 +49,7 @@ public class Windows {
 	private SHAChooseAction shaChooseAction = new SHAChooseAction();
 	private OperatingSystemInfo operatingSystemInfo = new OperatingSystemInfo();
 	private EnvironmentVariables environmentVariables = new EnvironmentVariables();
+	private MergePdfAction mergePdfAction = new MergePdfAction();
 	
 	public void executeGivenCommand(int command) {
 		commandText = cmdScripts.getCmdCommandScript(command);
@@ -116,6 +118,28 @@ public class Windows {
 			operatingSystemInfo.printHardwareInfo();
 		} else if(command == 5) {
 			operatingSystemInfo.javaInfo();
+		}
+	}
+
+	public void executeGivenPdfCommand(int command) {
+		if(command == 1) {
+			try {
+				mergePdfAction.mergePdfFiles();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else if(command == 2) {
+
+		} else if(command == 3) {
+
+		} else if(command == 4) {
+
+		} else if(command == 5) {
+
+		} else if(command == 6) {
+
+		} else if(command == 7) {
+			
 		}
 	}
 	
