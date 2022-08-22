@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 import OperatingSystem.ChooseOperatingSystem;
 import Titles.TitleScreen;
-import WindowsResources.EncryptionToolList;
-import WindowsResources.FileSystemList;
-import WindowsResources.SystemToolList;
+import ToolListMenus.EncryptionToolList;
+import ToolListMenus.FileSystemList;
+import ToolListMenus.SystemToolList;
 
 public class Main {
     public static void main(String[] args) {

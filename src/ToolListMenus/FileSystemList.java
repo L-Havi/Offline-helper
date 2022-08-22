@@ -1,33 +1,24 @@
-package WindowsResources;
+package ToolListMenus;
 
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 import OperatingSystem.ChooseOperatingSystem;
 import OperatingSystem.LinuxClasses.Linux;
 import OperatingSystem.MacClasses.Mac;
 import OperatingSystem.WindowsClasses.Windows;
-import Titles.ToolCollectionTitles.SystemTitle;
+import Titles.ToolCollectionTitles.FileSystemTitle;
 
-public class SystemToolList {
+public class FileSystemList {
 	private boolean run = true;
-	private SystemTitle systemTitle = new SystemTitle();
+	private FileSystemTitle fileSystemTitle = new FileSystemTitle();
 	private Scanner scanner = new Scanner(System.in);
 	private Windows windows = new Windows();
 	private Linux linux = new Linux();
 	private Mac mac = new Mac();
 	private ChooseOperatingSystem chooseOperatingSystem = new ChooseOperatingSystem();
 	
-	public void getSystemToolList(int osInt){
+	public void getFileSystemList(int osInt){
         
 		if(!(osInt > 0)) {
 			osInt = chooseOperatingSystem.getOperatingSystem();
@@ -35,20 +26,20 @@ public class SystemToolList {
 		
 		while (run) {
 
-			systemTitle.printTitle();
+			fileSystemTitle.printTitle();
             try {
                 int command = scanner.nextInt();
-                if (command >= 1 && command <= 3) {
-                	if(command >= 1 && command <= 2) {
+                if (command >= 1 && command <= 10) {
+                	if(command >= 1 && command <= 9) {
                 		if(osInt == 0) {
-							windows.executeGivenSystemInfoCommand(command);
+                    		windows.executeGivenCommand(command);
                 		} else if(osInt == 1) {
-							linux.executeGivenSystemInfoCommand(command);
-                		} else if(osInt == 2) {
-							mac.executeGivenSystemInfoCommand(command);
+                			linux.executeGivenCommand(command);
+                		}else if(osInt == 2) {
+                			mac.executeGivenCommand(command);
                 		}
                 		run = false;
-                	} else if(command == 3) {
+                	} else if(command == 10) {
                 		run = false;
                 	}
                 } else {
