@@ -25,7 +25,12 @@ import FIleSystemTools.ToolMenus.SortFilesToFoldersByExtension;
 import FIleSystemTools.ToolMenus.UnzipAllZipFilesInFolder;
 import LinuxResources.ExecuteLinuxScripts;
 import LinuxResources.LinuxCommandLineScripts;
+import PdfTools.ActionChooseMenus.ConvertPdfAction;
+import PdfTools.ActionChooseMenus.EditPdfMetadata;
+import PdfTools.ActionChooseMenus.ExtractPdfMetadata;
+import PdfTools.ActionChooseMenus.ExtractTextFromPdfAction;
 import PdfTools.ActionChooseMenus.MergePdfAction;
+import PdfTools.ActionChooseMenus.SplitPdfAction;
 import SystemInformation.EnvironmentVariables;
 import SystemInformation.OperatingSystemInfo;
 
@@ -50,6 +55,11 @@ public class Linux {
 	private OperatingSystemInfo operatingSystemInfo = new OperatingSystemInfo();
 	private EnvironmentVariables environmentVariables = new EnvironmentVariables();
 	private MergePdfAction mergePdfAction = new MergePdfAction();
+	private SplitPdfAction splitPdfAction = new SplitPdfAction();
+	private ExtractTextFromPdfAction extractTextFromPdfAction = new ExtractTextFromPdfAction();
+	private ConvertPdfAction convertPdfAction = new ConvertPdfAction();
+	private ExtractPdfMetadata extractPdfMetadata = new ExtractPdfMetadata();
+	private EditPdfMetadata editPdfMetadata = new EditPdfMetadata();
 	
 	public void executeGivenCommand(int command) {
 		commandText = linuxCommandLineScripts.getCmdCommandScript(command);
@@ -130,15 +140,23 @@ public class Linux {
 				e.printStackTrace();
 			}
 		} else if(command == 2) {
-
+			try {
+				splitPdfAction.mergePdfFiles();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		} else if(command == 3) {
-
+			try {
+				extractTextFromPdfAction.mergePdfFiles();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		} else if(command == 4) {
-
+			convertPdfAction.convertPdfFile();
 		} else if(command == 5) {
-
+			extractPdfMetadata.extractPdfMetadata();
 		} else if(command == 6) {
-
+			editPdfMetadata.editPdfMetadata();
 		} else if(command == 7) {
 			
 		}

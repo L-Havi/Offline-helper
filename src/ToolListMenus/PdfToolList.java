@@ -30,8 +30,8 @@ public class PdfToolList {
 			pdfToolTitle.printTitle();
             try {
                 int command = scanner.nextInt();
-                if (command >= 1 && command <= 8) {
-                	if(command >= 1 && command <= 7) {
+                if (command >= 1 && command <= 7) {
+                	if(command >= 1 && command <= 6) {
                 		if(osInt == 0) {
                     		windows.executeGivenPdfCommand(command);
                 		} else if(osInt == 1) {
@@ -40,7 +40,7 @@ public class PdfToolList {
                 			mac.executeGivenPdfCommand(command);
                 		}
                 		run = false;
-                	} else if(command == 8) {
+                	} else if(command == 7) {
                 		run = false;
                 	}
                 } else {
