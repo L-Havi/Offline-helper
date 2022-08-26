@@ -12,7 +12,7 @@ import Titles.ToolCollectionTitles.PdfToolTitle;
 
 public class FileSystemList {
 	private boolean run = true;
-	private PdfToolTitle pdfToolTitle = new PdfToolTitle();
+	private FileSystemTitle fileSystemTitle = new FileSystemTitle();
 	private Scanner scanner = new Scanner(System.in);
 	private Windows windows = new Windows();
 	private Linux linux = new Linux();
@@ -27,11 +27,11 @@ public class FileSystemList {
 		
 		while (run) {
 
-			pdfToolTitle.printTitle();
+			fileSystemTitle.printTitle();
             try {
                 int command = scanner.nextInt();
-                if (command >= 1 && command <= 10) {
-                	if(command >= 1 && command <= 9) {
+                if (command >= 1 && command <= 11) {
+                	if(command >= 1 && command <= 10) {
                 		if(osInt == 0) {
                     		windows.executeGivenCommand(command);
                 		} else if(osInt == 1) {
@@ -40,7 +40,7 @@ public class FileSystemList {
                 			mac.executeGivenCommand(command);
                 		}
                 		run = false;
-                	} else if(command == 10) {
+                	} else if(command == 11) {
                 		run = false;
                 	}
                 } else {

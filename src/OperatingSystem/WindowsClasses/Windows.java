@@ -16,6 +16,7 @@ import Cryptography.ActionChooseMenus.PGPChooseAction;
 import Cryptography.ActionChooseMenus.PasswordChooseAction;
 import Cryptography.ActionChooseMenus.SHAChooseAction;
 import FIleSystemTools.ToolMenus.AllPathsInFolder;
+import FIleSystemTools.ToolMenus.DeleteAllFilesInFolder;
 import FIleSystemTools.ToolMenus.FolderFileCountAndSize;
 import FIleSystemTools.ToolMenus.MassChangeFileType;
 import FIleSystemTools.ToolMenus.MassCopyOrMoveFolderContents;
@@ -60,6 +61,7 @@ public class Windows {
 	private ConvertPdfAction convertPdfAction = new ConvertPdfAction();
 	private ExtractPdfMetadata extractPdfMetadata = new ExtractPdfMetadata();
 	private EditPdfMetadata editPdfMetadata = new EditPdfMetadata();
+	private DeleteAllFilesInFolder deleteAllFilesInFolder = new DeleteAllFilesInFolder();
 	
 	public void executeGivenCommand(int command) {
 		commandText = cmdScripts.getCmdCommandScript(command);
@@ -93,6 +95,12 @@ public class Windows {
 			} else if(command == 9) {
 				try {
 					folderFileCountAndSize.getAllPathsInFolder();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else if(command == 10) {
+				try {
+					deleteAllFilesInFolder.getAllPathsInFolder();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

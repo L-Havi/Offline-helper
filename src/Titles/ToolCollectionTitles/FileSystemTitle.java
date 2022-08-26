@@ -17,7 +17,8 @@ public class FileSystemTitle {
 		System.out.println("7. Mass change Filetypes (e.g. All .html -> .txt)");
 		System.out.println("8. Get all paths in Folder");
 		System.out.println("9. Get Folder File count & size");
-		System.out.println("10. Back to Main Menu");
+		System.out.println("10. Delete Files From Folder");
+		System.out.println("11. Back to Main Menu");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
