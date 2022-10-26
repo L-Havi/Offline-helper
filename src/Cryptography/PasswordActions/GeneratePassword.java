@@ -241,36 +241,36 @@ public class GeneratePassword {
 		List<String> passwordList2 = passwordList.getCommonPasswords2();
 		
 		if(passwordList1.contains(password.trim()) || passwordList2.contains(password.trim())) {
-			isCommonPassword = ANSI_RED + "[-]" + ANSI_RESET + "Password is in 10 000 most common passwords";
+			isCommonPassword = "[-] Password is in 10 000 most common passwords";
 			bruteTime = "\nIt would take about 0 seconds to brute force this password";
 		}
 		
 		System.out.println("Password: " + password);
 		if(passwordLength < 8) {
-			System.out.println(ANSI_RED + "[-]" + ANSI_RESET + "Password Length: " + passwordLength + " characters\n");
+			System.out.println("[-] Password Length: " + passwordLength + " characters\n");
 		} else {
-			System.out.println(ANSI_GREEN + "[+]" + ANSI_RESET + "Password Length: " + passwordLength + " characters\n");
+			System.out.println("[+] Password Length: " + passwordLength + " characters\n");
 		}
 
 		if(hasLowercase) {
-			System.out.println(ANSI_GREEN + "[+]" + ANSI_RESET + "Password contains lowercase letters");
+			System.out.println("[+] Password contains lowercase letters");
 		} else {
-			System.out.println(ANSI_RED + "[-]" + ANSI_RESET + "Password does not contain lowercase letters");	
+			System.out.println("[-] Password does not contain lowercase letters");	
 		}
 		if(hasUppercase) {
-			System.out.println(ANSI_GREEN + "[+]" + ANSI_RESET + "Password contains uppercase letters");
+			System.out.println("[+] Password contains uppercase letters");
 		} else {
-			System.out.println(ANSI_RED + "[-]" + ANSI_RESET + "Password does not contain uppercase letters");	
+			System.out.println("[-] Password does not contain uppercase letters");	
 		}
 		if(hasNumbers) {
-			System.out.println(ANSI_GREEN + "[+]" + ANSI_RESET + "Password contains numbers");
+			System.out.println("[+] Password contains numbers");
 		} else {
-			System.out.println(ANSI_RED + "[-]" + ANSI_RESET + "Password does not contain numbers");	
+			System.out.println("[-] Password does not contain numbers");	
 		}
 		if(hasSpecials) {
-			System.out.println(ANSI_GREEN + "[+]" + ANSI_RESET + "Password contains special characters");
+			System.out.println("[+] Password contains special characters");
 		} else {
-			System.out.println(ANSI_RED + "[-]" + ANSI_RESET + "Password does not contain special characters");	
+			System.out.println("[-] Password does not contain special characters");	
 		}
 		System.out.println("\n");	
 		if(isCommonPassword != "") {

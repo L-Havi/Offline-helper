@@ -18,7 +18,7 @@ public class MassChangeFileTypeTitle {
 			
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
-		System.out.println("\t\t\tGet Folder Size & File count");
+		System.out.println("\t\t\tMass Change Filetypes");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("Please type one of the following numbers to input parameters (Only number):\nAll parameters are mandatory unless stated otherwise");
 		System.out.println("NOTE! Changing file extension might have unexpected consequences!\nPlease use this feature only if you know what you are doing");
