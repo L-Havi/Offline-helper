@@ -4,7 +4,7 @@ public class MergePdfActionTitle {
 
 	public void printTitle(String outputFolder, String[] mergeFiles, String outputFileName){
 		String allMergeFiles = "";
-		
+
 		if(mergeFiles.length > 0){
 			int count = 1;
 			for(String file : mergeFiles) {
@@ -16,7 +16,7 @@ public class MergePdfActionTitle {
 				count++;
 			}
 		}
-			
+
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t\t\tMerge PDF Files");
@@ -28,10 +28,10 @@ public class MergePdfActionTitle {
 		System.out.println("	Current Files: " + allMergeFiles + "\n");
 		System.out.println("3. 	Set Name for Output File (Optional, Default: mergeOutput)");
 		System.out.println("	Current Name: " + outputFileName + "\n");
-		System.out.println("4. 	Start\n");			
-		System.out.println("5. 	Exit to Main Menu\n");					
+		System.out.println("4. 	Start\n");
+		System.out.println("5. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
+
 }

@@ -7,11 +7,11 @@ import java.util.List;
 public class FileExtension {
 
 	public List <String> getUniqueFileExtensions(String sourcePath) {
-		List <String> extensionList = new ArrayList<String>();
+		List <String> extensionList = new ArrayList<>();
 	    String[] pathnames;
 	    File f = new File(sourcePath);
 	    pathnames = f.list();
-	    
+
 	    for(String pathname : pathnames) {
 	    	String extension = "";
 
@@ -20,14 +20,14 @@ public class FileExtension {
 
 	    	if (i > p) {
 	    	    extension = pathname.substring(i+1);
-	    	}	
-	    
+	    	}
+
 	    	if (!extensionList.contains(extension) && extension != null && extension != "") {
 	    		extensionList.add(extension);
 	    	}
 	    }
-	    
+
 		return extensionList;
 	}
-	
+
 }

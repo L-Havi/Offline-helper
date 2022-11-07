@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExtractPageNumbersFromString {
-	
+
 	public int[] getPageArray(String pageString) {
-		List<Integer> intList = new ArrayList<Integer>();
+		List<Integer> intList = new ArrayList<>();
 			if(pageString.contains("-")) {
 				String[] rangeArray = pageString.split("-");
 				try {

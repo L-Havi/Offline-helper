@@ -62,7 +62,7 @@ public class Mac {
 	private ExtractPdfMetadata extractPdfMetadata = new ExtractPdfMetadata();
 	private EditPdfMetadata editPdfMetadata = new EditPdfMetadata();
 	private DeleteAllFilesInFolder deleteAllFilesInFolder = new DeleteAllFilesInFolder();
-	
+
 	public void executeGivenCommand(int command) {
 		commandText = macCommandLineScripts.getCmdCommandScript(command);
 		if(commandText != null) {
@@ -107,7 +107,7 @@ public class Mac {
 			}
 		}
 	}
-	
+
 	public void executeGivenEncryptionCommand(int command) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
 		if(command == 1) {
 			aes.encryptOrDecrypt();
@@ -164,7 +164,7 @@ public class Mac {
 		} else if(command == 6) {
 			editPdfMetadata.editPdfMetadata();
 		} else if(command == 7) {
-			
+
 		}
 	}
 }

@@ -9,32 +9,32 @@ import java.util.Map;
 import WindowsResources.RemoveAllDuplicateFiles;
 
 public class RemoveDuplicateFiles {
-	
+
 	MapSubFolders mapSubFolders = new MapSubFolders();
 	RemoveAllDuplicateFiles removeAllDuplicateFiles = new RemoveAllDuplicateFiles();
-	
+
 	public void removeDuplicates(String sourceString, int usesubfolders) {
-		
+
 		boolean foundDuplicatesToBeDeleted = false;
-		
+
     	if(usesubfolders == 1) {
     		File originalDir = new File(sourceString);
     		List<File> subfolders = mapSubFolders.findAllSubdirs(originalDir);
     		for(File dir : subfolders) {
-		        Map<String, List<String>> lists = new HashMap<String, List<String>>();
+		        Map<String, List<String>> lists = new HashMap<>();
 		        RemoveAllDuplicateFiles.removeAllDuplicateFiles(lists, dir);
 		        System.out.println("\nDeleted Duplicate Files:\n");
 		        for (List<String> list : lists.values()) {
 		            if (list.size() > 1) {
 		                for (String file : list) {
 		                    if (file != list.get(0)) {
-		                        File duplicate = new File(file); 
-		                        if (duplicate.delete()) { 
+		                        File duplicate = new File(file);
+		                        if (duplicate.delete()) {
 		                          System.out.println("Deleted the file: " + duplicate.getName() + " (Duplicate to file: " + list.get(0) + ")");
 		                          foundDuplicatesToBeDeleted = true;
 		                        } else {
 		                          System.out.println("Failed to delete the file: " + duplicate.getName() + " (Duplicate to file: " + list.get(0) + ")");
-		                        } 
+		                        }
 		                    }
 		                }
 		            }
@@ -54,20 +54,20 @@ public class RemoveDuplicateFiles {
 	        if (!dir.isDirectory()) {
 	            System.out.println("Supplied directory does not exist.");
 	        } else {
-		        Map<String, List<String>> lists = new HashMap<String, List<String>>();
+		        Map<String, List<String>> lists = new HashMap<>();
 		        RemoveAllDuplicateFiles.removeAllDuplicateFiles(lists, dir);
 		        System.out.println("\nDeleted Duplicate Files:\n");
 		        for (List<String> list : lists.values()) {
 		            if (list.size() > 1) {
 		                for (String file : list) {
 		                    if (file != list.get(0)) {
-		                        File duplicate = new File(file); 
-		                        if (duplicate.delete()) { 
+		                        File duplicate = new File(file);
+		                        if (duplicate.delete()) {
 		                          System.out.println("Deleted the file: " + duplicate.getName() + " (Duplicate to file: " + list.get(0) + ")");
 		                          foundDuplicatesToBeDeleted = true;
 		                        } else {
 		                          System.out.println("Failed to delete the file: " + duplicate.getName() + " (Duplicate to file: " + list.get(0) + ")");
-		                        } 
+		                        }
 		                    }
 		                }
 		            }

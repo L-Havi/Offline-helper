@@ -8,7 +8,7 @@ public class DestinationFolder {
 	Scanner input = new Scanner(System.in);
 	boolean isValidFolder;
 	String destinationString;
-	
+
 	public String getDestinationFolder(String sourceString) {
 		while(!isValidFolder) {
 			System.out.println("Input destination folder path or type \"exit\" to leave  (e.g. C:\\Temp)");
@@ -32,5 +32,5 @@ public class DestinationFolder {
 		}
         return destinationString;
 	}
-	
+
 }

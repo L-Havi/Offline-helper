@@ -1,13 +1,9 @@
 package Cryptography.MD5Actions;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
-
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -20,15 +16,15 @@ public class CreateMD5Checksum {
 	SourceFolder sourceFolder = new SourceFolder();
 	CreateMD5ChecksumTitle createMD5ChecksumTitle = new CreateMD5ChecksumTitle();
 	ChooseStringInput chooseStringInput = new ChooseStringInput();
-	
+
 	public void createChecksum() {
 		String actionChoice;
 		String srcFolder = "";
-		
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			createMD5ChecksumTitle.printTitle(srcFolder);
 			actionChoice = scanner.nextLine();
@@ -47,7 +43,7 @@ public class CreateMD5Checksum {
 			}
 		}
 	}
-	
+
 	public void checksum(String filepath){
 		  try (InputStream is = new FileInputStream(filepath)) {
 		      String checksum = DigestUtils.md5Hex(is);
@@ -57,16 +53,16 @@ public class CreateMD5Checksum {
 		      e.printStackTrace();
 		  }
 	}
-	
+
 	public void checkChecksum() {
 		String actionChoice;
 		String srcFolder = "";
 		String checkSum = "";
-		
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			createMD5ChecksumTitle.printCheckChecksumTitle(srcFolder, checkSum);
 			actionChoice = scanner.nextLine();
@@ -87,7 +83,7 @@ public class CreateMD5Checksum {
 			}
 		}
 	}
-	
+
 	public void checkFileChecksum(String filepath, String checkSum){
 		  try (InputStream is = new FileInputStream(filepath)) {
 		      String checksum = DigestUtils.md5Hex(is);

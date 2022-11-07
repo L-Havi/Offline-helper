@@ -1,6 +1,5 @@
 package FIleSystemTools.ToolMenus;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -18,29 +17,29 @@ import WindowsResources.SourceFolder;
 
 
 public class SortFilesToFoldersByExtension {
-	
+
 	private SortFilesToFoldersByExtensionTitle sortFilesToFoldersByExtensionTitle = new SortFilesToFoldersByExtensionTitle();
 	private ChooseExtensions chooseExtensions = new ChooseExtensions();
 	private MoveToFileExtensionFolder moveToFileExtensionFolder = new MoveToFileExtensionFolder();
-	
+
 	private SourceFolder sourceFolder = new SourceFolder();
 	private FileExtension fileExtension = new FileExtension();
 	private CreateFolderPaths createFolderPaths = new CreateFolderPaths();
 	private CreateFolder createFolder = new CreateFolder();
 	private FindFiles findFiles = new FindFiles();
-	
+
 	public void sortFiles() {
-		
+
 		String actionChoice;
-		
+
 		String sourceString = "";
 		String[] extensionArray = {"*"};
-		List <String> extensions = new ArrayList<String>();
-		
+		List <String> extensions = new ArrayList<>();
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			sortFilesToFoldersByExtensionTitle.printTitle(sourceString, extensionArray);
 			actionChoice = scanner.nextLine();
@@ -55,7 +54,7 @@ public class SortFilesToFoldersByExtension {
 				if(extensionArray.length == 1 && extensionArray[0].equals("*")) {
 					extensions = fileExtension.getUniqueFileExtensions(sourceString);
 				}
-				List<String> path = new ArrayList<String>();
+				List<String> path = new ArrayList<>();
 				for(String extension : extensions) {
 					String newPath = sourceString + "\\" + extension.toUpperCase();
 					path.add(newPath);

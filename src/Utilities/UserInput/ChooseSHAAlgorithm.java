@@ -9,12 +9,12 @@ public class ChooseSHAAlgorithm {
 	Scanner scanner = new Scanner(System.in);
 	ChooseSHAAlgorithmTitle shaChooseActionTitle = new ChooseSHAAlgorithmTitle();
 	String actionChoice;
-	
+
 	public String chooseAlgorithm() {
-		
+
 
 		boolean runChoose = true;
-		
+
 		while(runChoose) {
 			shaChooseActionTitle.printTitle();
 			actionChoice = scanner.nextLine();

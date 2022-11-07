@@ -41,7 +41,7 @@ public class OperatingSystemInfo {
     List<SoundCard> soundCards = hardware.getSoundCards();
     List<UsbDevice> usbDevices = hardware.getUsbDevices(true);
     SubnetList subnetList = new SubnetList();
-    
+
 	public void printOsInfo() {
         //Operating system name
         System.out.println("Operating System Info");
@@ -52,12 +52,12 @@ public class OperatingSystemInfo {
         System.out.println("Operating System Architecture: " + System.getProperty("os.arch"));
         System.out.println("User Account name: " + System.getProperty("user.name"));
 	}
-	
+
 	public void printHardwareInfo() {
         //Operating system name
-		
+
         long usedMemory = globalMemory.getTotal() - globalMemory.getAvailable();
-		
+
         System.out.println("Hardware Info");
 		System.out.println("------------------------------------------------------------------------\n");
         System.out.println("CPU:\n");
@@ -94,7 +94,7 @@ public class OperatingSystemInfo {
         System.out.println("Available memory: " + FormatUtil.formatBytes(globalMemory.getAvailable()));
         System.out.println("Used memory: " + FormatUtil.formatBytes(usedMemory));
         System.out.println("");
-        
+
         List<PhysicalMemory> physicalMemories = globalMemory.getPhysicalMemory();
         count = 1;
         for (PhysicalMemory physicalMemory : physicalMemories) {
@@ -135,17 +135,17 @@ public class OperatingSystemInfo {
             System.out.println();
             count++;
         }
-        
+
         Baseboard motherboard = computerSystem.getBaseboard();
         Firmware firmware = computerSystem.getFirmware();
         List<PowerSource> powerSources = hardware.getPowerSources();
-        
+
         System.out.println("\nMotherboad:\n");
         System.out.println("Motherboard Model: " + motherboard.getModel());
         System.out.println("Motherboard Manufacturer: " + motherboard.getManufacturer());
         System.out.println("Motherboard Serial Number: " + motherboard.getSerialNumber());
         System.out.println("Motherboard Version: " + motherboard.getVersion());
-        
+
         if(powerSources.size() > 0) {
             System.out.println("\nBatteries:\n");
         }
@@ -191,7 +191,7 @@ public class OperatingSystemInfo {
             	count++;
             }
         }
-        
+
         if(soundCards.size() > 0) {
             System.out.println("\n\nSound Card:\n");
             count = 1;
@@ -215,31 +215,31 @@ public class OperatingSystemInfo {
             }
             System.out.println("");
         }
-        
+
         System.out.println("\nFirmware:\n");
         System.out.println("Firmware Name: " + firmware.getName());
         System.out.println("Firmware Manufacturer: " + firmware.getManufacturer());
         System.out.println("Firmware Description: " + firmware.getDescription());
         System.out.println("Firmware Version: " + firmware.getVersion());
         System.out.println("Firmware Release Date: " + firmware.getReleaseDate());
-        
+
         System.out.println("\nOther:\n");
         if(!computerSystem.getSerialNumber().equals("System Serial Number")) {
             System.out.println("Computer System Serial Numer: " + computerSystem.getSerialNumber());
         }
         if(!computerSystem.getManufacturer().equals("System manufacturer")) {
             System.out.println("Computer System Manufacturer: " + computerSystem.getManufacturer());
-        }        
+        }
         if(!computerSystem.getModel().equals("System Product Name")) {
             System.out.println("Computer System Model: " + computerSystem.getModel());
         }
         System.out.println("Hardware UUID: " + computerSystem.getHardwareUUID());
 	}
-	
+
 	public void networkInfo() {
-		
+
 		List<NetworkIF> networkInfos = hardware.getNetworkIFs();
-		
+
 		int count = 1;
         System.out.println("Network Info");
 		System.out.println("------------------------------------------------------------------------\n");
@@ -249,7 +249,7 @@ public class OperatingSystemInfo {
 	        System.out.println("Interface Description: " + networkInfo.getDisplayName());
 	        System.out.println("Interface Index: " + networkInfo.getIndex());
 	        System.out.println("Interface MTU: " + networkInfo.getMTU());
-	        
+
 	        String[] ipv6Addresses = networkInfo.getIPv6addr();
 	        if(ipv6Addresses.length > 0) {
 	        	int ipv6count = 1;
@@ -283,18 +283,18 @@ public class OperatingSystemInfo {
 	        System.out.println("\n");
 	        count++;
 		}
-		
+
 	}
-	
+
 	public void javaInfo() {
         //JRE version number
-        System.out.println("Java Version: " + System.getProperty("java.version")); 
+        System.out.println("Java Version: " + System.getProperty("java.version"));
 
         //Installation directory for Java Runtime Environment (JRE)
-        System.out.println("JRE Installation Folder: " + System.getProperty("java.home")); 
-        
-        System.out.println("JRE Vendor Name: " + System.getProperty("java.vendor")); 
-        
-        System.out.println("JRE Vendor URL: " + System.getProperty("java.vendor.url")); 
+        System.out.println("JRE Installation Folder: " + System.getProperty("java.home"));
+
+        System.out.println("JRE Vendor Name: " + System.getProperty("java.vendor"));
+
+        System.out.println("JRE Vendor URL: " + System.getProperty("java.vendor.url"));
 	}
 }

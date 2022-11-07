@@ -15,7 +15,7 @@ public class MassChangeFileTypeTitle {
 		if(subfolderInt == 1) {
 			subfolderString = "Yes";
 		}
-			
+
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t\t\tMass Change Filetypes");
@@ -30,10 +30,10 @@ public class MassChangeFileTypeTitle {
 		System.out.println("	Include SubFolders: " + subfolderString + "\n");
 		System.out.println("4. 	Set new Extension for Chosen Files");
 		System.out.println("	New Extension: " + newFileType + "\n");
-		System.out.println("5. 	Start\n");			
-		System.out.println("6. 	Exit to Main Menu\n");					
+		System.out.println("5. 	Start\n");
+		System.out.println("6. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
+
 }

@@ -18,19 +18,19 @@ import Cryptography.AESActions.AESEncryptString;
 import Titles.ToolTitles.CryptographyTitles.AESChooseActionTitle;
 
 public class AESChooseAction {
-	
+
 	Scanner scanner = new Scanner(System.in);
 	AESChooseActionTitle aesChooseActionTitle = new AESChooseActionTitle();
 	AESDecryptFile aesDecryptFile = new AESDecryptFile();
 	AESDecryptString aesDecryptString = new AESDecryptString();
 	AESEncryptFile aesEncryptFile = new AESEncryptFile();
 	AESEncryptString aesEncryptString = new AESEncryptString();
-	
+
 	public void encryptOrDecrypt() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
-		
+
 		String actionChoice;
 		boolean run = true;
-		
+
 		while(run) {
 			aesChooseActionTitle.printTitle();
 			actionChoice = scanner.nextLine();
@@ -50,5 +50,5 @@ public class AESChooseAction {
 		}
 
 	}
-	
+
 }

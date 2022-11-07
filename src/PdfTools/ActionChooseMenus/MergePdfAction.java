@@ -20,17 +20,17 @@ public class MergePdfAction {
 	Name name = new Name();
 	ChooseFiles chooseFiles = new ChooseFiles();
 	PDFMergerUtility PDFmerger = new PDFMergerUtility();
-	
+
 	public void mergePdfFiles() throws IOException {
-		
+
 		String actionChoice;
-		
+
 		String outputFolder = "";
 		String[] allMergeFiles = new String[0];
 		String outputFileName = "mergeOutput";
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			mergePdfActionTitle.printTitle(outputFolder, allMergeFiles, outputFileName);
 			actionChoice = scanner.nextLine();
@@ -54,10 +54,10 @@ public class MergePdfAction {
 		}
 
 	}
-	
+
 	public void merge(String destinationPath, String[] allMergeFiles) throws IOException {
 		PDFmerger.setDestinationFileName(destinationPath);
-		
+
 		for(String mergeFile : allMergeFiles) {
 			File file = new File(mergeFile);
 			PDFmerger.addSource(file);
@@ -65,5 +65,5 @@ public class MergePdfAction {
 		}
 		PDFmerger.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
 	}
-	
+
 }

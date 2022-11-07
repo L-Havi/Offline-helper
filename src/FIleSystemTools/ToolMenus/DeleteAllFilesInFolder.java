@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 import org.apache.commons.io.FileUtils;
 
-import Titles.ToolTitles.FileSystemTitles.AllPathsInFolderTitle;
 import Titles.ToolTitles.FileSystemTitles.DeleteAllFilesInFolderTitle;
 import Utilities.UserInput.ChooseExtensions;
 import Utilities.UserInput.ChooseSaveMethod;
@@ -21,7 +20,7 @@ import WindowsResources.SourceFolder;
 
 public class DeleteAllFilesInFolder {
 
-	
+
 	SourceFolder sourceFolder = new SourceFolder();
 	ChooseExtensions chooseExtensions = new ChooseExtensions();
 	IncludeSubfolders includeSubfolders = new IncludeSubfolders();
@@ -31,17 +30,17 @@ public class DeleteAllFilesInFolder {
 	DeleteAllFilesInFolderTitle deleteAllFilesInFolderTitle = new DeleteAllFilesInFolderTitle();
 	Scanner scanner = new Scanner(System.in);
 	ConfirmDelete confirmDelete = new ConfirmDelete();
-	
+
 	public void getAllPathsInFolder() throws IOException {
-		
+
 		String srcFolder = "";
 		String[] extensions = {"*"};
 		int subfolders = 0;
 		int saveToTextFile = 0;
 		String actionChoice;
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			deleteAllFilesInFolderTitle.printTitle(srcFolder, extensions, subfolders);
 			actionChoice = scanner.nextLine();
@@ -52,7 +51,7 @@ public class DeleteAllFilesInFolder {
 			} else if(actionChoice.toLowerCase().trim().equals("3")) {
 				subfolders = includeSubfolders.includeSubfolders();
 			} else if(actionChoice.toLowerCase().trim().equals("5") && srcFolder != "" && srcFolder != "exit") {
-				List<String> fileStrings = new ArrayList<String>();
+				List<String> fileStrings = new ArrayList<>();
 				try {
 					System.out.println("Files to be Deleted from Folder " + srcFolder);
 					System.out.println("------------------------------------------------------------------------");
@@ -81,7 +80,7 @@ public class DeleteAllFilesInFolder {
 
 	private void delete(String srcFolder, List<String> fileStrings, int subfolders) {
 		for(String filePath : fileStrings) {
-			File deletedFile = new File(filePath); 
+			File deletedFile = new File(filePath);
 			deletedFile.delete();
 		}
 		if(subfolders == 1) {
@@ -95,6 +94,6 @@ public class DeleteAllFilesInFolder {
 			}
 		}
 	}
-	
-	
+
+
 }

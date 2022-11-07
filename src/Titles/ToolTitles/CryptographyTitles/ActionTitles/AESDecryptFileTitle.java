@@ -4,7 +4,7 @@ public class AESDecryptFileTitle {
 
 	public void printTitle(String sourceFolder, String password){
 
-		
+
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t\t\tAES Decrypt File");
@@ -14,11 +14,11 @@ public class AESDecryptFileTitle {
 		System.out.println("	Current Source Folder: " + sourceFolder + "\n");
 		System.out.println("2. 	Set Password (Optional, default: no password)");
 		System.out.println("	Current Password: " + password + "\n");
-		System.out.println("3. 	Start\n");			
-		System.out.println("4. 	Exit to Main Menu\n");					
+		System.out.println("3. 	Start\n");
+		System.out.println("4. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
-	
+
+
 }

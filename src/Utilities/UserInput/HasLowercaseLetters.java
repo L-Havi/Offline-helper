@@ -3,13 +3,13 @@ package Utilities.UserInput;
 import java.util.Scanner;
 
 public class HasLowercaseLetters {
-	
+
 	public int hasLowercaseLetters() {
 		Scanner scanner = new Scanner(System.in);
 		boolean isValidInput = false;
 		String sourceString = "";
     	int choice = 0;
-		
+
 			while(!isValidInput) {
 				System.out.println("Include Lowercase Letters? (y/n/exit)");
 				sourceString = scanner.nextLine();
@@ -26,5 +26,5 @@ public class HasLowercaseLetters {
 			}
 		return choice;
 	}
-	
+
 }

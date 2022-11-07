@@ -13,12 +13,12 @@ public class ChooseSHAAlgorithmTitle {
 		System.out.println("3.	SHA-384");
 		System.out.println("4.	SHA-512");
 		System.out.println("5.	SHA-512/224");
-		System.out.println("6. 	SHA-512/256");			
+		System.out.println("6. 	SHA-512/256");
 		System.out.println("7.	SHA3-224");
 		System.out.println("8.	SHA3-256");
 		System.out.println("9.	SHA3-384");
-		System.out.println("10.	SHA3-512");		
-		System.out.println("11.	Exit to Main Menu\n");					
+		System.out.println("10.	SHA3-512");
+		System.out.println("11.	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}

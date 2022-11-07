@@ -2,7 +2,6 @@ package Cryptography.PGP.PGPActions;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import Cryptography.PGP.PgpHelper;
@@ -14,7 +13,7 @@ public class PGPVerifySignature {
 		byte[] sig = method(signature);
 		FileInputStream pubKeyIs = new FileInputStream(pubKeyFile);
 		FileInputStream plainTextInput = new FileInputStream(plainTextFile);
-				
+
 		byte[] bIn = PgpHelper.getInstance().inputStreamToByteArray(plainTextInput);
 		PgpHelper.getInstance().verifySignature(plainTextFile, sig, pubKeyIs);
 	}
@@ -28,5 +27,5 @@ public class PGPVerifySignature {
             fl.close();
             return arr;
         }
-	
+
 }

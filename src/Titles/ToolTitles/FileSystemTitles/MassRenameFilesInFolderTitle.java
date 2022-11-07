@@ -15,7 +15,7 @@ public class MassRenameFilesInFolderTitle {
 		if(subfolderInt == 1) {
 			subfolderString = "Yes";
 		}
-		
+
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t\t\tMass Rename Files");
@@ -29,11 +29,11 @@ public class MassRenameFilesInFolderTitle {
 		System.out.println("	Include SubFolders: " + subfolderString + "\n");
 		System.out.println("4. 	Set new Name for Files");
 		System.out.println("	New File Name: " + filename + "\n");
-		System.out.println("5. 	Start\n");			
-		System.out.println("6. 	Exit to Main Menu\n");					
+		System.out.println("5. 	Start\n");
+		System.out.println("6. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
-	
+
+
 }

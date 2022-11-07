@@ -23,14 +23,14 @@ public class OutputPaths {
 			File textFile = new File(sourceFolder + "\\" + a[1] + "_paths_output.txt");
 			FileOutputStream fos = new FileOutputStream(textFile);
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-			
+
 			bw.write("------------------------------------------------------------------------");
 			bw.newLine();
 			bw.write("All File Paths in Folder (And in Subfolders if chosen): " + sourceFolder);
 			bw.newLine();
 			bw.write("------------------------------------------------------------------------");
 			bw.newLine();
-			
+
 			for (String path : paths) {
 				bw.write(path);
 				bw.newLine();
@@ -38,5 +38,5 @@ public class OutputPaths {
 			bw.close();
 		}
 	}
-	
+
 }

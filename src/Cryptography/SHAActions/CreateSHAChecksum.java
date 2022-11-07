@@ -14,21 +14,21 @@ import Utilities.UserInput.ChooseStringInput;
 import WindowsResources.SourceFolder;
 
 public class CreateSHAChecksum {
-	
+
 	CreateSHAChecksumTitle createSHAChecksumTitle = new CreateSHAChecksumTitle();
 	SourceFolder sourceFolder = new SourceFolder();
 	ChooseSHAAlgorithm chooseSHAAlgorithm = new ChooseSHAAlgorithm();
 	ChooseStringInput chooseStringInput = new ChooseStringInput();
-	
+
 	public void createChecksum() {
 		String actionChoice;
 		String srcFolder = "";
 		String algorithm = "SHA-256";
-		
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			createSHAChecksumTitle.printTitle(srcFolder, algorithm);
 			actionChoice = scanner.nextLine();
@@ -49,7 +49,7 @@ public class CreateSHAChecksum {
 			}
 		}
 	}
-	
+
     private static byte[] checksum(String filePath, String algorithm) {
 
         MessageDigest md;
@@ -77,11 +77,11 @@ public class CreateSHAChecksum {
         }
         return sb.toString();
     }
-	
-    public static void printFileChecksum(String srcFolder, String algorithm) {;
+
+    public static void printFileChecksum(String srcFolder, String algorithm) {
 
         byte[] hashInBytes = checksum(srcFolder, algorithm);
-        
+
         System.out.println("File: " + srcFolder);
         System.out.println("Hashing algorithm: " + algorithm);
         System.out.println("Checksum: " + bytesToHex(hashInBytes));
@@ -92,11 +92,11 @@ public class CreateSHAChecksum {
 		String srcFolder = "";
 		String algorithm = "";
 		String checkSum = "";
-		
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			createSHAChecksumTitle.printCheckChecksumTitle(srcFolder, checkSum, algorithm);
 			actionChoice = scanner.nextLine();
@@ -119,11 +119,11 @@ public class CreateSHAChecksum {
 			}
 		}
 	}
-    
+
     public static void verifyFileChecksum(String srcFolder, String algorithm, String checkSum) {
 
         byte[] hashInBytes = checksum(srcFolder, algorithm);
-        
+
         if(checkSum.equals(bytesToHex(hashInBytes))) {
             System.out.println("Checksum " + bytesToHex(hashInBytes) + " matches to File " + srcFolder);
         }else {

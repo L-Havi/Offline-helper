@@ -13,9 +13,9 @@ public class ChooseConvertFormatTitle {
 		System.out.println("3.	jpg");
 		System.out.println("4.	gif");
 		System.out.println("5.	tiff");
-		System.out.println("6. 	png");			
-		System.out.println("7.	docx");	
-		System.out.println("8.	Exit to Main Menu\n");					
+		System.out.println("6. 	png");
+		System.out.println("7.	docx");
+		System.out.println("8.	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}

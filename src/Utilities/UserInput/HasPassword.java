@@ -3,13 +3,13 @@ package Utilities.UserInput;
 import java.util.Scanner;
 
 public class HasPassword {
-	
+
 	public int hasPassword() {
 		Scanner scanner = new Scanner(System.in);
 		boolean isValidInput = false;
 		String sourceString = "";
     	int choice = 0;
-		
+
 			while(!isValidInput) {
 				System.out.println("Is password protected? (y/n/exit)");
 				sourceString = scanner.nextLine();

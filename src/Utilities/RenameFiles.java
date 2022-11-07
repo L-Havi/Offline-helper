@@ -4,9 +4,9 @@ import java.io.File;
 import java.util.List;
 
 public class RenameFiles {
-	
+
 	public void renameFiles(String fileName, List<String> fileList) {
-		
+
 		int count = 1;
 		String newExtension = "";
 	    for(String file : fileList) {
@@ -22,5 +22,5 @@ public class RenameFiles {
 	        count++;
 	    }
 	}
-	
+
 }

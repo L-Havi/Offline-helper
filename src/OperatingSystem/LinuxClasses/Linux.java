@@ -62,7 +62,7 @@ public class Linux {
 	private ExtractPdfMetadata extractPdfMetadata = new ExtractPdfMetadata();
 	private EditPdfMetadata editPdfMetadata = new EditPdfMetadata();
 	private DeleteAllFilesInFolder deleteAllFilesInFolder = new DeleteAllFilesInFolder();
-	
+
 	public void executeGivenCommand(int command) {
 		commandText = linuxCommandLineScripts.getCmdCommandScript(command);
 		if(commandText != null) {
@@ -123,8 +123,8 @@ public class Linux {
 		} else if(command == 5) {
 			shaChooseAction.shaChoose();
 		}
-	
-		
+
+
 	}
 	public void executeGivenSystemInfoCommand(int command) {
 		if(command == 1) {
@@ -166,7 +166,7 @@ public class Linux {
 		} else if(command == 6) {
 			editPdfMetadata.editPdfMetadata();
 		} else if(command == 7) {
-			
+
 		}
 	}
 }

@@ -14,6 +14,6 @@ public class PasswordChooseActionTitle {
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
-	
+
+
 }

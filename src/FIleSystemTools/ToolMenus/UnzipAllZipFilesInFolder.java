@@ -28,7 +28,7 @@ import WindowsResources.IncludeSubfolders;
 import WindowsResources.SourceFolder;
 
 public class UnzipAllZipFilesInFolder {
-	
+
 	SourceFolder sourceFolder = new SourceFolder();
 	ZipOrUnzip zipOrUnzip = new ZipOrUnzip();
 	ChooseFiles chooseFiles = new ChooseFiles();
@@ -37,18 +37,18 @@ public class UnzipAllZipFilesInFolder {
 	int subfolders;
 	UnzipAllZipFilesInFolderTitle unzipAllZipFilesInFolderTitle = new UnzipAllZipFilesInFolderTitle();
 	Name name = new Name();
-	
+
 	public void choose() throws IOException {
-		
+
 		String actionChoice;
 		String sourceString = "";
 		String destinationFolder = "";
 		String zipFileName = "zipFile";
-		
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			unzipAllZipFilesInFolderTitle.printTitle(sourceString, destinationFolder, zipFileName);
 			actionChoice = scanner.nextLine();
@@ -122,7 +122,7 @@ public class UnzipAllZipFilesInFolder {
             }
         }
     }
-	
+
     public void extractZip(String zipFilePath, String extractDirectory) {
         InputStream inputStream = null;
         try {
@@ -154,5 +154,5 @@ public class UnzipAllZipFilesInFolder {
             e.printStackTrace();
         }
     }
-	
+
 }

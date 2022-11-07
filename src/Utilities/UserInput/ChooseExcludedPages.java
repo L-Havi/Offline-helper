@@ -1,23 +1,14 @@
 package Utilities.UserInput;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-import Utilities.UserOutput.FindFiles;
-import WindowsResources.IncludeSubfolders;
-
 public class ChooseExcludedPages {
-	
+
 	public String getExcludedPages() {
 		Scanner scanner = new Scanner(System.in);
 		boolean isValidinput = false;
 		String sourceString = "";
-		
+
 			while(!isValidinput) {
 				System.out.println("Input range pages included (e.g. 1-5)");
 				sourceString = scanner.nextLine();

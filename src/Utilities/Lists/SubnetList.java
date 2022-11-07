@@ -1,8 +1,5 @@
 package Utilities.Lists;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SubnetList {
 
 	public String getSubnetMask(int cidr){
@@ -12,13 +9,13 @@ public class SubnetList {
 							   "255.255.240.0", "255.255.248.0", "255.255.252.0", "255.255.254.0", "255.255.255.0", "255.255.255.128", "255.255.255.192", "255.255.255.224", "255.255.255.240", "255.255.255.248",
 							   "255.255.255.252", "255.255.255.254", "255.255.255.255"
 								};
-		
+
 		if(cidr >= 0 && cidr <=32) {
 			subnetMask = extensions[cidr];
 		}
-		
+
 		return subnetMask;
-		
+
 	}
-	
+
 }

@@ -10,16 +10,16 @@ public class ChooseOperatingSystem {
 	ListWindowsOS listWindowsOS = new ListWindowsOS();
 	ListLinuxOS listLinuxOS = new ListLinuxOS();
 	ListMacOS listMacOS = new ListMacOS();
-	
+
 	public int getOperatingSystem() {
 		String operatingSystemString = operatingSystem.getOperatingSystem().trim();
 
 		boolean isWindows = false;
 	    boolean isLinux = false;
 	    boolean isMac = false;
-	        
+
 	    int osInt = 3;
-	        
+
 	    if (operatingSystemString != null) {
 	    	isWindows = listWindowsOS.getWindowsOS(operatingSystemString);
 	    	isLinux = listLinuxOS.getLinuxOS(operatingSystemString);
@@ -36,5 +36,5 @@ public class ChooseOperatingSystem {
 	    }
 		return osInt;
 	}
-	
+
 }

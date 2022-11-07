@@ -8,7 +8,7 @@ public class ChooseSalt {
 	boolean isValidInput = false;
 	String sourceString;
 	int yesOrNo = 0;
-	
+
 	public int getSalt() {
 		while(!isValidInput) {
 			System.out.println("Use Salt? (y/n)");
@@ -26,6 +26,6 @@ public class ChooseSalt {
 		}
         return yesOrNo;
 	}
-	
-	
+
+
 }

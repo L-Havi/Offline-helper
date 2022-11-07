@@ -9,20 +9,20 @@ import Utilities.FileExtension;
 import Utilities.Lists.ExtensionList;
 
 public class ChooseExtensions {
-	
+
 	Scanner scanner = new Scanner(System.in);
 	boolean isValidExtension;
 	boolean supportedExtension;
 	ExtensionList extensionList = new ExtensionList();
 	FileExtension fileExtension = new FileExtension();
-	
+
 	public String[] getExcludedExtensions(String srcString){
-		
+
 		String sourceString = "";
-		List<String> chosenExtensions = new ArrayList<String>();
-		List<String> validExtensions = new ArrayList<String>();
+		List<String> chosenExtensions = new ArrayList<>();
+		List<String> validExtensions = new ArrayList<>();
 		String[] finalFilePaths = new String[0];
-		
+
 		while(!isValidExtension) {
 			System.out.println("Input file extensions without leading dot separated by comma (e.g. jpg, png) or type \"exit\" to leave\nInput \"*\" to choose all enxtensions");
 			sourceString = scanner.nextLine();
@@ -56,7 +56,7 @@ public class ChooseExtensions {
 				finalFilePaths = new String[1];
 				finalFilePaths[0] = "exit";
 				isValidExtension = true;
-			} 
+			}
 		}
 		return finalFilePaths;
 	}

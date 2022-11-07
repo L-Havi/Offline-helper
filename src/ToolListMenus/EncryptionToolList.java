@@ -17,7 +17,6 @@ import OperatingSystem.LinuxClasses.Linux;
 import OperatingSystem.MacClasses.Mac;
 import OperatingSystem.WindowsClasses.Windows;
 import Titles.ToolCollectionTitles.CryptographyTitle;
-import Titles.ToolCollectionTitles.FileSystemTitle;
 
 public class EncryptionToolList {
 	private boolean run = true;
@@ -27,13 +26,13 @@ public class EncryptionToolList {
 	private Linux linux = new Linux();
 	private Mac mac = new Mac();
 	private ChooseOperatingSystem chooseOperatingSystem = new ChooseOperatingSystem();
-	
+
 	public void getEncryptionToolList(int osInt){
-        
+
 		if(!(osInt > 0)) {
 			osInt = chooseOperatingSystem.getOperatingSystem();
 		}
-		
+
 		while (run) {
 
 			cryptographyTitle.printTitle();

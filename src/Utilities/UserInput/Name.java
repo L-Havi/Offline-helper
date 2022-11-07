@@ -3,12 +3,12 @@ package Utilities.UserInput;
 import java.util.Scanner;
 
 public class Name {
-	
+
 	Scanner scanner = new Scanner(System.in);
 	boolean isValidName = false;
 	boolean hasIllegalCharacters = true;
 	String sourceString;
-	
+
 	public String getName() {
 		while(!isValidName) {
 			System.out.println("Give new name for file/files");

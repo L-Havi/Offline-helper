@@ -9,7 +9,7 @@ public class EncryptOrDecrypt {
 		boolean isValidInput = false;
 		String sourceString = "";
 		int choice = 0;
-		
+
 			while(!isValidInput) {
 				System.out.println("Encrypt or decrypt? (encrypt/decrypt/exit)");
 				sourceString = scanner.nextLine();
@@ -26,5 +26,5 @@ public class EncryptOrDecrypt {
 			}
 		return choice;
 	}
-	
+
 }

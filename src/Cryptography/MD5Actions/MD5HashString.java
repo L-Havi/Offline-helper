@@ -1,8 +1,5 @@
 package Cryptography.MD5Actions;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Scanner;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -14,15 +11,15 @@ public class MD5HashString {
 
 	ChooseStringInput chooseStringInput = new ChooseStringInput();
 	MD5HashStringTitle md5HashStringTitle = new MD5HashStringTitle();
-	
+
 	public void hashString() {
 		String actionChoice;
 		String hashString = "";
-		
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			md5HashStringTitle.printTitle(hashString);
 			actionChoice = scanner.nextLine();
@@ -41,10 +38,10 @@ public class MD5HashString {
 			}
 		}
 	}
-	
+
 	public void hash(String hashString){
 		String hashedString = DigestUtils.md5Hex(hashString);
-		System.out.println("Input text: " + hashString);		
+		System.out.println("Input text: " + hashString);
 		System.out.println("Hash value: " + hashedString);
 	}
 }

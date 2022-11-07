@@ -30,16 +30,16 @@ public class AESEncryptFile {
 	String salt = "E1F53F35F353C253";
 	String algorithm = "AES/CBC/PKCS5Padding";
 	Scanner scanner = new Scanner(System.in);
-	
+
 	public void encryptFile() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
 
 		String srcFolder = "";
 		String password = "";
-		
+
 		String actionChoice;
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			aesEncryptFileTitle.printTitle(srcFolder, password);
 			actionChoice = scanner.nextLine();

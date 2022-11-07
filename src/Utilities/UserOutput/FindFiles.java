@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,13 +11,12 @@ import java.util.stream.Stream;
 
 import Utilities.FileExtension;
 import Utilities.MapSubFolders;
-import Utilities.UserInput.ChooseExtensions;
 
 public class FindFiles {
-	
+
 	MapSubFolders mapSubFolders = new MapSubFolders();
 	FileExtension fileExtensions = new FileExtension();
-	
+
 	public String[][] findFilesByExtension(Path path, String fileExtension) throws IOException{
         if (!Files.isDirectory(path)) {
             throw new IllegalArgumentException("Path must be a directory!");
@@ -33,14 +31,14 @@ public class FindFiles {
                     .filter(f -> f.endsWith(fileExtension))
                     .collect(Collectors.toList());
         }
-        
+
         String[] filesInOriginalFolder = new String[result.size()];
         filesInOriginalFolder = result.toArray(filesInOriginalFolder);
-        
+
         String[][] allPaths = new String[filesInOriginalFolder.length][2];
-        
-        List<String> results = new ArrayList<String>();
-        
+
+        List<String> results = new ArrayList<>();
+
         for(String file : result) {
         	int i = file.lastIndexOf("\\");
         	String[] a =  {file.substring(0, i), file.substring(i)};
@@ -49,33 +47,33 @@ public class FindFiles {
         		results.add(newPath);
         	}
         }
-        
+
         String[] filesInNewFolder = new String[results.size()];
         filesInNewFolder = results.toArray(filesInNewFolder);
-        
+
         for(int j = 0; j<filesInOriginalFolder.length; j++) {
         	allPaths[j][0] = filesInOriginalFolder[j];
         	allPaths[j][1] = filesInNewFolder[j];
         }
-        
+
         return allPaths;
 	}
-	
+
 	public List<String> findFiles(Path path, String[] extensions, int includeSubfolder)
 	        throws IOException {
-			
-			List<String> results = new ArrayList<String>();
-			
+
+			List<String> results = new ArrayList<>();
+
 	        if (!Files.isDirectory(path)) {
 	            throw new IllegalArgumentException("Path must be a directory!");
 	        }
-	        
+
 	        if(extensions.length == 1 && extensions[0].equals("*")) {
 	        	String srcString = path.toString();
 	        	List<String> extensionList = fileExtensions.getUniqueFileExtensions(srcString);
 	        	extensions = extensionList.toArray(extensions);
 	        }
-	        
+
 	        if(includeSubfolder == 1) {
 	        	String pathString = path.toString();
 	        	File tempFile = new File(pathString);
@@ -94,7 +92,7 @@ public class FindFiles {
 	        	}
 	        }
 		    for(String extension : extensions){
-		        List<String> result = new ArrayList<String>();
+		        List<String> result = new ArrayList<>();
 				try (Stream<Path> walk = Files.walk(path)) {
 					result = walk
 							.filter(p -> !Files.isDirectory(p))
@@ -105,10 +103,10 @@ public class FindFiles {
 				for(String row : result) {
 					System.out.println(row);
 					results.add(row);
-				}   
+				}
 		    }
 
 	        return results;
 	    }
-	
+
 }

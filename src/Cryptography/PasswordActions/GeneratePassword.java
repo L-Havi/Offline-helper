@@ -1,8 +1,5 @@
 package Cryptography.PasswordActions;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,25 +25,25 @@ public class GeneratePassword {
 	ChoosePasswordLength choosePasswordLength = new ChoosePasswordLength();
 	ChooseStringInput chooseStringInput = new ChooseStringInput();
 	PasswordList passwordList = new PasswordList();
-	
+
 	public static final String ANSI_RED = "\u001B[31m";
 	public static final String ANSI_GREEN = "\u001B[32m";
 	public static final String ANSI_RESET = "\u001B[0m";
-	
+
 	public void generate() {
-		
+
 		String actionChoice;
-		
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		int passwordLength = 0;
 		int includeLowercase = 1;
 		int includeUppercase = 1;
 		int includeNumbers = 1;
 		int includeSpecial = 1;
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			generatePasswordTitle.printTitle(passwordLength, includeLowercase, includeUppercase, includeNumbers, includeSpecial);
 			actionChoice = scanner.nextLine();
@@ -73,7 +70,7 @@ public class GeneratePassword {
 				run = false;
 			}
 		}
-		
+
 	}
 
 	private String generatePassword(int passwordLength, int includeLowercase, int includeUppercase, int includeNumbers, int includeSpecial) {
@@ -83,7 +80,7 @@ public class GeneratePassword {
 		String[] specialCharacters = {"!","@","#","¤","$","%","€","/","{","(","[",")","]","=","}","?","*","'","^","¨",".",":",",",";","-","_","<",">"};
 		String[] allNumbers = new String[0];
 		String password = "";
-		List<String> allNumbersList = new ArrayList<String>();
+		List<String> allNumbersList = new ArrayList<>();
 		if(includeLowercase == 1) {
 			for(String c : lowerCase) {
 				allNumbersList.add(c);
@@ -107,12 +104,12 @@ public class GeneratePassword {
 		if(allNumbersList.size() > 0) {
 			allNumbers = new String[allNumbersList.size()];
 			allNumbers = allNumbersList.toArray(allNumbers);
-			
+
 			Random rand = new Random();
-			
+
 			for(int i = 0; i < passwordLength; i++) {
 				int choose = rand.nextInt((89 - 1) + 1) + 1;
-				
+
 				password = password + allNumbers[choose];
 			}
 		}
@@ -120,15 +117,15 @@ public class GeneratePassword {
 	}
 
 	public void check() {
-		
+
 		String actionChoice;
-		
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		String password = "";
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			generatePasswordTitle.printCheckTitle(password);
 			actionChoice = scanner.nextLine();
@@ -146,9 +143,9 @@ public class GeneratePassword {
 				run = false;
 			}
 		}
-		
+
 	}
-	
+
 	private void checkPasswordStrength(String password) {
 		String[] lowerCase = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 		List<String> lowerCaseList = Arrays.asList(lowerCase);
@@ -158,14 +155,14 @@ public class GeneratePassword {
 		List<String> numbersList = Arrays.asList(numbers);
 		String[] specialCharacters = {"!","@","#","¤","$","%","€","/","{","(","[",")","]","=","}","?","*","'","^","¨",".",":",",",";","-","_","<",">"};
 		List<String> specialCharactersList = Arrays.asList(specialCharacters);
-		
+
 		boolean hasLowercase = false;
 		boolean hasUppercase = false;
 		boolean hasNumbers = false;
 		boolean hasSpecials = false;
-		
+
 		int passwordLength = password.length();
-		
+
 		for(String item : lowerCaseList) {
 			if(password.contains(item)) {
 				hasLowercase = true;
@@ -194,7 +191,7 @@ public class GeneratePassword {
 		int complexity = 0;
 		String bruteTime;
 		String isCommonPassword = "";
-		
+
 		if(hasLowercase) {
 			complexity++;
 		}
@@ -208,7 +205,7 @@ public class GeneratePassword {
 			complexity++;
 		}
 		complexity = complexity - 1;
-		
+
 		String[][] info = 	{
 				{"0 seconds","0 seconds","0 seconds","0 seconds"},
 				{"0 seconds","0 seconds","0 seconds","0 seconds"},
@@ -226,7 +223,7 @@ public class GeneratePassword {
 				{"800 000 years","100 000 000 000 years","2 000 000 000 000 years","93 000 000 000 000 years"},
 				{"23 000 000 years","6 000 000 000 000 years","100 000 000 000 years","7 000 000 000 000 000 years"}
 				};
-		
+
 		if(passwordLength <= 4) {
 			infoLength = 0;
 			bruteTime = "\nIt would take about " + info[infoLength][complexity] + " to brute force this password";
@@ -236,15 +233,15 @@ public class GeneratePassword {
 		} else {
 			bruteTime = "\nIt would take more than " + info[14][3] + " to brute force this password";
 		}
-		
+
 		List<String> passwordList1 = passwordList.getCommonPasswords1();
 		List<String> passwordList2 = passwordList.getCommonPasswords2();
-		
+
 		if(passwordList1.contains(password.trim()) || passwordList2.contains(password.trim())) {
 			isCommonPassword = "[-] Password is in 10 000 most common passwords";
 			bruteTime = "\nIt would take about 0 seconds to brute force this password";
 		}
-		
+
 		System.out.println("Password: " + password);
 		if(passwordLength < 8) {
 			System.out.println("[-] Password Length: " + passwordLength + " characters\n");
@@ -255,28 +252,28 @@ public class GeneratePassword {
 		if(hasLowercase) {
 			System.out.println("[+] Password contains lowercase letters");
 		} else {
-			System.out.println("[-] Password does not contain lowercase letters");	
+			System.out.println("[-] Password does not contain lowercase letters");
 		}
 		if(hasUppercase) {
 			System.out.println("[+] Password contains uppercase letters");
 		} else {
-			System.out.println("[-] Password does not contain uppercase letters");	
+			System.out.println("[-] Password does not contain uppercase letters");
 		}
 		if(hasNumbers) {
 			System.out.println("[+] Password contains numbers");
 		} else {
-			System.out.println("[-] Password does not contain numbers");	
+			System.out.println("[-] Password does not contain numbers");
 		}
 		if(hasSpecials) {
 			System.out.println("[+] Password contains special characters");
 		} else {
-			System.out.println("[-] Password does not contain special characters");	
+			System.out.println("[-] Password does not contain special characters");
 		}
-		System.out.println("\n");	
+		System.out.println("\n");
 		if(isCommonPassword != "") {
-			System.out.println(isCommonPassword + "\n");	
+			System.out.println(isCommonPassword + "\n");
 		}
-		System.out.println(bruteTime + "\n");	
-		
+		System.out.println(bruteTime + "\n");
+
 	}
 }

@@ -6,7 +6,7 @@ public class ChooseStringInput {
 
 	Scanner scanner = new Scanner(System.in);
 	String sourceString;
-	
+
 	public String getStringInput() {
 
 		System.out.println("Input your text");

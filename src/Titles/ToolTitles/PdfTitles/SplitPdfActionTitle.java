@@ -3,7 +3,7 @@ package Titles.ToolTitles.PdfTitles;
 public class SplitPdfActionTitle {
 
 	public void printTitle(String originalPdf, String outputFolder, String outputFileName, String excludePages){
-			
+
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t\tSplit PDF File");
@@ -17,10 +17,10 @@ public class SplitPdfActionTitle {
 		System.out.println("	Current Name: " + outputFileName + "\n");
 		System.out.println("4. 	Included Pages (Optional, Default: All pages)");
 		System.out.println("	Current Pages: " + excludePages + "\n");
-		System.out.println("5. 	Start\n");			
-		System.out.println("6. 	Exit to Main Menu\n");					
+		System.out.println("5. 	Start\n");
+		System.out.println("6. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
+
 }

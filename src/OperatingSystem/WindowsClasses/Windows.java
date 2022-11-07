@@ -36,7 +36,7 @@ import SystemInformation.OperatingSystemInfo;
 import WindowsResources.CmdCommandScripts;
 
 public class Windows {
-	
+
 	private String commandText;
 	private CmdCommandScripts cmdScripts = new CmdCommandScripts();
 	private WindowsExecuteCmd windowsExecuteCmd = new WindowsExecuteCmd();
@@ -62,7 +62,7 @@ public class Windows {
 	private ExtractPdfMetadata extractPdfMetadata = new ExtractPdfMetadata();
 	private EditPdfMetadata editPdfMetadata = new EditPdfMetadata();
 	private DeleteAllFilesInFolder deleteAllFilesInFolder = new DeleteAllFilesInFolder();
-	
+
 	public void executeGivenCommand(int command) {
 		commandText = cmdScripts.getCmdCommandScript(command);
 		if(commandText != null) {
@@ -107,7 +107,7 @@ public class Windows {
 			}
 		}
 	}
-	
+
 	public void executeGivenEncryptionCommand(int command) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
 			if(command == 1) {
 				aes.encryptOrDecrypt();
@@ -165,8 +165,8 @@ public class Windows {
 		} else if(command == 6) {
 			editPdfMetadata.editPdfMetadata();
 		} else if(command == 7) {
-			
+
 		}
 	}
-	
+
 }

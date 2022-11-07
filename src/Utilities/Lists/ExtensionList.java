@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExtensionList {
-	
+
 	public List<String> getAllExtensions(){
-		
+
 		String[] extensions = {"3ds","3dsx","3GP","3G2","3MF","7z","4TH","a","aac","accdb","accft","adame","adicht","adt","adx","adz","agda","agr","ahk","ai","aiff","aifc",
 				"aio","air","akm","akp","ale","all","amf","amg","aml","amlx","ampl","amr","amv","ani","ann","ape","apk","ar","arc","art","asax","ascx","asf","at3","aty","avi",
 				"avs","awk","axf","aep","b","bak","bar","bas","bat","bdt","beam","bin","bm3","bmp","bps","bz2","blend","c--","c","c++","cpp","c32","cab","cbt","cbz","cc","cd",
@@ -38,14 +38,14 @@ public class ExtensionList {
 				"url","usdz","ust","ut!","v","v4p","v64","vb","vbox","vbox-extpack","vbproj","vbr","vbs","vbx","vc6","vcls","vda","vdi","vdw","vdx","vfd","vi","vmcz","vmdk",
 				"vmg","vob","vpk","vpm","vpp","vpr","vqm","vrb","vs","vsd","vsdx","vsm","vsq","vsqx","vst","vsto","vsvnbak","vtf","vue","vvvvvv","wav","war","wbfs","webm","webp",
 				"wick","witness_campaign","wk1","wk3","wks","wld","wlmp","wma","wmdb","wmf","wmv","wos","x","x3d","xar","xbrl","xcf","xdm","xe","xex","xls","xlsb","xlsm","xlsx",
-				"xm","xml","xmf","xp","xpl","xps","xsd","xsf","xsl","xslt","xsn","xspf","xx","xxe","xxx","xyz","xz","y","yml","yaml","z","z64","zip","zrx","zs"}; 
-		
-		List<String> extensionList = new ArrayList<String>(); 
-		for(String extension:extensions){  
-			extensionList.add(extension);  
-		}  
-		
+				"xm","xml","xmf","xp","xpl","xps","xsd","xsf","xsl","xslt","xsn","xspf","xx","xxe","xxx","xyz","xz","y","yml","yaml","z","z64","zip","zrx","zs"};
+
+		List<String> extensionList = new ArrayList<>();
+		for(String extension:extensions){
+			extensionList.add(extension);
+		}
+
 		return extensionList;
-		
+
 	}
 }

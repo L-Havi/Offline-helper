@@ -15,12 +15,12 @@ public class FolderFileCountAndSizeTitle {
 		if(subfolderInt == 1) {
 			subfolderString = "Yes";
 		}
-		
+
 		String textFileString = "No";
 		if(textFileInt == 1) {
 			textFileString = "Yes";
 		}
-		
+
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t\t\tGet Folder Size & File count");
@@ -34,10 +34,10 @@ public class FolderFileCountAndSizeTitle {
 		System.out.println("	Include SubFolders: " + subfolderString + "\n");
 		System.out.println("4. 	Set save Results to .txt File (Optional, default: No)");
 		System.out.println("	Save to text File Option: " + textFileString + "\n");
-		System.out.println("5. 	Start\n");			
-		System.out.println("6. 	Exit to Main Menu\n");					
+		System.out.println("5. 	Start\n");
+		System.out.println("6. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
+
 }

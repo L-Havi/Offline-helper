@@ -7,11 +7,11 @@ import Utilities.FolderSize;
 import Utilities.MapSubFolders;
 
 public class ListDirectoryFiles {
-	
+
 	MapSubFolders mapSubFolders = new MapSubFolders();
 	FolderSize folderSize = new FolderSize();
 	CorrectSizeUnit csu = new CorrectSizeUnit();
-	
+
 	public String[] getDirectoryFiles(String sourceFolder){
 	    String[] pathnames;
 	    File f = new File(sourceFolder);

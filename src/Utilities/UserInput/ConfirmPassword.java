@@ -9,17 +9,17 @@ public class ConfirmPassword {
 	String password = "";
 	String confirm = "";
 	Console console = System.console();
-	
+
 	public String getPassword() {
 		while(!isValidFolder) {
-		     if (console == null) 
+		     if (console == null)
 		     {
 		         System.out.print("Enter password: ");
 		         password = scanner.nextLine();
 		         System.out.print("Confirm password: ");
 		         confirm = scanner.nextLine();
 		     }
-		     else 
+		     else
 		     {
 		    	 password = new String(console.readPassword("Enter password: "));
 		    	 confirm = new String(console.readPassword("Confirm password: "));

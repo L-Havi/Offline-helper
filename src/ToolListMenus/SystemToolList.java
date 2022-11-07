@@ -1,16 +1,7 @@
 package ToolListMenus;
 
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 import OperatingSystem.ChooseOperatingSystem;
 import OperatingSystem.LinuxClasses.Linux;
@@ -26,13 +17,13 @@ public class SystemToolList {
 	private Linux linux = new Linux();
 	private Mac mac = new Mac();
 	private ChooseOperatingSystem chooseOperatingSystem = new ChooseOperatingSystem();
-	
+
 	public void getSystemToolList(int osInt){
-        
+
 		if(!(osInt > 0)) {
 			osInt = chooseOperatingSystem.getOperatingSystem();
 		}
-		
+
 		while (run) {
 
 			systemTitle.printTitle();

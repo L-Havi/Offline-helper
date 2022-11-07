@@ -1,15 +1,14 @@
 package Utilities.UserInput;
 
-import java.io.File;
 import java.util.Scanner;
 
 public class ZipOrUnzip {
-	
+
 	public String zipUnzip() {
 		Scanner scanner = new Scanner(System.in);
 		boolean isValidInput = false;
 		String sourceString = "";
-		
+
 			while(!isValidInput) {
 				System.out.println("Do you want to zip or unzip files? (zip/unzip/exit)");
 				sourceString = scanner.nextLine();
@@ -20,7 +19,7 @@ public class ZipOrUnzip {
 		        }
 			}
 	        return sourceString;
-		
+
 	}
-	
+
 }

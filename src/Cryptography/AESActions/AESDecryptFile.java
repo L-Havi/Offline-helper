@@ -2,13 +2,10 @@ package Cryptography.AESActions;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import javax.crypto.BadPaddingException;
@@ -20,8 +17,6 @@ import javax.crypto.spec.IvParameterSpec;
 import Cryptography.AESEncryptionAndDecryption;
 import Titles.ToolTitles.CryptographyTitles.ActionTitles.AESDecryptFileTitle;
 import Utilities.UserInput.ConfirmPassword;
-import Utilities.UserInput.EncryptOrDecrypt;
-import Utilities.UserInput.FileOrText;
 import Utilities.UserInput.HasPassword;
 import Utilities.UserInput.SourceFolder;
 
@@ -35,16 +30,16 @@ public class AESDecryptFile {
 	String salt = "E1F53F35F353C253";
 	String algorithm = "AES/CBC/PKCS5Padding";
 	Scanner scanner = new Scanner(System.in);
-	
+
 	public void decryptFile() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
-					
+
 		String srcFolder = "";
 		String password = "";
-		
+
 		String actionChoice;
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			aesDecryptFileTitle.printTitle(srcFolder, password);
 			actionChoice = scanner.nextLine();
@@ -85,5 +80,5 @@ public class AESDecryptFile {
 			}
 		}
 	}
-	
+
 }

@@ -15,7 +15,7 @@ public class DeleteAllFilesInFolderTitle {
 		if(subfolderInt == 1) {
 			subfolderString = "Yes";
 		}
-		
+
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t\t\tDelete all Files in Folder");
@@ -27,11 +27,11 @@ public class DeleteAllFilesInFolderTitle {
 		System.out.println("	Current Extensions: " + allExtensions + "\n");
 		System.out.println("3. 	Delete subfolders (Optional, default: No)");
 		System.out.println("	Include SubFolders: " + subfolderString + "\n");
-		System.out.println("5. 	Start\n");			
-		System.out.println("6. 	Exit to Main Menu\n");					
+		System.out.println("5. 	Start\n");
+		System.out.println("6. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
-	
+
+
 }

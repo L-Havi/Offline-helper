@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PasswordList {
-	
+
 public List<String> getCommonPasswords1(){
-		
+
 		String[] passwords = {
 	"123456",
 	"password",
@@ -4997,16 +4997,16 @@ public List<String> getCommonPasswords1(){
 	"bartman",
 	"asia",
 	"armagedon"};
-		
-		List<String> passwordList = new ArrayList<String>(); 
-		for(String password:passwords){  
-			passwordList.add(password);  
-		}  
+
+		List<String> passwordList = new ArrayList<>();
+		for(String password:passwords){
+			passwordList.add(password);
+		}
 		return passwordList;
 	}
 
 	public List<String> getCommonPasswords2(){
-		
+
 		String[] passwords = {
 		"ariana",
 		"alexalex",
@@ -10019,11 +10019,11 @@ public List<String> getCommonPasswords1(){
 		"bubbles1",
 		"brook",
 		"brady"};
-		
-		List<String> passwordList = new ArrayList<String>(); 
-		for(String password:passwords){  
-			passwordList.add(password);  
-		}  
+
+		List<String> passwordList = new ArrayList<>();
+		for(String password:passwords){
+			passwordList.add(password);
+		}
 		return passwordList;
 	}
 }

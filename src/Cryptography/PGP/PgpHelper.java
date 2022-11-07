@@ -15,11 +15,12 @@ import java.util.Iterator;
 
 import org.bouncycastle.bcpg.ArmoredOutputStream;
 import org.bouncycastle.bcpg.BCPGOutputStream;
+import org.bouncycastle.bcpg.CompressionAlgorithmTags;
 import org.bouncycastle.bcpg.HashAlgorithmTags;
+import org.bouncycastle.bcpg.SymmetricKeyAlgorithmTags;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openpgp.PGPCompressedData;
 import org.bouncycastle.openpgp.PGPCompressedDataGenerator;
-import org.bouncycastle.openpgp.PGPEncryptedData;
 import org.bouncycastle.openpgp.PGPEncryptedDataGenerator;
 import org.bouncycastle.openpgp.PGPEncryptedDataList;
 import org.bouncycastle.openpgp.PGPException;
@@ -216,14 +217,14 @@ public class PgpHelper {
 		ByteArrayOutputStream bOut = new ByteArrayOutputStream();
 
 		PGPCompressedDataGenerator comData = new PGPCompressedDataGenerator(
-				PGPCompressedData.ZIP);
+				CompressionAlgorithmTags.ZIP);
 
 		org.bouncycastle.openpgp.PGPUtil.writeFileToLiteralData(comData.open(bOut),
 				PGPLiteralData.BINARY, new File(fileName));
 
 		comData.close();
 
-		JcePGPDataEncryptorBuilder c = new JcePGPDataEncryptorBuilder(PGPEncryptedData.CAST5).setWithIntegrityPacket(withIntegrityCheck).setSecureRandom(new SecureRandom()).setProvider("BC");
+		JcePGPDataEncryptorBuilder c = new JcePGPDataEncryptorBuilder(SymmetricKeyAlgorithmTags.CAST5).setWithIntegrityPacket(withIntegrityCheck).setSecureRandom(new SecureRandom()).setProvider("BC");
 
 		PGPEncryptedDataGenerator cPk = new PGPEncryptedDataGenerator(c);
 
@@ -261,140 +262,140 @@ public class PgpHelper {
 
 
 	/**
-     * verify the signature in in against the file fileName. 
-     */ 
-    public void verifySignature( 
-        String          fileName, 
-        byte[]     b, 
-        InputStream     keyIn) 
-        throws GeneralSecurityException, IOException, PGPException 
-    { 
-        //in = PGPUtil.getDecoderStream(in); 
-         
-        PGPObjectFactory    pgpFact = new PGPObjectFactory(b); 
-        PGPSignatureList    p3 = null; 
- 
-        Object    o = pgpFact.nextObject(); 
-        if (o instanceof PGPCompressedData) 
-        { 
-            PGPCompressedData             c1 = (PGPCompressedData)o; 
- 
-            pgpFact = new PGPObjectFactory(c1.getDataStream()); 
-             
-            p3 = (PGPSignatureList)pgpFact.nextObject(); 
-        } 
-        else 
-        { 
-            p3 = (PGPSignatureList)o; 
-        } 
-             
-        PGPPublicKeyRingCollection  pgpPubRingCollection = new PGPPublicKeyRingCollection(PGPUtil.getDecoderStream(keyIn)); 
- 
- 
-        InputStream                 dIn = new BufferedInputStream(new FileInputStream(fileName)); 
- 
-        PGPSignature                sig = p3.get(0); 
-        PGPPublicKey                key = pgpPubRingCollection.getPublicKey(sig.getKeyID()); 
-        
+     * verify the signature in in against the file fileName.
+     */
+    public void verifySignature(
+        String          fileName,
+        byte[]     b,
+        InputStream     keyIn)
+        throws GeneralSecurityException, IOException, PGPException
+    {
+        //in = PGPUtil.getDecoderStream(in);
 
- 
+        PGPObjectFactory    pgpFact = new PGPObjectFactory(b);
+        PGPSignatureList    p3 = null;
+
+        Object    o = pgpFact.nextObject();
+        if (o instanceof PGPCompressedData)
+        {
+            PGPCompressedData             c1 = (PGPCompressedData)o;
+
+            pgpFact = new PGPObjectFactory(c1.getDataStream());
+
+            p3 = (PGPSignatureList)pgpFact.nextObject();
+        }
+        else
+        {
+            p3 = (PGPSignatureList)o;
+        }
+
+        PGPPublicKeyRingCollection  pgpPubRingCollection = new PGPPublicKeyRingCollection(PGPUtil.getDecoderStream(keyIn));
+
+
+        InputStream                 dIn = new BufferedInputStream(new FileInputStream(fileName));
+
+        PGPSignature                sig = p3.get(0);
+        PGPPublicKey                key = pgpPubRingCollection.getPublicKey(sig.getKeyID());
+
+
+
         sig.init(new JcaPGPContentVerifierBuilderProvider().setProvider(new BouncyCastleProvider()), key);
- 
-        int ch; 
-        while ((ch = dIn.read()) >= 0) 
-        { 
-            sig.update((byte)ch); 
-        } 
- 
-        dIn.close(); 
- 
-        if (sig.verify()) 
-        { 
-            System.out.println("Signature verified."); 
-        } 
-        else 
-        { 
-            System.out.println("Signature verification failed."); 
-        } 
-    } 
-    
-    public PGPSecretKey readSecretKey(InputStream input) throws IOException, PGPException 
-	{ 
-		PGPSecretKeyRingCollection pgpSec = new PGPSecretKeyRingCollection( 
-				PGPUtil.getDecoderStream(input)); 
 
-		// 
-		// we just loop through the collection till we find a key suitable for encryption, in the real 
-		// world you would probably want to be a bit smarter about this. 
-		// 
+        int ch;
+        while ((ch = dIn.read()) >= 0)
+        {
+            sig.update((byte)ch);
+        }
 
-		Iterator keyRingIter = pgpSec.getKeyRings(); 
-		while (keyRingIter.hasNext()) 
-		{ 
-			PGPSecretKeyRing keyRing = (PGPSecretKeyRing)keyRingIter.next(); 
+        dIn.close();
 
-			Iterator keyIter = keyRing.getSecretKeys(); 
-			while (keyIter.hasNext()) 
-			{ 
-				PGPSecretKey key = (PGPSecretKey)keyIter.next(); 
+        if (sig.verify())
+        {
+            System.out.println("Signature verified.");
+        }
+        else
+        {
+            System.out.println("Signature verification failed.");
+        }
+    }
 
-				if (key.isSigningKey()) 
-				{ 
-					return key; 
-				} 
-			} 
-		} 
+    public PGPSecretKey readSecretKey(InputStream input) throws IOException, PGPException
+	{
+		PGPSecretKeyRingCollection pgpSec = new PGPSecretKeyRingCollection(
+				PGPUtil.getDecoderStream(input));
 
-		throw new IllegalArgumentException("Can't find signing key in key ring."); 
+		//
+		// we just loop through the collection till we find a key suitable for encryption, in the real
+		// world you would probably want to be a bit smarter about this.
+		//
+
+		Iterator keyRingIter = pgpSec.getKeyRings();
+		while (keyRingIter.hasNext())
+		{
+			PGPSecretKeyRing keyRing = (PGPSecretKeyRing)keyRingIter.next();
+
+			Iterator keyIter = keyRing.getSecretKeys();
+			while (keyIter.hasNext())
+			{
+				PGPSecretKey key = (PGPSecretKey)keyIter.next();
+
+				if (key.isSigningKey())
+				{
+					return key;
+				}
+			}
+		}
+
+		throw new IllegalArgumentException("Can't find signing key in key ring.");
 	}
 
-    public byte[] createSignature( 
-            String          fileName, 
-            InputStream     keyIn, 
-            OutputStream    out, 
-            char[]          pass, 
-            boolean         armor) 
-            throws GeneralSecurityException, IOException, PGPException 
-        {     
-            
-            
+    public byte[] createSignature(
+            String          fileName,
+            InputStream     keyIn,
+            OutputStream    out,
+            char[]          pass,
+            boolean         armor)
+            throws GeneralSecurityException, IOException, PGPException
+        {
+
+
             PGPSecretKey pgpSecKey = readSecretKey(keyIn);
     		PGPPrivateKey pgpPrivKey = pgpSecKey.extractPrivateKey(new JcePBESecretKeyDecryptorBuilder().setProvider(new BouncyCastleProvider()).build(pass));
     		PGPSignatureGenerator sGen = new PGPSignatureGenerator(new JcaPGPContentSignerBuilder(pgpSecKey.getPublicKey().getAlgorithm(), HashAlgorithmTags.SHA1).setProvider(new BouncyCastleProvider()));
 
-            
+
             sGen.init(PGPSignature.BINARY_DOCUMENT, pgpPrivKey);
-     
+
             ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
             ArmoredOutputStream aOut = new ArmoredOutputStream(byteOut);
-            
-             
-            BCPGOutputStream         bOut = new BCPGOutputStream(byteOut); 
-             
-            InputStream              fIn = new BufferedInputStream(new FileInputStream(fileName)); 
-     
-            int ch; 
-            while ((ch = fIn.read()) >= 0) 
-            { 
-                sGen.update((byte)ch); 
-                 
-            } 
-     
+
+
+            BCPGOutputStream         bOut = new BCPGOutputStream(byteOut);
+
+            InputStream              fIn = new BufferedInputStream(new FileInputStream(fileName));
+
+            int ch;
+            while ((ch = fIn.read()) >= 0)
+            {
+                sGen.update((byte)ch);
+
+            }
+
             aOut.endClearText();
-            
-            fIn.close(); 
-     
-            sGen.generate().encode(bOut); 
-     
-            if (armor) 
-            { 
-                aOut.close(); 
-            } 
-            
-            
-           
-        
+
+            fIn.close();
+
+            sGen.generate().encode(bOut);
+
+            if (armor)
+            {
+                aOut.close();
+            }
+
+
+
+
             return byteOut.toByteArray();
-        } 
-	
+        }
+
 }

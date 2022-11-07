@@ -1,7 +1,7 @@
 package Titles.ToolTitles.PdfTitles;
 
 public class EditPdfMetadataTitle {
-	
+
 	public void printTitle(String originalPdf, String author, String keywords, String Subject, String title) {
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
@@ -18,10 +18,10 @@ public class EditPdfMetadataTitle {
 		System.out.println("	Current Subject: " + Subject + "\n");
 		System.out.println("5. 	Edit Title (Optional, Default: Current Title)");
 		System.out.println("	Current Title: " + title + "\n");
-		System.out.println("6. 	Save\n");			
-		System.out.println("7. 	Exit to Main Menu\n");								
+		System.out.println("6. 	Save\n");
+		System.out.println("7. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
+
 }
