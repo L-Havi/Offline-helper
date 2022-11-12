@@ -39,9 +39,8 @@ public class MD5HashString {
 		}
 	}
 
-	public void hash(String hashString){
+	public String hash(String hashString){
 		String hashedString = DigestUtils.md5Hex(hashString);
-		System.out.println("Input text: " + hashString);
-		System.out.println("Hash value: " + hashedString);
+		return hashedString;
 	}
 }

@@ -44,14 +44,14 @@ public class CreateMD5Checksum {
 		}
 	}
 
-	public void checksum(String filepath){
+	public String checksum(String filepath){
+		String checksum = null;
 		  try (InputStream is = new FileInputStream(filepath)) {
-		      String checksum = DigestUtils.md5Hex(is);
-		      System.out.println("Input File: " + filepath);
-		      System.out.println("Checksum: " + checksum);
+		      checksum = DigestUtils.md5Hex(is);
 		  } catch (IOException e) {
 		      e.printStackTrace();
 		  }
+		  return checksum;
 	}
 
 	public void checkChecksum() {
@@ -84,16 +84,17 @@ public class CreateMD5Checksum {
 		}
 	}
 
-	public void checkFileChecksum(String filepath, String checkSum){
+	public String checkFileChecksum(String filepath, String checkSum){
 		  try (InputStream is = new FileInputStream(filepath)) {
 		      String checksum = DigestUtils.md5Hex(is);
 		      if(checkSum.trim().equals(checksum)) {
-			      System.out.println("Checksum " + checkSum + " matches to File " + filepath);
+			      return ("Checksum " + checkSum + " matches to File " + filepath);
 		      } else {
-			      System.out.println("Checksum " + checkSum + " does not match to File " + filepath);
+			      return ("Checksum " + checkSum + " does not match to File " + filepath);
 		      }
 		  } catch (IOException e) {
 		      e.printStackTrace();
 		  }
+		  return null;
 	}
 }

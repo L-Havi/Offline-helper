@@ -105,7 +105,7 @@ public class MainFrame extends JFrame implements ActionListener {
     final static String MD5_TOOLS = "MD5 Tools";
     final static String CREATE_MD5_CHECKSUM = "Create a checksum for a File with MD5";
     final static String HASH_TEXT_WITH_MD5 = "Hash Text with MD5";
-    final static String CHECK_MD5_CHECKSUM = "Create File's checksum with MD5";
+    final static String CHECK_MD5_CHECKSUM = "Check File's checksum with MD5";
     
     final static String PASSWORD_TOOLS = "Password Tools";
     final static String GENERATE_RANDOM_PASSWORD = "Generate random password";
