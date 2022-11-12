@@ -78,7 +78,7 @@ public class DeleteAllFilesInFolder {
 		}
 	}
 
-	private void delete(String srcFolder, List<String> fileStrings, int subfolders) {
+	public void delete(String srcFolder, List<String> fileStrings, int subfolders) {
 		for(String filePath : fileStrings) {
 			File deletedFile = new File(filePath);
 			deletedFile.delete();

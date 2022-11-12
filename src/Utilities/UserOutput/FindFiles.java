@@ -68,7 +68,7 @@ public class FindFiles {
 	            throw new IllegalArgumentException("Path must be a directory!");
 	        }
 
-	        if(extensions.length == 1 && extensions[0].equals("*")) {
+	        if((extensions.length == 1 && extensions[0].equals("*")) || extensions.length == 0) {
 	        	String srcString = path.toString();
 	        	List<String> extensionList = fileExtensions.getUniqueFileExtensions(srcString);
 	        	extensions = extensionList.toArray(extensions);
@@ -84,8 +84,10 @@ public class FindFiles {
 	        			for(String pathname : pathnames) {
 	        				String tempname = subfolder.getCanonicalPath() + "\\" + pathname;
 	        				File fi = new File(tempname);
-	        				if(fi.isFile()) {
-	        					results.add(tempname);
+	        				for(String extension : extensions) {
+		        				if(fi.isFile() && fi.getAbsolutePath().endsWith(extension)) {
+		        					results.add(tempname);
+		        				}
 	        				}
 	        			}
 	        		}

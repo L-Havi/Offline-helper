@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import GUI.ToolPages.EncryptionAndHashingToolsPanels.AESToolsPanel;
@@ -51,6 +52,7 @@ import GUI.ToolPages.FileSystemToolsPanels.GetFolderSizeAndFileCountPanel;
 import GUI.ToolPages.FileSystemToolsPanels.GetPathsInFolderPanel;
 import GUI.ToolPages.FileSystemToolsPanels.MassChangeFiletypesPanel;
 import GUI.ToolPages.FileSystemToolsPanels.MassCopyFolderContentsPanel;
+import GUI.ToolPages.FileSystemToolsPanels.MassRenameFilesPanel;
 import GUI.ToolPages.FileSystemToolsPanels.RemoveDuplicateFilesPanel;
 import GUI.ToolPages.FileSystemToolsPanels.SortFilesByExtensionPanel;
 import GUI.ToolPages.FileSystemToolsPanels.UnzipOrZipFilesPanel;
@@ -87,6 +89,7 @@ public class MainFrame extends JFrame implements ActionListener {
     final static String REMOVE_DUPLICATE_FILES = "Remove Duplicate Files";
     final static String SORT_FILES_BY_EXTENSION = "Sort Files by Extension";
     final static String MASS_COPY_FOLDER_CONTENTS = "Mass copy Folder contents to Another Folder";
+    final static String MASS_RENAME_FILES = "Mass rename Files in Folder";
     final static String UNZIP_OR_ZIP_FILES = "Unzip/Zip Files in a Folder";
     final static String MASS_CHANGE_FILETYPES = "Mass change Filetypes";
     final static String GET_PATHS_IN_FOLDER = "Get paths in Folder";
@@ -134,6 +137,7 @@ public class MainFrame extends JFrame implements ActionListener {
     final static String EDIT_PDF_METADATA = "Edit PDF File's metadata";
     
     final static String SETTINGS = "Settings";
+    final static String WELCOME = "Welcome";
     final static String EXIT = "Exit";
     
 	JPanel centerPanel = new CenterPanel();
@@ -144,12 +148,12 @@ public class MainFrame extends JFrame implements ActionListener {
     JMenu fileSystemToolMenu, encryptionAndHashingToolMenu, SystemInfoMenu, pdfToolsMenu, otherMenu;  
     JMenu aesToolsMenu, md5ToolsMenu, passwordToolsMenu, pgpToolsMenu, shaToolsMenu;
     
-    JMenuItem removeDuplicateFilesMenuItem, sortFilesByERxtensionMenuItem, massCopyFolderContentsMenuItem, unzipOrZipFilesMenuItem, 
+    JMenuItem removeDuplicateFilesMenuItem, sortFilesByERxtensionMenuItem, massCopyFolderContentsMenuItem, massRenameFilesMenuItem, unzipOrZipFilesMenuItem, 
     massChangeFiletypesMenuItem, getPathsInFolderMenuItem, getFolderSizeAndFileCountMenuItem, deleteAllFilesInFolderMenuItem;
     JMenuItem getOsInfoMenuItem, getNetworkInfoMenuItem, getEnvironmentVariablesMenuItem, getHardwareInfoMenuItem, getJavaInfoMenuItem;
     JMenuItem mergePdfFilesMenuItem, splitPdfFileMenuItem, extractTextFromPdfFileMenuItem, convertPdfToAnotherFormatMenuItem,
     extractPdfFileMetadataMenuItem, editPdfMetadataMenuItem;
-    JMenuItem settingsMenuItem, exitMenuItem;
+    JMenuItem settingsMenuItem, exitMenuItem, welcomePage;
     
     JMenuItem aesEncryptStringMenuItem, aesEncryptFileMenuItem, aesDecryptFileMenuItem, aesDecryptStringMenuItem;
     JMenuItem createMd5ChecksumMenuItem, hashTextWithMd5MenuItem, checkMd5ChecksumMenuItem;
@@ -182,6 +186,8 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		setPanels(panels);
 
+		cardLayout.show(centerPanel, WELCOME);
+		
 		this.setVisible(true);
 	}
 
@@ -189,13 +195,18 @@ public class MainFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
     	
     	if(e.getSource() == exitMenuItem) {
-    		System.exit(0);
+    		int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Exit program", JOptionPane.YES_NO_OPTION);
+    		if(reply == JOptionPane.YES_OPTION) {
+        		System.exit(0);
+    		}
     	} else if(e.getSource() == removeDuplicateFilesMenuItem) {
         	cardLayout.show(centerPanel, REMOVE_DUPLICATE_FILES);
     	} else if(e.getSource() == sortFilesByERxtensionMenuItem) {
         	cardLayout.show(centerPanel, SORT_FILES_BY_EXTENSION);
     	} else if(e.getSource() == massCopyFolderContentsMenuItem) {
         	cardLayout.show(centerPanel, MASS_COPY_FOLDER_CONTENTS);
+    	} else if(e.getSource() == massRenameFilesMenuItem) {
+        	cardLayout.show(centerPanel, MASS_RENAME_FILES);
     	} else if(e.getSource() == unzipOrZipFilesMenuItem) {
         	cardLayout.show(centerPanel, UNZIP_OR_ZIP_FILES);
     	} else if(e.getSource() == massChangeFiletypesMenuItem) {
@@ -481,6 +492,8 @@ public class MainFrame extends JFrame implements ActionListener {
 	    sortFilesByERxtensionMenuItem.addActionListener(this);
 	    massCopyFolderContentsMenuItem = new JMenuItem(MASS_COPY_FOLDER_CONTENTS);
 	    massCopyFolderContentsMenuItem.addActionListener(this);
+	    massRenameFilesMenuItem = new JMenuItem(MASS_RENAME_FILES);
+	    massRenameFilesMenuItem.addActionListener(this);
 	    unzipOrZipFilesMenuItem = new JMenuItem(UNZIP_OR_ZIP_FILES);
 	    unzipOrZipFilesMenuItem.addActionListener(this);
 	    massChangeFiletypesMenuItem = new JMenuItem(MASS_CHANGE_FILETYPES);
@@ -495,6 +508,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	    menu.add(removeDuplicateFilesMenuItem);
 	    menu.add(sortFilesByERxtensionMenuItem);
 	    menu.add(massCopyFolderContentsMenuItem);
+	    menu.add(massRenameFilesMenuItem);
 	    menu.add(unzipOrZipFilesMenuItem);
 	    menu.add(massChangeFiletypesMenuItem);
 	    menu.add(getPathsInFolderMenuItem);
@@ -508,7 +522,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 		HashMap<String, JPanel> pagePanels = new HashMap<String, JPanel>();
 		
-		JPanel welcomePage = new WelcomePagePanel("Welcome");
 		JPanel systemInfoToolsPage = new SystemInfoToolsPanel(SYSTEM_INFO_MENU);
 		JPanel fileSystemToolsPage = new FileSystemToolsPanel(FILE_SYSTEM_TOOLS_MENU);
 		JPanel encryptionAndHashingToolsPage  = new EncryptionAndHashingToolsPanel(ENCRYPTION_AND_HASHING_TOOLS_MENU);
@@ -517,6 +530,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		JPanel removeDuplicateFilesPage = new RemoveDuplicateFilesPanel(REMOVE_DUPLICATE_FILES);
 		JPanel sortFilesByExtensionPage = new SortFilesByExtensionPanel(SORT_FILES_BY_EXTENSION);
 		JPanel massCopyFolderContentsPage = new MassCopyFolderContentsPanel(MASS_COPY_FOLDER_CONTENTS);
+		JPanel massRenameFilesPage = new MassRenameFilesPanel(MASS_RENAME_FILES);
 		JPanel unzipOrZipFilesPage = new UnzipOrZipFilesPanel(UNZIP_OR_ZIP_FILES);
 		JPanel massChangeFileTypesPage = new MassChangeFiletypesPanel(MASS_CHANGE_FILETYPES);
 		JPanel getFolderPathsPage = new GetPathsInFolderPanel(GET_PATHS_IN_FOLDER);
@@ -555,8 +569,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		JPanel convertPdfFileToAnotherFormatPage = new ConvertPDFFileToAnotherFormatPanel(CONVERT_PDF_TO_ANOTHER_FORMAT);
 		JPanel extractPdfFileMetadataPage = new ExtractPDFFileMetadataPanel(EXTRACT_PDF_FILE_METADATA);
 		JPanel editPdfFileMetadataPage = new EditPDFFileMetadataPanel(EDIT_PDF_METADATA);
+		JPanel welcomePage = new WelcomePagePanel(WELCOME);
 		
-		pagePanels.put("Welcome", welcomePage);
 		pagePanels.put(SYSTEM_INFO_MENU, systemInfoToolsPage);
 		pagePanels.put(FILE_SYSTEM_TOOLS_MENU, fileSystemToolsPage);
 		pagePanels.put(ENCRYPTION_AND_HASHING_TOOLS_MENU, encryptionAndHashingToolsPage);
@@ -565,6 +579,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		pagePanels.put(REMOVE_DUPLICATE_FILES, removeDuplicateFilesPage);
 		pagePanels.put(SORT_FILES_BY_EXTENSION, sortFilesByExtensionPage);
 		pagePanels.put(MASS_COPY_FOLDER_CONTENTS, massCopyFolderContentsPage);
+		pagePanels.put(MASS_RENAME_FILES, massRenameFilesPage);
 		pagePanels.put(UNZIP_OR_ZIP_FILES, unzipOrZipFilesPage);
 		pagePanels.put(MASS_CHANGE_FILETYPES, massChangeFileTypesPage);
 		pagePanels.put(GET_PATHS_IN_FOLDER, getFolderPathsPage);
@@ -603,6 +618,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		pagePanels.put(CONVERT_PDF_TO_ANOTHER_FORMAT, convertPdfFileToAnotherFormatPage);
 		pagePanels.put(EXTRACT_PDF_FILE_METADATA, extractPdfFileMetadataPage);
 		pagePanels.put(EDIT_PDF_METADATA, editPdfFileMetadataPage);
+		pagePanels.put(WELCOME, welcomePage);
 		
 		return pagePanels;
 		

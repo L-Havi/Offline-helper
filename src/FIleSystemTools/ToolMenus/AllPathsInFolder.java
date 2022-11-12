@@ -58,7 +58,7 @@ public class AllPathsInFolder {
 					e.printStackTrace();
 				}
 				if(fileStrings.size() > 0) {
-					outputPaths.outputPaths(fileStrings, save, srcFolder);
+					outputPaths.outputPaths(fileStrings, save, srcFolder, srcFolder, "");
 				}
 				run = false;
 			} else if(actionChoice.toLowerCase().trim().equals("6")) {

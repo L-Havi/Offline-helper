@@ -9,7 +9,7 @@ import java.util.List;
 
 public class OutputPaths {
 
-	public void outputPaths(List<String> paths, boolean outputToFile, String sourceFolder) throws IOException {
+	public void outputPaths(List<String> paths, boolean outputToFile, String sourceFolder, String destinationFolder, String name) throws IOException {
 		if(!outputToFile) {
 			System.out.println("------------------------------------------------------------------------");
 			System.out.println("All File Paths in Folder (And in Subfolders if chosen):\n" + sourceFolder);
@@ -20,7 +20,7 @@ public class OutputPaths {
 		} else{
 			int i = sourceFolder.lastIndexOf("\\");
         	String[] a =  {sourceFolder.substring(0, i), sourceFolder.substring(i)};
-			File textFile = new File(sourceFolder + "\\" + a[1] + "_paths_output.txt");
+			File textFile = new File(destinationFolder + "\\" + name + ".txt");
 			FileOutputStream fos = new FileOutputStream(textFile);
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 

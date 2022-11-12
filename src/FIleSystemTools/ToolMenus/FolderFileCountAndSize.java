@@ -61,7 +61,7 @@ public class FolderFileCountAndSize {
 					e.printStackTrace();
 				}
 				if(fileStrings.size() > 0) {
-					fileCountAndSize.getFileCountAndSize(fileStrings, save, srcFolder);
+					fileCountAndSize.getFileCountAndSize(fileStrings, save, srcFolder,srcFolder,"");
 				}
 				run = false;
 			} else if(actionChoice.toLowerCase().trim().equals("6")) {
