@@ -73,11 +73,11 @@ public class GeneratePassword {
 
 	}
 
-	private String generatePassword(int passwordLength, int includeLowercase, int includeUppercase, int includeNumbers, int includeSpecial) {
+	public String generatePassword(int passwordLength, int includeLowercase, int includeUppercase, int includeNumbers, int includeSpecial) {
 		String[] lowerCase = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 		String[] upperCase = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		String[] numbers = {"0","1","2","3","4","5","6","7","8","9"};
-		String[] specialCharacters = {"!","@","#","¤","$","%","€","/","{","(","[",")","]","=","}","?","*","'","^","¨",".",":",",",";","-","_","<",">"};
+		String[] specialCharacters = {"!","@","#","$","%","/","{","(","[",")","]","=","}","?","*","'","^",".",":",",",";","-","_","<",">"};
 		String[] allNumbers = new String[0];
 		String password = "";
 		List<String> allNumbersList = new ArrayList<>();
@@ -108,7 +108,7 @@ public class GeneratePassword {
 			Random rand = new Random();
 
 			for(int i = 0; i < passwordLength; i++) {
-				int choose = rand.nextInt((89 - 1) + 1) + 1;
+				int choose = rand.nextInt((allNumbers.length - 1) + 1);
 
 				password = password + allNumbers[choose];
 			}
@@ -146,14 +146,17 @@ public class GeneratePassword {
 
 	}
 
-	private void checkPasswordStrength(String password) {
+	public String[] checkPasswordStrength(String password) {
+		
+		String[] results = new String[8];
+		
 		String[] lowerCase = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 		List<String> lowerCaseList = Arrays.asList(lowerCase);
 		String[] upperCase = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		List<String> upperCaseList = Arrays.asList(upperCase);
 		String[] numbers = {"0","1","2","3","4","5","6","7","8","9"};
 		List<String> numbersList = Arrays.asList(numbers);
-		String[] specialCharacters = {"!","@","#","¤","$","%","€","/","{","(","[",")","]","=","}","?","*","'","^","¨",".",":",",",";","-","_","<",">"};
+		String[] specialCharacters = {"!","@","#","ï¿½","$","%","ï¿½","/","{","(","[",")","]","=","}","?","*","'","^","ï¿½",".",":",",",";","-","_","<",">"};
 		List<String> specialCharactersList = Arrays.asList(specialCharacters);
 
 		boolean hasLowercase = false;
@@ -243,37 +246,52 @@ public class GeneratePassword {
 		}
 
 		System.out.println("Password: " + password);
+		results[0] = "Password: " + password;
 		if(passwordLength < 8) {
 			System.out.println("[-] Password Length: " + passwordLength + " characters\n");
+			results[1] = "[-] Password Length: " + passwordLength + " characters";
 		} else {
 			System.out.println("[+] Password Length: " + passwordLength + " characters\n");
+			results[1] = "[+] Password Length: " + passwordLength + " characters";
 		}
 
 		if(hasLowercase) {
 			System.out.println("[+] Password contains lowercase letters");
+			results[2] = "[+] Password contains lowercase letters";
 		} else {
 			System.out.println("[-] Password does not contain lowercase letters");
+			results[2] = "[-] Password does not contain lowercase letters";
 		}
 		if(hasUppercase) {
 			System.out.println("[+] Password contains uppercase letters");
+			results[3] = "[+] Password contains uppercase letters";
 		} else {
 			System.out.println("[-] Password does not contain uppercase letters");
+			results[3] = "[-] Password does not contain uppercase letters";
 		}
 		if(hasNumbers) {
 			System.out.println("[+] Password contains numbers");
+			results[4] = "[+] Password contains numbers";
 		} else {
 			System.out.println("[-] Password does not contain numbers");
+			results[4] = "[-] Password does not contain numbers";
 		}
 		if(hasSpecials) {
 			System.out.println("[+] Password contains special characters");
+			results[5] = "[+] Password contains special characters";
 		} else {
 			System.out.println("[-] Password does not contain special characters");
+			results[5] = "[-] Password does not contain special characters";
 		}
 		System.out.println("\n");
 		if(isCommonPassword != "") {
 			System.out.println(isCommonPassword + "\n");
+			results[6] = isCommonPassword;
 		}
 		System.out.println(bruteTime + "\n");
-
+		results[7] = bruteTime;
+		
+		return results;
+		
 	}
 }
