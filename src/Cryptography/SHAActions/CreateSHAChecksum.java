@@ -78,13 +78,11 @@ public class CreateSHAChecksum {
         return sb.toString();
     }
 
-    public static void printFileChecksum(String srcFolder, String algorithm) {
+    public static String printFileChecksum(String srcFolder, String algorithm) {
 
         byte[] hashInBytes = checksum(srcFolder, algorithm);
 
-        System.out.println("File: " + srcFolder);
-        System.out.println("Hashing algorithm: " + algorithm);
-        System.out.println("Checksum: " + bytesToHex(hashInBytes));
+        return bytesToHex(hashInBytes);
     }
 
 	public void verifyChecksum() {
@@ -120,14 +118,16 @@ public class CreateSHAChecksum {
 		}
 	}
 
-    public static void verifyFileChecksum(String srcFolder, String algorithm, String checkSum) {
+    public static String verifyFileChecksum(String srcFolder, String algorithm, String checkSum) {
 
         byte[] hashInBytes = checksum(srcFolder, algorithm);
 
         if(checkSum.equals(bytesToHex(hashInBytes))) {
             System.out.println("Checksum " + bytesToHex(hashInBytes) + " matches to File " + srcFolder);
+            return "Checksum " + bytesToHex(hashInBytes) + "\n matches to File " + srcFolder;
         }else {
         	System.out.println("Checksum " + bytesToHex(hashInBytes) + " does not match to File " + srcFolder);
+            return "Checksum " + bytesToHex(hashInBytes) + "\n does not match to File " + srcFolder;
         }
     }
 }

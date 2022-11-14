@@ -40,7 +40,7 @@ public class DecryptWithPGPPanel2 extends ContentPanelBase {
 	JFileChooser fileChooser2 = new JFileChooser();
 	JFileChooser fileChooser3 = new JFileChooser();
 	
-	JButton startButton = new TopPanelButton("Encrypt");
+	JButton startButton = new TopPanelButton("Decrypt");
 	
 	JButton choosePrivateKeyButton = new TopPanelButton("Choose private key");
 	JButton chooseFolderButton = new TopPanelButton("Choose save Folder");
@@ -58,7 +58,7 @@ public class DecryptWithPGPPanel2 extends ContentPanelBase {
 	JLabel error = new JLabel();
 	
 	JLabel passwordLabel = new JLabel("Password: ");
-	JLabel chosenFileLabel = new JLabel("Target Folder: ");
+	JLabel chosenFileLabel = new JLabel("Save Folder: ");
 	JLabel privateKeyLabel = new JLabel("Private Key: ");
 	JLabel encryptedFileLabel = new JLabel("Encrypted File: ");
 	
@@ -132,7 +132,7 @@ public class DecryptWithPGPPanel2 extends ContentPanelBase {
 			int option = fileChooser3.showOpenDialog(null);
             if(option == JFileChooser.APPROVE_OPTION){
             	encryptedFolder = fileChooser3.getSelectedFile();
-            	chosenFileLabel.setText("Target Folder: " + encryptedFolder.getAbsolutePath());
+            	chosenFileLabel.setText("Save Folder: " + encryptedFolder.getAbsolutePath());
              }else{
                 System.out.println("Open command canceled");
              }

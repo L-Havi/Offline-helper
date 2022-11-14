@@ -121,7 +121,7 @@ public class MainFrame extends JFrame implements ActionListener {
     final static String SHA_TOOLS = "SHA Tools";
     final static String CREATE_SHA_CHECKSUM = "Create a checksum for a File with SHA";
     final static String HASH_TEXT_WITH_SHA = "Hash Text with SHA";
-    final static String CHECK_SHA_CHECKSUM = "Create File's checksum with SHA";
+    final static String CHECK_SHA_CHECKSUM = "Check File's checksum with SHA";
     
     final static String GET_OS_INFO = "Get Operating System information";
     final static String GET_NETWORK_INFO = "Get Network information";

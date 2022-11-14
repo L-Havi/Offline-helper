@@ -264,7 +264,7 @@ public class PgpHelper {
 	/**
      * verify the signature in in against the file fileName.
      */
-    public void verifySignature(
+    public int verifySignature(
         String          fileName,
         byte[]     b,
         InputStream     keyIn)
@@ -312,10 +312,12 @@ public class PgpHelper {
         if (sig.verify())
         {
             System.out.println("Signature verified.");
+            return 1;
         }
         else
         {
             System.out.println("Signature verification failed.");
+            return 0;
         }
     }
 
