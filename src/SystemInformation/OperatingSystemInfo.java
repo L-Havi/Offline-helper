@@ -1,6 +1,19 @@
 package SystemInformation;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.RandomAccessFile;
 import java.util.List;
+import java.util.UUID;
+
+import org.apache.pdfbox.Loader;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
+import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 
 import Utilities.Lists.SubnetList;
 import oshi.SystemInfo;
@@ -42,15 +55,81 @@ public class OperatingSystemInfo {
     List<UsbDevice> usbDevices = hardware.getUsbDevices(true);
     SubnetList subnetList = new SubnetList();
 
-	public void printOsInfo() {
+	public void printOsInfo(String savePath, int saveFileType) throws IOException {
+		String[] info = new String[5];
+		
         //Operating system name
         System.out.println("Operating System Info");
 		System.out.println("------------------------------------------------------------------------");
         System.out.println("Operating System: " + operatingSystem.toString());
+        info[0] = operatingSystem.toString();
         System.out.println("Manufacturer: " + operatingSystem.getManufacturer());
+        info[1] = operatingSystem.getManufacturer();
         System.out.println("Number of bits supported by the OS (32 or 64): " + operatingSystem.getBitness());
+        info[2] = Integer.toString(operatingSystem.getBitness());
         System.out.println("Operating System Architecture: " + System.getProperty("os.arch"));
+        info[3] = System.getProperty("os.arch");
         System.out.println("User Account name: " + System.getProperty("user.name"));
+        info[4] = System.getProperty("user.name");
+        
+		if(saveFileType == 0) {
+			
+			File pdf = new File("res/osInfoPdf.pdf");
+			
+			PDDocument pDDocument = Loader.loadPDF(pdf);
+			PDAcroForm pDAcroForm = pDDocument.getDocumentCatalog().getAcroForm();
+			if(pDAcroForm != null) {
+				try {
+					PDField field = pDAcroForm.getField("date");
+					field.setValue(java.time.LocalDate.now().toString());
+					
+					field = pDAcroForm.getField("operatingSystem");
+					if(info[0] != null) {
+						field.setValue(info[0]);
+					}
+					field = pDAcroForm.getField("manufacturer");
+					if(info[1] != null) {
+						field.setValue(info[1]);
+					}
+					field = pDAcroForm.getField("osBits");
+					if(info[2] != null) {
+						field.setValue(info[2]);
+					}
+					field = pDAcroForm.getField("osArchitecture");
+					if(info[3] != null) {
+						field.setValue(info[3]);
+					}
+					field = pDAcroForm.getField("userAccountName");
+					if(info[4] != null) {
+						field.setValue(info[4]);
+					}
+				} finally {
+					savePath += "\\os_info.pdf";
+					pDDocument.save(savePath);
+					File result = new File(savePath);
+					pDDocument.close();
+				}
+
+			}
+			
+		} else {
+			File textFile = new File(savePath + "\\os_info.txt");
+			FileOutputStream fos = new FileOutputStream(textFile);
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+
+			bw.write("------------------------------------------------------------------------");
+			bw.newLine();
+			bw.write("Operating System Information: ");
+			bw.newLine();
+			bw.write("------------------------------------------------------------------------");
+			bw.newLine();
+
+			for (String row : info) {
+				bw.write(row);
+				bw.newLine();
+			}
+			bw.close();
+		}
 	}
 
 	public void printHardwareInfo() {

@@ -126,7 +126,12 @@ public class Mac {
 	}
 	public void executeGivenSystemInfoCommand(int command) {
 		if(command == 1) {
-			operatingSystemInfo.printOsInfo();
+			try {
+				operatingSystemInfo.printOsInfo("",0);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if(command == 2) {
 			operatingSystemInfo.networkInfo();
 		} else if(command == 3) {
