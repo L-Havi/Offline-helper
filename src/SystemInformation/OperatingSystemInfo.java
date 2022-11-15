@@ -132,7 +132,7 @@ public class OperatingSystemInfo {
 		}
 	}
 
-	public void printHardwareInfo() {
+	public void printHardwareInfo(String savePath, int saveFileType) {
         //Operating system name
 
         long usedMemory = globalMemory.getTotal() - globalMemory.getAvailable();
@@ -315,7 +315,7 @@ public class OperatingSystemInfo {
         System.out.println("Hardware UUID: " + computerSystem.getHardwareUUID());
 	}
 
-	public void networkInfo() {
+	public void networkInfo(String savePath, int saveFileType) {
 
 		List<NetworkIF> networkInfos = hardware.getNetworkIFs();
 
@@ -365,7 +365,7 @@ public class OperatingSystemInfo {
 
 	}
 
-	public void javaInfo() {
+	public void javaInfo(String savePath, int saveFileType) {
         //JRE version number
         System.out.println("Java Version: " + System.getProperty("java.version"));
 

@@ -124,7 +124,7 @@ public class Mac {
 			shaChooseAction.shaChoose();
 		}
 	}
-	public void executeGivenSystemInfoCommand(int command) {
+	public void executeGivenSystemInfoCommand(int command) throws IOException {
 		if(command == 1) {
 			try {
 				operatingSystemInfo.printOsInfo("",0);
@@ -133,13 +133,13 @@ public class Mac {
 				e.printStackTrace();
 			}
 		} else if(command == 2) {
-			operatingSystemInfo.networkInfo();
+			operatingSystemInfo.networkInfo("",0);
 		} else if(command == 3) {
-			environmentVariables.getAllEnvironmentVariables();
+			environmentVariables.getAllEnvironmentVariables("",0);
 		} else if(command == 4) {
-			operatingSystemInfo.printHardwareInfo();
+			operatingSystemInfo.printHardwareInfo("",0);
 		} else if(command == 5) {
-			operatingSystemInfo.javaInfo();
+			operatingSystemInfo.javaInfo("",0);
 		}
 	}
 
