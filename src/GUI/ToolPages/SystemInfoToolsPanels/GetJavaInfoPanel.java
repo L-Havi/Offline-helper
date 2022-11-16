@@ -96,11 +96,7 @@ public class GetJavaInfoPanel extends ContentPanelBase {
 				save = 1;
 			}
 			
-			try {
-				osinfo.printOsInfo(file.getAbsolutePath(), save);
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
+			osinfo.javaInfo(file.getAbsolutePath(), save);
 			
 			file = null;
 			error.setText("");

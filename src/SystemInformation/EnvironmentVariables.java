@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.swing.JOptionPane;
+
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
@@ -22,6 +24,7 @@ public class EnvironmentVariables {
         System.out.println("System's environment variables");
 		System.out.println("------------------------------------------------------------------------");
 
+		File result;
         
 		List<String> info = new ArrayList<>();
 		
@@ -37,7 +40,7 @@ public class EnvironmentVariables {
         
 		if(saveFileType == 0) {
 			
-			File pdf = new File("res/environment_variables.pdf");
+			File pdf = new File("res/pdf/environment_variables.pdf");
 			
 			PDDocument pDDocument = Loader.loadPDF(pdf);
 			PDAcroForm pDAcroForm = pDDocument.getDocumentCatalog().getAcroForm();
@@ -62,9 +65,15 @@ public class EnvironmentVariables {
 				} finally {
 					savePath += "\\environment_variables.pdf";
 					pDDocument.save(savePath);
-					File result = new File(savePath);
+					result = new File(savePath);
 					pDDocument.close();
 				}
+				if(result.exists()) {
+					JOptionPane.showMessageDialog(null, "Create PDF containing environment variables to location " + savePath, "Get Environment variables to PDF", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "Failed to create PDF containing environment variables to location " + savePath, "Get Environment variables to PDF", JOptionPane.ERROR_MESSAGE);
+				}
+
 				
 			}
 			
@@ -85,6 +94,12 @@ public class EnvironmentVariables {
 				bw.newLine();
 			}
 			bw.close();
+			
+			if(textFile.exists()) {
+				JOptionPane.showMessageDialog(null, "Create txt-file containing environment variables to location " + savePath, "Get Environment variables to txt-file", JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(null, "Failed to create txt-file containing environment variables to location " + savePath, "Get Environment variables to txt-file", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 }
