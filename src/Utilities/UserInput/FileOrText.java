@@ -3,13 +3,13 @@ package Utilities.UserInput;
 import java.util.Scanner;
 
 public class FileOrText {
-	
+
 	public int getFileOrText() {
 		Scanner scanner = new Scanner(System.in);
 		boolean isValidInput = false;
 		String sourceString = "";
     	int choice = 0;
-		
+
 			while(!isValidInput) {
 				System.out.println("Input is file or text? (file/text/exit)");
 				sourceString = scanner.nextLine();

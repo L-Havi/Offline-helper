@@ -62,7 +62,7 @@ public class Linux {
 	private ExtractPdfMetadata extractPdfMetadata = new ExtractPdfMetadata();
 	private EditPdfMetadata editPdfMetadata = new EditPdfMetadata();
 	private DeleteAllFilesInFolder deleteAllFilesInFolder = new DeleteAllFilesInFolder();
-	
+
 	public void executeGivenCommand(int command) {
 		commandText = linuxCommandLineScripts.getCmdCommandScript(command);
 		if(commandText != null) {
@@ -123,20 +123,25 @@ public class Linux {
 		} else if(command == 5) {
 			shaChooseAction.shaChoose();
 		}
-	
-		
+
+
 	}
-	public void executeGivenSystemInfoCommand(int command) {
+	public void executeGivenSystemInfoCommand(int command) throws IOException {
 		if(command == 1) {
-			operatingSystemInfo.printOsInfo();
+			try {
+				operatingSystemInfo.printOsInfo("",0);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if(command == 2) {
-			operatingSystemInfo.networkInfo();
+			operatingSystemInfo.networkInfo("",0);
 		} else if(command == 3) {
-			environmentVariables.getAllEnvironmentVariables();
+			environmentVariables.getAllEnvironmentVariables("",0);
 		} else if(command == 4) {
-			operatingSystemInfo.printHardwareInfo();
+			operatingSystemInfo.printHardwareInfo("",0);
 		} else if(command == 5) {
-			operatingSystemInfo.javaInfo();
+			operatingSystemInfo.javaInfo("",0);
 		}
 	}
 
@@ -166,7 +171,7 @@ public class Linux {
 		} else if(command == 6) {
 			editPdfMetadata.editPdfMetadata();
 		} else if(command == 7) {
-			
+
 		}
 	}
 }

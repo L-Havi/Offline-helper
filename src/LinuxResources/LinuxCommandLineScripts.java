@@ -11,5 +11,5 @@ public class LinuxCommandLineScripts {
 			commandText = getDirectory();
 		}
 		return commandText;
-	};
+	}
 }

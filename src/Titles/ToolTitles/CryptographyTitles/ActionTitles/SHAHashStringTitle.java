@@ -2,7 +2,7 @@ package Titles.ToolTitles.CryptographyTitles.ActionTitles;
 
 public class SHAHashStringTitle {
 
-	
+
 	public void printTitle(String sourceString, String hashingAlgorithm, int salt) {
 		String saltString = "No";
 		if(salt == 1) {
@@ -19,8 +19,8 @@ public class SHAHashStringTitle {
 		System.out.println("	Current hashing algorithm: " + hashingAlgorithm + "\n");
 		System.out.println("3.	Use salt (Optional, Default: No)");
 		System.out.println("	Current salt: " + saltString + "\n");
-		System.out.println("4. 	Start\n");			
-		System.out.println("5. 	Exit to Main Menu\n");					
+		System.out.println("4. 	Start\n");
+		System.out.println("5. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}

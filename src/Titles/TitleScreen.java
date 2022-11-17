@@ -1,7 +1,7 @@
 package Titles;
 
 public class TitleScreen {
-	
+
 	public void printTitle(){
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
@@ -15,5 +15,5 @@ public class TitleScreen {
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
+
 }

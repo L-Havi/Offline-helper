@@ -9,9 +9,9 @@ public class ConfirmDelete {
 		Scanner scanner = new Scanner(System.in);
 		boolean isValidinput = false;
 		boolean delete = false;
-		
+
 		String actionChoice;
-		
+
 		while(!isValidinput) {
 			System.out.println("Input two digits below to confirm deleting ALL Files listed above\nOr type \"exit\" to exit\n");
 			Random r = new Random();
@@ -25,7 +25,7 @@ public class ConfirmDelete {
 				try {
 					userInput = Integer.parseInt(actionChoice);
 				}catch(NumberFormatException e) {
-					
+
 				}
 				if(result == userInput) {
 					delete = true;
@@ -39,5 +39,5 @@ public class ConfirmDelete {
 		}
 		return delete;
 	}
-	
+
 }

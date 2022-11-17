@@ -3,12 +3,12 @@ package Utilities.UserInput;
 import java.util.Scanner;
 
 public class ChooseSaveMethod {
-	
+
 	Scanner scanner = new Scanner(System.in);
 	boolean isValidInput = false;
 	String sourceString;
 	int yesOrNo = 0;
-	
+
 	public int getSaveMethod() {
 		while(!isValidInput) {
 			System.out.println("Save Output to Text File? (y/n)");
@@ -26,5 +26,5 @@ public class ChooseSaveMethod {
 		}
         return yesOrNo;
 	}
-	
+
 }

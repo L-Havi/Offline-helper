@@ -3,15 +3,12 @@ package WindowsResources;
 import java.io.File;
 import java.util.Scanner;
 
-import App.Main;
-import OperatingSystem.WindowsClasses.Windows;
-
 public class SourceFolder {
-	
+
 	Scanner scanner = new Scanner(System.in);
 
 
-	
+
 	public String getSourceFolder() {
 		boolean isValidFolder = false;
 		String sourceString = "";
@@ -33,7 +30,7 @@ public class SourceFolder {
 		}
         return sourceString;
 	}
-	
+
 	public String getSourceFile() {
 		boolean isValidFolder = false;
 		String sourceString = "";
@@ -55,7 +52,7 @@ public class SourceFolder {
 		}
         return sourceString;
 	}
-	
+
 	public String getSourceFileOrFolder() {
 		boolean isValidFolder = false;
 		String sourceString = "";
@@ -77,5 +74,5 @@ public class SourceFolder {
 		}
         return sourceString;
 	}
-	
+
 }

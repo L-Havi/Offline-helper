@@ -8,23 +8,23 @@ import WindowsResources.IncludeSubfolders;
 import WindowsResources.SourceFolder;
 
 public class RemoveDuplicateFilesFromFolder {
-	
+
 	private RemoveDuplicateFilesFromFolderTitle removeDuplicateFilesFromFolderTitle = new RemoveDuplicateFilesFromFolderTitle();
 	private IncludeSubfolders includeSubfolders = new IncludeSubfolders();
 	private SourceFolder sourceFolder = new SourceFolder();
 	private RemoveDuplicateFiles removeDuplicateFiles = new RemoveDuplicateFiles();
-	
+
 	public void removeDuplicates() {
-		
+
 		Scanner scanner = new Scanner(System.in);
 		boolean executed = true;
 		IncludeSubfolders includeSubfolders = new IncludeSubfolders();
 
 		String actionChoice;
-		
+
 		String sourceString = "";
 		int subfolders = 0;
-		
+
 		while(executed) {
 			removeDuplicateFilesFromFolderTitle.printTitle(sourceString, subfolders);
 			actionChoice = scanner.nextLine();

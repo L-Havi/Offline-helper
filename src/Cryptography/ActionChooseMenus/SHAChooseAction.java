@@ -11,7 +11,6 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-import Cryptography.MD5Actions.MD5HashString;
 import Cryptography.SHAActions.CreateSHAChecksum;
 import Cryptography.SHAActions.SHAHashString;
 import Titles.ToolTitles.CryptographyTitles.SHAChooseActionTitle;
@@ -23,12 +22,12 @@ public class SHAChooseAction {
 	SHAChooseActionTitle shaChooseActionTitle = new SHAChooseActionTitle();
 	SHAHashString shaHashString = new SHAHashString();
 	CreateSHAChecksum createSHAChecksum = new CreateSHAChecksum();
-	
+
 	public void shaChoose() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
-		
+
 		String action;
 		boolean run = true;
-		
+
 		while(run) {
 			shaChooseActionTitle.printTitle();
 			action = scanner.nextLine();
@@ -46,6 +45,6 @@ public class SHAChooseAction {
 		}
 
 	}
-	
-	
+
+
 }

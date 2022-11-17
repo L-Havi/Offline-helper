@@ -16,5 +16,5 @@ public class AESChooseActionTitle {
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
+
 }

@@ -14,7 +14,7 @@ public class ChooseNewFileType {
 	String newFileType;
 	ExtensionList extensionList = new ExtensionList();
 	List<String> allExtension = extensionList.getAllExtensions();
-	
+
 	public String getFileExtension() {
 
 		while(!isValidName) {
@@ -28,5 +28,5 @@ public class ChooseNewFileType {
 		}
         return newFileType;
 	}
-	
+
 }

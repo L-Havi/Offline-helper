@@ -14,8 +14,8 @@ public class PGPActionsTitle {
 		System.out.println("	Current Password: " + password + "\n");
 		System.out.println("3. 	Set Folder Where Keypairs are Stored");
 		System.out.println("	Current Folder: " + srcFolder+ "\n");
-		System.out.println("4. 	Start\n");			
-		System.out.println("5. 	Exit to Main Menu\n");					
+		System.out.println("4. 	Start\n");
+		System.out.println("5. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
@@ -33,11 +33,11 @@ public class PGPActionsTitle {
 	System.out.println("	Current Folder: " + encryptedFile + "\n");
 	System.out.println("3. 	Set Plain Text File Location");
 	System.out.println("	Current Plain Text File Location: " + plainTextFile + "\n");
-	System.out.println("4. 	Start\n");			
-	System.out.println("5. 	Exit to Main Menu\n");					
+	System.out.println("4. 	Start\n");
+	System.out.println("5. 	Exit to Main Menu\n");
 	System.out.println("------------------------------------------------------------------------");
 	System.out.println("");
-	
+
 	}
 
 	public void printDecryptTitle(String privateKeyLocation, String encryptedFile, String plainTextFile,
@@ -55,11 +55,11 @@ public class PGPActionsTitle {
 		System.out.println("	Current Folder Location: " + plainTextFile + "\n");
 		System.out.println("4. 	Set Private Key's Password");
 		System.out.println("	Current Password: " + password + "\n");
-		System.out.println("5. 	Start\n");			
-		System.out.println("6. 	Exit to Main Menu\n");					
+		System.out.println("5. 	Start\n");
+		System.out.println("6. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
-		
+
 	}
 
 	public void printSignTitle(String privateKeyLocation, String publicKeyLocation, String plainTextFile,
@@ -79,11 +79,11 @@ public class PGPActionsTitle {
 		System.out.println("	Current Folder Location: " + signatureFolder + "\n");
 		System.out.println("5. 	Set Private Key's Password");
 		System.out.println("	Current Password: " + password + "\n");
-		System.out.println("6. 	Start\n");			
-		System.out.println("7. 	Exit to Main Menu\n");					
+		System.out.println("6. 	Start\n");
+		System.out.println("7. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
-		
+
 	}
 
 	public void printVerifyTitle(String publicKeyLocation, String plainTextFile, String signatureFile) {
@@ -98,8 +98,8 @@ public class PGPActionsTitle {
 		System.out.println("	Current File: " + plainTextFile + "\n");
 		System.out.println("3. 	Set Signature File Location");
 		System.out.println("	Current Signature File Location: " + signatureFile + "\n");
-		System.out.println("4. 	Start\n");			
-		System.out.println("5. 	Exit to Main Menu\n");					
+		System.out.println("4. 	Start\n");
+		System.out.println("5. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}

@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class WindowsExecuteCmd {
-	
+
 	public void executeCmd(String commandText) {
 		ProcessBuilder builder = new ProcessBuilder();
 		builder = new ProcessBuilder("cmd.exe", "/c", commandText);
-		
+
         builder.redirectErrorStream(true);
         Process p;
 		try {
@@ -19,8 +19,8 @@ public class WindowsExecuteCmd {
 	        while (true) {
 	        	try {
 	        		line = r.readLine();
-		            if (line == null) { 
-		            	break; 
+		            if (line == null) {
+		            	break;
 		            }
 		            System.out.println(line);
 					} catch (IOException e) {
@@ -31,5 +31,5 @@ public class WindowsExecuteCmd {
 			e1.printStackTrace();
 		}
 	}
-	
+
 }

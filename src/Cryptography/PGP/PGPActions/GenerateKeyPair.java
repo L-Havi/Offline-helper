@@ -16,14 +16,14 @@ import org.bouncycastle.openpgp.PGPException;
 import Cryptography.PGP.RSAKeyPairGenerator;
 
 public class GenerateKeyPair {
-	
+
 	private boolean isArmored = false;
 
 	public void genKeyPair(String id, String passwd, String sourceFolder) throws InvalidKeyException, NoSuchProviderException, SignatureException, IOException, PGPException, NoSuchAlgorithmException {
 
 		String pubKeyFile = sourceFolder + "\\public_key.dat";
 		String privKeyFile = sourceFolder + "\\secret_key.dat";
-		
+
 		RSAKeyPairGenerator rkpg = new RSAKeyPairGenerator();
 
 		Security.addProvider(new BouncyCastleProvider());
@@ -38,6 +38,6 @@ public class GenerateKeyPair {
 		FileOutputStream out2 = new FileOutputStream(pubKeyFile);
 
 		rkpg.exportKeyPair(out1, out2, kp.getPublic(), kp.getPrivate(), id, passwd.toCharArray(), isArmored);
-		
+
 	}
 }

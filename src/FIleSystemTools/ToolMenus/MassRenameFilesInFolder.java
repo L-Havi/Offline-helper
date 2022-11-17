@@ -2,7 +2,6 @@ package FIleSystemTools.ToolMenus;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,18 +22,18 @@ public class MassRenameFilesInFolder {
 	private RenameFiles renameFiles = new RenameFiles();
 	private IncludeSubfolders includeSubfolders = new IncludeSubfolders();
 	private MassRenameFilesInFolderTitle massRenameFilesInFolderTitle = new MassRenameFilesInFolderTitle();
-	
+
 	public void massRenameFiles() {
 		String srcFolder = "";
 		String[] extensions = {"*"};
 		int subfolders = 0;
 		String newName = "";
 		String actionChoice;
-		
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			massRenameFilesInFolderTitle.printTitle(srcFolder, extensions, subfolders, newName);
 			actionChoice = scanner.nextLine();
@@ -64,5 +63,5 @@ public class MassRenameFilesInFolder {
 			}
 		}
 	}
-	
+
 }

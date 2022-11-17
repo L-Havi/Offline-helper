@@ -1,7 +1,7 @@
 package Titles.ToolCollectionTitles;
 
 public class SystemTitle {
-	
+
 	public void printTitle(){
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");

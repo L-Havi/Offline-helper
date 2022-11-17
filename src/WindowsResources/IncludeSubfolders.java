@@ -3,13 +3,13 @@ package WindowsResources;
 import java.util.Scanner;
 
 public class IncludeSubfolders {
-	
-	
+
+
 	Scanner scanner = new Scanner(System.in);
 	boolean isValidInput = false;
 	String sourceString;
 	int yesOrNo = 0;
-	
+
 	public int includeSubfolders() {
 		while(!isValidInput) {
 			System.out.println("Include subfolders? (y/n)");

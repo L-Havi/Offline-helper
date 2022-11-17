@@ -3,7 +3,7 @@ package Titles.ToolTitles.FileSystemTitles;
 public class UnzipAllZipFilesInFolderTitle {
 
 	public void printTitle(String sourceFolder, String zippingDestination, String name){
-		
+
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t\t\tUnzip/Zip Files");
@@ -16,11 +16,11 @@ public class UnzipAllZipFilesInFolderTitle {
 		System.out.println("3.	Set name for new zip file (Optional, Default: zipFile)");
 		System.out.println("	Use only when zipping, not unzipping!");
 		System.out.println("	Current Name: " + name + "\n");
-		System.out.println("4. 	Start\n");			
-		System.out.println("5. 	Exit to Main Menu\n");					
+		System.out.println("4. 	Start\n");
+		System.out.println("5. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
-	
+
+
 }

@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 
 public class FolderSize {
-	
+
     public long getFolderSize(File folder){
         long length = 0;
         File[] files = folder.listFiles();
@@ -19,7 +19,7 @@ public class FolderSize {
         }
         return length;
     }
-    
+
     public long getSizeForList(List<String> files){
         long length = 0;
         for(String fileString : files) {
@@ -30,5 +30,5 @@ public class FolderSize {
         }
         return length;
     }
-    
+
 }

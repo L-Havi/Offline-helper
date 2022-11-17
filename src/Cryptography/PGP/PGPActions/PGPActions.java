@@ -7,7 +7,7 @@ import Utilities.UserInput.ChooseStringInput;
 import WindowsResources.SourceFolder;
 
 public class PGPActions {
-	
+
 	PGPActionsTitle pgpActionsTitle = new PGPActionsTitle();
 	Scanner scanner = new Scanner(System.in);
 	GenerateKeyPair generateKeyPair = new GenerateKeyPair();
@@ -17,14 +17,14 @@ public class PGPActions {
 	PGPDecrypt pgpDecrypt = new PGPDecrypt();
 	PGPCreateSignature pgpCreateSignature = new PGPCreateSignature();
 	PGPVerifySignature pgpVerifySignature = new PGPVerifySignature();
-	
+
 	public void generateKeys() throws Exception{
 		String actionChoice;
 		String userId = "";
 		String password = "";
 		String srcFolder = "";
 		boolean run = true;
-		
+
 		while(run) {
 			pgpActionsTitle.printGenerateKeypairTitle(userId, password, srcFolder);
 			actionChoice = scanner.nextLine();
@@ -46,21 +46,21 @@ public class PGPActions {
 				run = false;
 			} else {
 				System.out.println("Command was not recognized! Please type a valid command number");
-			} 
+			}
 			if(userId == "exit" || password == "exit" || srcFolder == "exit") {
 				run = false;
 			}
 		}
 
 	}
-	
+
 	public void encrypt() throws Exception{
 		String actionChoice;
 		String publicKeyLocation = "";
 		String encryptedFile = "";
 		String plainTextFile = "";
 		boolean run = true;
-		
+
 		while(run) {
 			pgpActionsTitle.printEncryptTitle(publicKeyLocation, encryptedFile, plainTextFile);
 			actionChoice = scanner.nextLine();
@@ -78,7 +78,7 @@ public class PGPActions {
 				run = false;
 			} else {
 				System.out.println("Command was not recognized! Please type a valid command number");
-			} 
+			}
 			if(publicKeyLocation == "exit" || encryptedFile == "exit" || plainTextFile == "exit") {
 				run = false;
 			}
@@ -92,7 +92,7 @@ public class PGPActions {
 		String plainTextFile = "";
 		String password = "";
 		boolean run = true;
-		
+
 		while(run) {
 			pgpActionsTitle.printDecryptTitle(privateKeyLocation, encryptedFile, plainTextFile, password);
 			actionChoice = scanner.nextLine();
@@ -112,13 +112,13 @@ public class PGPActions {
 				run = false;
 			} else {
 				System.out.println("Command was not recognized! Please type a valid command number");
-			} 
+			}
 			if(privateKeyLocation == "exit" || encryptedFile == "exit" || plainTextFile == "exit" || password == "exit") {
 				run = false;
 			}
 		}
 	}
-	
+
 	public void sign() throws Exception{
 		String actionChoice;
 		String privateKeyLocation = "";
@@ -127,7 +127,7 @@ public class PGPActions {
 		String signatureFolder = "";
 		String password = "";
 		boolean run = true;
-		
+
 		while(run) {
 			pgpActionsTitle.printSignTitle(privateKeyLocation, publicKeyLocation, plainTextFile, signatureFolder, password);
 			actionChoice = scanner.nextLine();
@@ -149,20 +149,20 @@ public class PGPActions {
 				run = false;
 			} else {
 				System.out.println("Command was not recognized! Please type a valid command number");
-			} 
+			}
 			if(privateKeyLocation == "exit" || publicKeyLocation == "exit" || plainTextFile == "exit" || password == "exit" || signatureFolder == "exit") {
 				run = false;
 			}
 		}
 	}
-	
+
 	public void verify() throws Exception{
 		String actionChoice;
 		String publicKeyLocation = "";
 		String plainTextFile = "";
 		String signatureFile = "";
 		boolean run = true;
-		
+
 		while(run) {
 			pgpActionsTitle.printVerifyTitle(publicKeyLocation, plainTextFile, signatureFile);
 			actionChoice = scanner.nextLine();
@@ -179,11 +179,11 @@ public class PGPActions {
 				run = false;
 			} else {
 				System.out.println("Command was not recognized! Please type a valid command number");
-			} 
+			}
 			if(publicKeyLocation == "exit" || plainTextFile == "exit" || signatureFile == "exit") {
 				run = false;
 			}
 		}
 	}
-	
+
 }

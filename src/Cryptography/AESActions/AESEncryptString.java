@@ -31,15 +31,15 @@ public class AESEncryptString {
 	String salt = "E1F53F35F353C253";
 	String algorithm = "AES/CBC/PKCS5Padding";
 	Scanner scanner = new Scanner(System.in);
-	
+
 	public void encryptString() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
 		String plainText = "";
 		String password = "";
-		
+
 		String actionChoice;
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			aesEncryptStringTitle.printTitle(plainText, password);
 			actionChoice = scanner.nextLine();
@@ -71,5 +71,5 @@ public class AESEncryptString {
 				run = false;
 			}
 		}
-	}	
+	}
 }

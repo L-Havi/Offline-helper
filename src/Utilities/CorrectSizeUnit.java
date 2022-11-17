@@ -4,7 +4,7 @@ public class CorrectSizeUnit {
 
 	public String getCorrectSizeUnit(long size){
 		String sizeString;
-        
+
 		if(((double)size / (1024 * 1024 * 1024)) > 1) {
 			// Size of folder in GigaBytes
 			sizeString = ((double)size / (1024 * 1024 * 1024)) + " GB";

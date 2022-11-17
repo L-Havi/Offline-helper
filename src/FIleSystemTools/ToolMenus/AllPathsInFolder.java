@@ -1,6 +1,5 @@
 package FIleSystemTools.ToolMenus;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import WindowsResources.IncludeSubfolders;
 import WindowsResources.SourceFolder;
 
 public class AllPathsInFolder {
-	
+
 	SourceFolder sourceFolder = new SourceFolder();
 	ChooseExtensions chooseExtensions = new ChooseExtensions();
 	IncludeSubfolders includeSubfolders = new IncludeSubfolders();
@@ -25,17 +24,17 @@ public class AllPathsInFolder {
 	OutputPaths outputPaths = new OutputPaths();
 	AllPathsInFolderTitle allPathsInFolderTitle = new AllPathsInFolderTitle();
 	Scanner scanner = new Scanner(System.in);
-	
+
 	public void getAllPathsInFolder() throws IOException {
-		
+
 		String srcFolder = "";
 		String[] extensions = {"*"};
 		int subfolders = 0;
 		int saveToTextFile = 0;
 		String actionChoice;
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			allPathsInFolderTitle.printTitle(srcFolder, extensions, subfolders, saveToTextFile);
 			actionChoice = scanner.nextLine();
@@ -48,7 +47,7 @@ public class AllPathsInFolder {
 			} else if(actionChoice.toLowerCase().trim().equals("4")) {
 				saveToTextFile = chooseSaveMethod.getSaveMethod();
 			} else if(actionChoice.toLowerCase().trim().equals("5") && srcFolder != "" && srcFolder != "exit") {
-				List<String> fileStrings = new ArrayList<String>();
+				List<String> fileStrings = new ArrayList<>();
 				boolean save = false;
 				if(saveToTextFile == 1) {
 					save = true;
@@ -59,7 +58,7 @@ public class AllPathsInFolder {
 					e.printStackTrace();
 				}
 				if(fileStrings.size() > 0) {
-					outputPaths.outputPaths(fileStrings, save, srcFolder);
+					outputPaths.outputPaths(fileStrings, save, srcFolder, srcFolder, "");
 				}
 				run = false;
 			} else if(actionChoice.toLowerCase().trim().equals("6")) {
@@ -72,5 +71,5 @@ public class AllPathsInFolder {
 			}
 		}
 	}
-	
+
 }

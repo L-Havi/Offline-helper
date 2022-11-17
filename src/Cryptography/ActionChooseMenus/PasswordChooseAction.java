@@ -19,12 +19,12 @@ public class PasswordChooseAction {
 	Scanner scanner = new Scanner(System.in);
 	GeneratePassword generatePassword = new GeneratePassword();
 	PasswordChooseActionTitle passwordChooseActionTitle = new PasswordChooseActionTitle();
-	
+
 	public void passwordChoose() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
-		
+
 		String actionChoice;
 		boolean run = true;
-		
+
 		while(run) {
 			passwordChooseActionTitle.printTitle();
 			actionChoice = scanner.nextLine();

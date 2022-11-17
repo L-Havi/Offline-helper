@@ -15,17 +15,17 @@ public class ChooseFiles {
 
 	private FindFiles findFiles = new FindFiles();
 	private IncludeSubfolders includeSubfolders = new IncludeSubfolders();
-	
+
 	public String[] getFiles(String srcFolder, String method) {
 		Scanner scanner = new Scanner(System.in);
 		boolean isValidinput = false;
 		String sourceString;
 		String[] finalFilePaths = new String[0];
-		
+
 			while(!isValidinput) {
 				System.out.println("Input all files you want to included separated with a comma (e.g. file1.txt,file2.txt)\nIf you want to include all files in folders input \"*\"\nIf file doesn't exist in file it is skipped");
 				sourceString = scanner.nextLine();
-				List<String> realFiles = new ArrayList<String>();
+				List<String> realFiles = new ArrayList<>();
 				int subfolders = 0;
 				if(sourceString.trim().equals("*")) {
 					if(method.equals("unzip")) {
@@ -44,7 +44,7 @@ public class ChooseFiles {
 					for(String file : files) {
 						String testPath = srcFolder + "\\" + file;
 						File tempFile = new File(testPath);
-						if(tempFile.exists() && !realFiles.contains(testPath)) { 
+						if(tempFile.exists() && !realFiles.contains(testPath)) {
 							realFiles.add(testPath);
 						}
 					}
@@ -65,15 +65,15 @@ public class ChooseFiles {
 		boolean isValidinput = false;
 		String sourceString;
 		String[] finalFilePaths = new String[0];
-		
+
 			while(!isValidinput) {
 				System.out.println("Input all files you want to included separated with a comma (e.g. C:\\folder\\file1.pdf,C:\\folder\\file2.pdf)\nIf file doesn't exist in file it is skipped");
 				sourceString = scanner.nextLine();
-				List<String> realFiles = new ArrayList<String>();
+				List<String> realFiles = new ArrayList<>();
 				List<String> files = Arrays.asList(sourceString.split(","));
 				for(String file : files) {
 					File tempFile = new File(file);
-					if(tempFile.exists() && !realFiles.contains(file)) { 
+					if(tempFile.exists() && !realFiles.contains(file)) {
 						realFiles.add(file);
 					}
 					if (!(realFiles.size() > 0)) {
@@ -85,7 +85,7 @@ public class ChooseFiles {
 					}
 				}
 			}
-			
+
 		return finalFilePaths;
 	}
 

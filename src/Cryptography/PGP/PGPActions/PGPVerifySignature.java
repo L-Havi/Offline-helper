@@ -2,21 +2,21 @@ package Cryptography.PGP.PGPActions;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import Cryptography.PGP.PgpHelper;
 
 public class PGPVerifySignature {
 
-	public void verifyAction(String pubKeyFile, String plainTextFile, String signatureFile) throws Exception{
+	public int verifyAction(String pubKeyFile, String plainTextFile, String signatureFile) throws Exception{
 		File signature = new File(signatureFile);
 		byte[] sig = method(signature);
 		FileInputStream pubKeyIs = new FileInputStream(pubKeyFile);
 		FileInputStream plainTextInput = new FileInputStream(plainTextFile);
-				
+
 		byte[] bIn = PgpHelper.getInstance().inputStreamToByteArray(plainTextInput);
-		PgpHelper.getInstance().verifySignature(plainTextFile, sig, pubKeyIs);
+		int result = PgpHelper.getInstance().verifySignature(plainTextFile, sig, pubKeyIs);
+		return result;
 	}
 
     public static byte[] method(File file)
@@ -28,5 +28,5 @@ public class PGPVerifySignature {
             fl.close();
             return arr;
         }
-	
+
 }

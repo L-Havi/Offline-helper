@@ -1,16 +1,8 @@
 package ToolListMenus;
 
 import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 import OperatingSystem.ChooseOperatingSystem;
 import OperatingSystem.LinuxClasses.Linux;
@@ -26,13 +18,13 @@ public class SystemToolList {
 	private Linux linux = new Linux();
 	private Mac mac = new Mac();
 	private ChooseOperatingSystem chooseOperatingSystem = new ChooseOperatingSystem();
-	
+
 	public void getSystemToolList(int osInt){
-        
+
 		if(!(osInt > 0)) {
 			osInt = chooseOperatingSystem.getOperatingSystem();
 		}
-		
+
 		while (run) {
 
 			systemTitle.printTitle();
@@ -41,11 +33,26 @@ public class SystemToolList {
                 if (command >= 1 && command <= 6) {
                 	if(command >= 1 && command <= 5) {
                 		if(osInt == 0) {
-							windows.executeGivenSystemInfoCommand(command);
+							try {
+								windows.executeGivenSystemInfoCommand(command);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
                 		} else if(osInt == 1) {
-							linux.executeGivenSystemInfoCommand(command);
+							try {
+								linux.executeGivenSystemInfoCommand(command);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
                 		} else if(osInt == 2) {
-							mac.executeGivenSystemInfoCommand(command);
+							try {
+								mac.executeGivenSystemInfoCommand(command);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
                 		}
                 		run = false;
                 	} else if(command == 6) {

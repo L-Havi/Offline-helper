@@ -1,10 +1,5 @@
 package FIleSystemTools.ToolMenus;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import Titles.ToolTitles.FileSystemTitles.MassCopyOrMoveFolderContentsTitle;
@@ -12,12 +7,11 @@ import Utilities.UserInput.ChooseMoveOrCopy;
 import Utilities.UserOutput.ListDirectoryFiles;
 import WindowsResources.CopyFilesToAnotherFolder;
 import WindowsResources.DestinationFolder;
-import WindowsResources.IncludeSubfolders;
 import WindowsResources.MoveFilesToAnotherFolder;
 import WindowsResources.SourceFolder;
 
 public class MassCopyOrMoveFolderContents {
-	
+
 	private SourceFolder sourceFolder = new SourceFolder();
 	private DestinationFolder destinationFolder = new DestinationFolder();
 	private ListDirectoryFiles listDirectoryFiles = new ListDirectoryFiles();
@@ -25,7 +19,7 @@ public class MassCopyOrMoveFolderContents {
 	private CopyFilesToAnotherFolder copyFilesToAnotherFolder = new CopyFilesToAnotherFolder();
 	private ChooseMoveOrCopy chooseMoveOrCopy = new ChooseMoveOrCopy();
 	private MassCopyOrMoveFolderContentsTitle massCopyOrMoveFolderContentsTitle = new MassCopyOrMoveFolderContentsTitle();
-	
+
 	public void copyOrMoveFiles() {
 		boolean executed = true;
 		String sourceString = "";
@@ -33,11 +27,11 @@ public class MassCopyOrMoveFolderContents {
 		String[][] destinationFiles = new String[0][0];
 		String destinationString = "";
 		String moveOrCopy = "";
-		
+
 		String actionChoice;
-		
+
 		Scanner scanner = new Scanner(System.in);
-		
+
 		while(executed) {
 			massCopyOrMoveFolderContentsTitle.printTitle(sourceString, destinationString, moveOrCopy);
 			actionChoice = scanner.nextLine();
@@ -64,9 +58,9 @@ public class MassCopyOrMoveFolderContents {
 			if(sourceString == "exit" || destinationString == "exit" || moveOrCopy == "exit") {
 				executed = false;
 			}
-			
+
 		}
-		
+
 	}
-	
+
 }

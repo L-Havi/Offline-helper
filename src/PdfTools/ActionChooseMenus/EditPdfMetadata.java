@@ -1,19 +1,14 @@
 package PdfTools.ActionChooseMenus;
 
-import com.aspose.pdf.DocumentInfo;
-
-import Titles.ToolTitles.PdfTitles.EditPdfMetadataTitle;
-import Titles.ToolTitles.PdfTitles.ExtractPdfMetadataTitle;
-import Utilities.UserInput.ChooseDateInput;
-import Utilities.UserInput.ChooseStringInput;
-import WindowsResources.SourceFolder;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 
 import com.aspose.pdf.Document;
+import com.aspose.pdf.DocumentInfo;
+
+import Titles.ToolTitles.PdfTitles.EditPdfMetadataTitle;
+import Utilities.UserInput.ChooseDateInput;
+import Utilities.UserInput.ChooseStringInput;
+import WindowsResources.SourceFolder;
 
 public class EditPdfMetadata {
 
@@ -22,23 +17,23 @@ public class EditPdfMetadata {
 	EditPdfMetadataTitle editPdfMetadataTitle = new EditPdfMetadataTitle();
 	ChooseStringInput chooseStringInput = new ChooseStringInput();
 	ChooseDateInput chooseDateInput = new ChooseDateInput();
-	
+
 	public void editPdfMetadata() {
-		
+
 		String actionChoice;
 		String originalPdf = "";
 		String author = "";
 		String keywords = "";
 		String subject = "";
 		String title = "";
-		
+
 		String tempAuthor = "";
 		String tempKeywords = "";
 		String tempSubject = "";
 		String tempTitle = "";
 
 		boolean run = true;
-		
+
 		while(run) {
 			if(!originalPdf.equals("")) {
 		        Document pdfDocument = new Document(originalPdf);
@@ -64,7 +59,7 @@ public class EditPdfMetadata {
 					title = docInfo.getTitle();
 				}
 			}
-			
+
 			editPdfMetadataTitle.printTitle(originalPdf, author, keywords, subject, title);
 			actionChoice = scanner.nextLine();
 			if(actionChoice.toLowerCase().trim().equals("1")) {
@@ -88,12 +83,12 @@ public class EditPdfMetadata {
 		}
 
 	}
-	
-	
-    private void setPDFFileInformation(String targetPdf, String author, String keywords, String subject, String title) {
+
+
+    public void setPDFFileInformation(String targetPdf, String author, String keywords, String subject, String title) {
         Document pdfDocument = new Document(targetPdf);
         DocumentInfo docInfo = pdfDocument.getInfo();
-        
+
         if(author != null) {
             docInfo.setAuthor(author);
         }
@@ -106,9 +101,9 @@ public class EditPdfMetadata {
         if(title != null) {
             docInfo.setTitle(title);
         }
-        
+
         docInfo.setModDate(new java.util.Date());
-        
+
         // Show document information
         System.out.println(targetPdf + "'s metadata set to:");
 		System.out.println("------------------------------------------------------------------------");
@@ -118,10 +113,10 @@ public class EditPdfMetadata {
         System.out.println("Modify Date: " + docInfo.getModDate());
         System.out.println("Subject: " + docInfo.getSubject());
         System.out.println("Title: " + docInfo.getTitle());
-        
+
         pdfDocument.save(targetPdf);
-        
+
         pdfDocument.close();
     }
-	
+
 }

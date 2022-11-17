@@ -16,7 +16,7 @@ import WindowsResources.IncludeSubfolders;
 import WindowsResources.SourceFolder;
 
 public class FolderFileCountAndSize {
-	
+
 	SourceFolder sourceFolder = new SourceFolder();
 	ChooseExtensions chooseExtensions = new ChooseExtensions();
 	IncludeSubfolders includeSubfolders = new IncludeSubfolders();
@@ -26,18 +26,18 @@ public class FolderFileCountAndSize {
 	FileCountAndSize fileCountAndSize = new FileCountAndSize();
 	FolderFileCountAndSizeTitle folderFileCountAndSizeTitle = new FolderFileCountAndSizeTitle();
 	Scanner scanner = new Scanner(System.in);
-	
+
 	public void getAllPathsInFolder() throws IOException {
-		
-		
+
+
 		String srcFolder = "";
 		String[] extensions = {"*"};
 		int subfolders = 0;
 		int saveToTextFile = 0;
 		String actionChoice;
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			folderFileCountAndSizeTitle.printTitle(srcFolder, extensions, subfolders, saveToTextFile);
 			actionChoice = scanner.nextLine();
@@ -50,7 +50,7 @@ public class FolderFileCountAndSize {
 			} else if(actionChoice.toLowerCase().trim().equals("4")) {
 				saveToTextFile = chooseSaveMethod.getSaveMethod();
 			} else if(actionChoice.toLowerCase().trim().equals("5") && srcFolder != "" && srcFolder != "exit") {
-				List<String> fileStrings = new ArrayList<String>();
+				List<String> fileStrings = new ArrayList<>();
 				boolean save = false;
 				if(saveToTextFile == 1) {
 					save = true;
@@ -61,7 +61,7 @@ public class FolderFileCountAndSize {
 					e.printStackTrace();
 				}
 				if(fileStrings.size() > 0) {
-					fileCountAndSize.getFileCountAndSize(fileStrings, save, srcFolder);
+					fileCountAndSize.getFileCountAndSize(fileStrings, save, srcFolder,srcFolder,"");
 				}
 				run = false;
 			} else if(actionChoice.toLowerCase().trim().equals("6")) {
@@ -74,5 +74,5 @@ public class FolderFileCountAndSize {
 			}
 		}
 	}
-	
+
 }

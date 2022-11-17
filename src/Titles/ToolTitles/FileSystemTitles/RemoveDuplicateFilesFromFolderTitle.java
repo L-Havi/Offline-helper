@@ -7,7 +7,7 @@ public class RemoveDuplicateFilesFromFolderTitle {
 		if(subfolderInt == 1) {
 			subfolderString = "Yes";
 		}
-		
+
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t\t\tRemove Duplicate Files");
@@ -17,11 +17,11 @@ public class RemoveDuplicateFilesFromFolderTitle {
 		System.out.println("	Current Source Folder: " + sourceFolder + "\n");
 		System.out.println("2. 	Include subfolders (Optional, default: No)");
 		System.out.println("	Include SubFolders: " + subfolderString + "\n");
-		System.out.println("3. 	Start\n");			
-		System.out.println("4. 	Exit to Main Menu\n");					
+		System.out.println("3. 	Start\n");
+		System.out.println("4. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
-	
+
+
 }

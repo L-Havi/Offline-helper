@@ -2,7 +2,6 @@ package Utilities.UserInput;
 
 import java.util.Scanner;
 
-import Titles.ToolTitles.CryptographyTitles.ActionTitles.ChooseSHAAlgorithmTitle;
 import Titles.ToolTitles.PdfTitles.ChooseConvertFormatTitle;
 
 public class ChooseConvertFormat {
@@ -10,12 +9,12 @@ public class ChooseConvertFormat {
 	Scanner scanner = new Scanner(System.in);
 	ChooseConvertFormatTitle chooseConvertFormatTitle = new ChooseConvertFormatTitle();
 	String actionChoice;
-	
+
 	public String chooseAlgorithm() {
-		
+
 
 		boolean runChoose = true;
-		
+
 		while(runChoose) {
 			chooseConvertFormatTitle.printTitle();
 			actionChoice = scanner.nextLine();

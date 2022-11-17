@@ -3,13 +3,13 @@ package Utilities.UserInput;
 import java.util.Scanner;
 
 public class HasSpecialCharacters {
-	
+
 	public int hasSpecialCharacters() {
 		Scanner scanner = new Scanner(System.in);
 		boolean isValidInput = false;
 		String sourceString = "";
     	int choice = 0;
-		
+
 			while(!isValidInput) {
 				System.out.println("Include Special Characters? (y/n/exit)");
 				sourceString = scanner.nextLine();
@@ -26,5 +26,5 @@ public class HasSpecialCharacters {
 			}
 		return choice;
 	}
-	
+
 }

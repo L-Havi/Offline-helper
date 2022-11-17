@@ -6,14 +6,14 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 public class MoveToFileExtensionFolder {
-	
+
 	public void move(String[][] destinationFiles) {
-		for (int i = 0; i<destinationFiles.length; i++) {
+		for (String[] destinationFile : destinationFiles) {
 			try {
-				Files.move(Paths.get(destinationFiles[i][0]), Paths.get(destinationFiles[i][1]), StandardCopyOption.REPLACE_EXISTING);
+				Files.move(Paths.get(destinationFile[0]), Paths.get(destinationFile[1]), StandardCopyOption.REPLACE_EXISTING);
 			} catch (IOException e) {
 				e.printStackTrace();
-				System.out.println("Failed to move files from " + destinationFiles[i][0] + " to " + destinationFiles[i][1]);
+				System.out.println("Failed to move files from " + destinationFile[0] + " to " + destinationFile[1]);
 			}
 		}
 	}

@@ -10,7 +10,7 @@ public class ExecuteMacScripts {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

@@ -36,7 +36,7 @@ import SystemInformation.OperatingSystemInfo;
 import WindowsResources.CmdCommandScripts;
 
 public class Windows {
-	
+
 	private String commandText;
 	private CmdCommandScripts cmdScripts = new CmdCommandScripts();
 	private WindowsExecuteCmd windowsExecuteCmd = new WindowsExecuteCmd();
@@ -62,7 +62,7 @@ public class Windows {
 	private ExtractPdfMetadata extractPdfMetadata = new ExtractPdfMetadata();
 	private EditPdfMetadata editPdfMetadata = new EditPdfMetadata();
 	private DeleteAllFilesInFolder deleteAllFilesInFolder = new DeleteAllFilesInFolder();
-	
+
 	public void executeGivenCommand(int command) {
 		commandText = cmdScripts.getCmdCommandScript(command);
 		if(commandText != null) {
@@ -107,7 +107,7 @@ public class Windows {
 			}
 		}
 	}
-	
+
 	public void executeGivenEncryptionCommand(int command) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
 			if(command == 1) {
 				aes.encryptOrDecrypt();
@@ -125,17 +125,22 @@ public class Windows {
 			}
 	}
 
-	public void executeGivenSystemInfoCommand(int command) {
+	public void executeGivenSystemInfoCommand(int command) throws IOException {
 		if(command == 1) {
-			operatingSystemInfo.printOsInfo();
+			try {
+				operatingSystemInfo.printOsInfo("",0);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if(command == 2) {
-			operatingSystemInfo.networkInfo();
+			operatingSystemInfo.networkInfo("",0);
 		} else if(command == 3) {
-			environmentVariables.getAllEnvironmentVariables();
+			environmentVariables.getAllEnvironmentVariables("",0);
 		} else if(command == 4) {
-			operatingSystemInfo.printHardwareInfo();
+			operatingSystemInfo.printHardwareInfo("",0);
 		} else if(command == 5) {
-			operatingSystemInfo.javaInfo();
+			operatingSystemInfo.javaInfo("",0);
 		}
 	}
 
@@ -165,8 +170,8 @@ public class Windows {
 		} else if(command == 6) {
 			editPdfMetadata.editPdfMetadata();
 		} else if(command == 7) {
-			
+
 		}
 	}
-	
+
 }

@@ -9,14 +9,14 @@ public class MapSubFolders {
 
 	public List<File> findAllSubdirs(File file) {
 	    List<File> subdirs = Arrays.asList(file.listFiles(File::isDirectory));
-	    subdirs = new ArrayList<File>(subdirs);
+	    subdirs = new ArrayList<>(subdirs);
 
-	    List<File> deepSubdirs = new ArrayList<File>();
+	    List<File> deepSubdirs = new ArrayList<>();
 	    for(File subdir : subdirs) {
-	        deepSubdirs.addAll(findAllSubdirs(subdir)); 
+	        deepSubdirs.addAll(findAllSubdirs(subdir));
 	    }
 	    subdirs.addAll(deepSubdirs);
 	    return subdirs;
 	}
-	
+
 }

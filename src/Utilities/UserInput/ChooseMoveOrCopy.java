@@ -8,7 +8,7 @@ public class ChooseMoveOrCopy {
 		Scanner scanner = new Scanner(System.in);
 		boolean isValidinput = false;
 		String moveOrCopy = "";
-		
+
 		while(!isValidinput) {
 			System.out.println("Do you wish to move or copy files?(move/copy/exit)");
 		    moveOrCopy = scanner.nextLine();
@@ -17,10 +17,10 @@ public class ChooseMoveOrCopy {
 		    }else {
 		        System.out.println("Please give correct input (Type move, copy or exit)");
 		    }
-				
-			
+
+
 		}
 		return moveOrCopy;
 	}
-	
+
 }

@@ -8,7 +8,6 @@ import OperatingSystem.LinuxClasses.Linux;
 import OperatingSystem.MacClasses.Mac;
 import OperatingSystem.WindowsClasses.Windows;
 import Titles.ToolCollectionTitles.FileSystemTitle;
-import Titles.ToolCollectionTitles.PdfToolTitle;
 
 public class FileSystemList {
 	private boolean run = true;
@@ -18,13 +17,13 @@ public class FileSystemList {
 	private Linux linux = new Linux();
 	private Mac mac = new Mac();
 	private ChooseOperatingSystem chooseOperatingSystem = new ChooseOperatingSystem();
-	
+
 	public void getFileSystemList(int osInt){
-        
+
 		if(!(osInt > 0)) {
 			osInt = chooseOperatingSystem.getOperatingSystem();
 		}
-		
+
 		while (run) {
 
 			fileSystemTitle.printTitle();

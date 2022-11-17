@@ -10,7 +10,7 @@ public class MassCopyOrMoveFolderContentsTitle {
 		if(moveCopy.toLowerCase().trim().equals("copy")) {
 			moveOrCopy = "Copy";
 		}
-		
+
 		System.out.println("");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t\t\tMass Copy or Move Files to Another Folder");
@@ -22,10 +22,10 @@ public class MassCopyOrMoveFolderContentsTitle {
 		System.out.println("	Current Destination Folder: " + destinationFolder + "\n");
 		System.out.println("3. 	Set to Move/Copy");
 		System.out.println("	Move or Copy: " + moveOrCopy + "\n");
-		System.out.println("4. 	Start\n");			
-		System.out.println("5. 	Exit to Main Menu\n");					
+		System.out.println("4. 	Start\n");
+		System.out.println("5. 	Exit to Main Menu\n");
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("");
 	}
-	
+
 }

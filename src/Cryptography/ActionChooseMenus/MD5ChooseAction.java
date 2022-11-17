@@ -21,12 +21,12 @@ public class MD5ChooseAction {
 	MD5ChooseActionTitle md5ChooseActionTitle = new MD5ChooseActionTitle();
 	MD5HashString md5HashString = new MD5HashString();
 	CreateMD5Checksum createMD5Checksum = new CreateMD5Checksum();
-	
+
 	public void md5Choose() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, IOException {
-		
+
 		String actionChoice;
 		boolean run = true;
-		
+
 		while(run) {
 			md5ChooseActionTitle.printTitle();
 			actionChoice = scanner.nextLine();
@@ -44,5 +44,5 @@ public class MD5ChooseAction {
 		}
 
 	}
-	
+
 }

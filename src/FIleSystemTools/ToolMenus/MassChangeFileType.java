@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import Titles.ToolTitles.FileSystemTitles.MassChangeFileTypeTitle;
-import Utilities.Lists.ExtensionList;
 import Utilities.UserInput.ChooseExtensions;
 import Utilities.UserInput.ChooseNewFileType;
 import Utilities.UserOutput.FindFiles;
@@ -24,19 +23,19 @@ public class MassChangeFileType {
 	private Scanner scanner = new Scanner(System.in);
 	MassChangeFileTypeTitle massChangeFileTypeTitle = new MassChangeFileTypeTitle();
 	ChooseNewFileType chooseNewFileType = new ChooseNewFileType();
-	
-	
+
+
 	public void changeAllFileExtensions() {
-		
+
 		String actionChoice;
-		
+
 		String sourceString = "";
 		String[] extensions = {"*"};
 		int subFolders = 0;
 		String newFileType = "";
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			massChangeFileTypeTitle.printTitle(sourceString, extensions, subFolders, newFileType);
 			actionChoice = scanner.nextLine();
@@ -49,7 +48,7 @@ public class MassChangeFileType {
 			} else if(actionChoice.toLowerCase().trim().equals("4")) {
 				newFileType = chooseNewFileType.getFileExtension();
 			} else if(actionChoice.toLowerCase().trim().equals("5") && sourceString != "" && sourceString != "exit"  && newFileType != "" && newFileType != "exit") {
-				List<String> fileStrings = new ArrayList<String>();
+				List<String> fileStrings = new ArrayList<>();
 				try {
 					fileStrings = findFiles.findFiles(Paths.get(sourceString), extensions, subFolders);
 				} catch (IOException e) {
@@ -73,11 +72,11 @@ public class MassChangeFileType {
 			}
 		}
 	}
-	
+
 	public static File changeExtension(File f, String newExtension) {
 		  int i = f.getName().lastIndexOf('.');
 		  String name = f.getName().substring(0,i);
 		  return new File(f.getParent(), name + "." + newExtension);
 	}
-	
+
 }

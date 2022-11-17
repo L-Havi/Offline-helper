@@ -1,7 +1,6 @@
 package PdfTools.ActionChooseMenus;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +8,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.apache.pdfbox.Loader;
-import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.apache.pdfbox.multipdf.Splitter;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -31,19 +29,19 @@ public class SplitPdfAction {
 	PDFMergerUtility PDFmerger = new PDFMergerUtility();
 	ChooseExcludedPages chooseExcludedPages = new ChooseExcludedPages();
 	ExtractPageNumbersFromString extractPageNumbersFromString = new ExtractPageNumbersFromString();
-	
+
 	public void mergePdfFiles() throws IOException {
-		
+
 		String actionChoice;
-		
+
 		String originalPdf = "";
 		String destinationFolder = "";
 		String outputFileName = "splitResult";
 		String excludedPagesString ="";
 		int[] excludedPages = new int[0];
-		
+
 		boolean run = true;
-		
+
 		while(run) {
 			splitPdfActionTitle.printTitle(originalPdf, destinationFolder, outputFileName, excludedPagesString);
 			actionChoice = scanner.nextLine();
@@ -71,14 +69,14 @@ public class SplitPdfAction {
 		}
 
 	}
-	
+
 	public void split(String sourcePdf, String destinationFolder, String newName, int[] excludedPages) throws IOException {
 		String divider = "\\";
 		if(!System.getProperty("os.name").toLowerCase().contains("windows")) {
 			divider = "/";
 		}
-		
-		List<Integer> excludedPageList = new ArrayList<Integer>();
+
+		List<Integer> excludedPageList = new ArrayList<>();
 		if(excludedPages.length > 0 && excludedPages != null) {
 			for(int excludedPage : excludedPages) {
 				if (!excludedPageList.contains(excludedPage)) {
@@ -86,15 +84,15 @@ public class SplitPdfAction {
 				}
 			}
 		}
-		
+
 	    File file = new File(sourcePdf);
-	    PDDocument document = Loader.loadPDF(file); 
-		
+	    PDDocument document = Loader.loadPDF(file);
+
 	    Splitter splitter = new Splitter();
-	     
+
 	    List<PDDocument> Pages = splitter.split(document);
 	    Iterator<PDDocument> iterator = Pages.listIterator();
-	     
+
 	    if(excludedPageList.size() > 0) {
 		    int i = 1;
 		    while(iterator.hasNext()) {
@@ -116,5 +114,5 @@ public class SplitPdfAction {
 	    System.out.println("PDF " + sourcePdf + " split successfully");
 	    document.close();
 	}
-	
+
 }

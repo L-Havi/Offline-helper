@@ -13,7 +13,7 @@ public class PGPEncrypt {
 
 	private boolean isArmored = false;
 	private boolean integrityCheck = true;
-	
+
 	public void encrypt(String publicKeyLocation, String encryptedFileLocation, String plainTextFile) throws NoSuchProviderException, IOException, PGPException{
 		String encryptedFile = encryptedFileLocation + "\\encrypted.dat";
 		FileInputStream pubKeyIs = new FileInputStream(publicKeyLocation);
@@ -22,5 +22,5 @@ public class PGPEncrypt {
 		cipheredFileIs.close();
 		pubKeyIs.close();
 	}
-	
+
 }
