@@ -65,5 +65,16 @@ public class MergePdfAction {
 		}
 		PDFmerger.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
 	}
+	
+	public void merge(String destinationPath, File[] allMergeFiles) throws IOException {
+		
+		PDFmerger.setDestinationFileName(destinationPath);
+
+		for(File mergeFile : allMergeFiles) {
+			PDFmerger.addSource(mergeFile);
+
+		}
+		PDFmerger.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
+	}
 
 }

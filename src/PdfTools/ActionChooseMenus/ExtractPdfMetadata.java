@@ -56,5 +56,24 @@ public class ExtractPdfMetadata {
 
         pdfDocument.close();
     }
+    
+    public String[] getPDFFileInformationArray(String targetPdf) {
+    	
+    	String[] pdfInfo = new String[6];
+    	
+        Document pdfDocument = new Document(targetPdf);
+        DocumentInfo docInfo = pdfDocument.getInfo();
+        
+        pdfInfo[0] = docInfo.getAuthor();
+        pdfInfo[1] = docInfo.getCreationDate().toString();
+        pdfInfo[2] = docInfo.getKeywords();
+        pdfInfo[3] = docInfo.getModDate().toString();
+        pdfInfo[4] = docInfo.getSubject();
+        pdfInfo[5] = docInfo.getTitle();
+
+        pdfDocument.close();
+        
+        return pdfInfo;
+    }
 
 }

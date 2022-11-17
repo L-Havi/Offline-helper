@@ -85,7 +85,7 @@ public class EditPdfMetadata {
 	}
 
 
-    private void setPDFFileInformation(String targetPdf, String author, String keywords, String subject, String title) {
+    public void setPDFFileInformation(String targetPdf, String author, String keywords, String subject, String title) {
         Document pdfDocument = new Document(targetPdf);
         DocumentInfo docInfo = pdfDocument.getInfo();
 

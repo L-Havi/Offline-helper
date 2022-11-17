@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
@@ -166,7 +167,10 @@ public class MainFrame extends JFrame implements ActionListener {
 	public MainFrame(){
         
         try {
-			this.setIconImage(ImageIO.read(new File("res/toolkit.png")));
+        	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        	InputStream input = classLoader.getResourceAsStream("toolkit.png");
+        	
+			this.setIconImage(ImageIO.read(input));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

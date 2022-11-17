@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.UUID;
 
 import javax.swing.JOptionPane;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
@@ -88,8 +90,10 @@ public class OperatingSystemInfo {
         
 		if(saveFileType == 0) {
 			
-			File pdf = new File("res/pdf/osInfoPdf.pdf");
-			
+        	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        	InputStream input = classLoader.getResourceAsStream("osInfoPdf.pdf");
+			File pdf = new File("osInfoPdf.pdf");
+			FileUtils.copyInputStreamToFile(input, pdf);
 
 			
 			PDDocument pDDocument = Loader.loadPDF(pdf);
@@ -684,7 +688,14 @@ public class OperatingSystemInfo {
 			info.add(System.getProperty("java.vendor"));
 			info.add(System.getProperty("java.vendor.url"));
 			
-			File pdf = new File("res/pdf/java_info.pdf");
+        	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        	InputStream input = classLoader.getResourceAsStream("java_info.pdf");
+			File pdf = new File("java_info.pdf");
+			try {
+				FileUtils.copyInputStreamToFile(input, pdf);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			
 			PDDocument pDDocument = null;
 			try {
@@ -778,7 +789,16 @@ public class OperatingSystemInfo {
 	}
 	
 	private File getOtherPageInterface(int count, NetworkIF networkInfo, String savePath) {
-		File interfacePdf = new File("res/pdf/network_info_otherpages.pdf");
+		
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("network_info_otherpages.pdf");
+		File interfacePdf = new File("network_info_otherpages.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, interfacePdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		File result = new File(savePath + "\\otherpage_network_info" + count + ".pdf");
 		
 		List<String> info = new ArrayList<String>();
@@ -925,7 +945,15 @@ public class OperatingSystemInfo {
 	
 	private File getFirstPageInterface(int count, NetworkIF networkInfo, String savePath) {
 		
-		File interfacePdf = new File("res/pdf/network_info_firstpage.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("network_info_firstpage.pdf");
+		File interfacePdf = new File("network_info_firstpage.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, interfacePdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		File result = new File(savePath + "\\firstpage_network_info.pdf");
 		
 		List<String> info = new ArrayList<String>();
@@ -1073,7 +1101,15 @@ public class OperatingSystemInfo {
 	
 	private File getUsbDevice(String savePath, UsbDevice usbDevice, int count) {
 		
-		File usbPdf = new File("res/pdf/usb_info.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("usb_info.pdf");
+		File usbPdf = new File("usb_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, usbPdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
 		File result = new File(savePath + "\\usb_info.pdf");
 		
 		List<String> info = new ArrayList<String>();
@@ -1150,7 +1186,15 @@ public class OperatingSystemInfo {
 	
 	private File getStorageDevices(String savePath, OSFileStore fileStore, int count) {
 		
-		File storagePdf = new File("res/pdf/storage_info.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("storage_info.pdf");
+		File storagePdf = new File("storage_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, storagePdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		File result = new File(savePath + "\\storage_info.pdf");
 		
 		List<String> info = new ArrayList<String>();
@@ -1256,7 +1300,15 @@ public class OperatingSystemInfo {
 	
 	private File getSoundCards(String savePath, SoundCard soundCard, int count) {
 		
-		File soundcardPdf = new File("res/pdf/soundcard_info.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("soundcard_info.pdf");
+		File soundcardPdf = new File("soundcard_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, soundcardPdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
 		File result = new File(savePath + "\\soundcard_info.pdf");
 		
 		List<String> info = new ArrayList<String>();
@@ -1317,7 +1369,14 @@ public class OperatingSystemInfo {
 	
 	private File getVirtualMemory(String savePath) {
 		
-		File virtualmemoryPdf = new File("res/pdf/virtualmemory_info.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("virtualmemory_info.pdf");
+		File virtualmemoryPdf = new File("virtualmemory_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, virtualmemoryPdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		File result = new File(savePath + "\\virtualmemory_info.pdf");
 		
@@ -1387,7 +1446,14 @@ public class OperatingSystemInfo {
 	
 	private File getRam(String savePath) {
 		
-		File ramPdf = new File("res/pdf/ram_info.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("ram_info.pdf");
+		File ramPdf = new File("ram_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, ramPdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		File result = new File(savePath + "\\ram_info.pdf");
 		
@@ -1444,7 +1510,14 @@ public class OperatingSystemInfo {
 	
 	private File getOther(String savePath) {
 		
-		File otherPdf = new File("res/pdf/otherhardware_info.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("otherhardware_info.pdf");
+		File otherPdf = new File("otherhardware_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, otherPdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		File result = new File(savePath + "\\otherhardware_info.pdf");
 		
@@ -1506,7 +1579,14 @@ public class OperatingSystemInfo {
 
 	private File getMotherBoard(String savePath) {
 		
-		File motherboardPdf = new File("res/pdf/motherboard_info.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("motherboard_info.pdf");
+		File motherboardPdf = new File("motherboard_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, motherboardPdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		File result = new File(savePath + "\\motherboard_info.pdf");
 		
@@ -1569,7 +1649,14 @@ public class OperatingSystemInfo {
 	
 	private File getFirmware(String savePath) {
 		
-		File firmwarePdf = new File("res/pdf/firmware_info.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("firmware_info.pdf");
+		File firmwarePdf = new File("firmware_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, firmwarePdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		File result = new File(savePath + "\\firmware_info.pdf");
 		
@@ -1637,7 +1724,15 @@ public class OperatingSystemInfo {
 	
 	private File getBattery(String savePath, PowerSource powerSource, int count) {
 		
-		File batteryPdf = new File("res/pdf/battery_info.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("battery_info.pdf");
+		File batteryPdf = new File("battery_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, batteryPdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
 		File result = new File(savePath + "\\battery_info.pdf");
 		
 		List<String> info = new ArrayList<String>();
@@ -1734,8 +1829,15 @@ public class OperatingSystemInfo {
 	
 	private File getHardwareInfoBase(String savePath) {
 
-		File cpuPdf = new File("res/pdf/hardware_information_base.pdf");
-		
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("hardware_information_base.pdf");
+		File cpuPdf = new File("hardware_information_base.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, cpuPdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
 		File result = new File(savePath + "\\hardware_information_base.pdf");
 		
 		List<String> info = new ArrayList<String>();
@@ -1825,7 +1927,15 @@ public class OperatingSystemInfo {
 	
 	private File getGpu(String savePath, GraphicsCard graphicsCard, int count) {
 
-		File gpuPdf = new File("res/pdf/gpu_info.pdf");
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("gpu_info.pdf");
+		File gpuPdf = new File("gpu_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, gpuPdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
 		File result = new File(savePath + "\\gpu_info.pdf");
 		
 		List<String> info = new ArrayList<String>();
@@ -1893,7 +2003,16 @@ public class OperatingSystemInfo {
 	}
 	
 	private File getPhysicalMemory(String savePath, PhysicalMemory physicalMemory, int count) {
-		File physicalMemoryPdf = new File("res/pdf/memorybank_info.pdf");
+		
+    	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    	InputStream input = classLoader.getResourceAsStream("memorybank_info.pdf");
+		File physicalMemoryPdf = new File("memorybank_info.pdf");
+		try {
+			FileUtils.copyInputStreamToFile(input, physicalMemoryPdf);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		File result = new File(savePath + "\\memorybank_info.pdf");
 		
 		List<String> info = new ArrayList<String>();

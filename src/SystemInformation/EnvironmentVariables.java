@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,6 +14,7 @@ import java.util.Set;
 
 import javax.swing.JOptionPane;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
@@ -40,7 +42,10 @@ public class EnvironmentVariables {
         
 		if(saveFileType == 0) {
 			
-			File pdf = new File("res/pdf/environment_variables.pdf");
+        	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        	InputStream input = classLoader.getResourceAsStream("environment_variables.pdf");
+			File pdf = new File("environment_variables.pdf");
+			FileUtils.copyInputStreamToFile(input, pdf);
 			
 			PDDocument pDDocument = Loader.loadPDF(pdf);
 			PDAcroForm pDAcroForm = pDDocument.getDocumentCatalog().getAcroForm();

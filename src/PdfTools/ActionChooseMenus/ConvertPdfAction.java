@@ -68,26 +68,14 @@ public class ConvertPdfAction {
 				convertFormat = chooseConvertFormat.chooseAlgorithm();
 			} else if(actionChoice.toLowerCase().trim().equals("3") && originalPdf != "" && originalPdf != "exit" && convertFormat != "" && convertFormat != "exit") {
 				if(convertFormat.equals("html")) {
-					try {
-						generateHTMLFromPDF(originalPdf);
-						System.out.println("Successfully converted " + originalPdf + " to html File");
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					//generateHTMLFromPDF(originalPdf);
+					System.out.println("Successfully converted " + originalPdf + " to html File");
 				} else if(convertFormat.equals("jpeg") || convertFormat.equals("jpg") || convertFormat.equals("gif") || convertFormat.equals("tiff") || convertFormat.equals("png")){
-					try {
-						generateImageFromPDF(originalPdf, convertFormat);
-						System.out.println("Successfully converted " + originalPdf + " to " + convertFormat + " File");
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					//generateImageFromPDF(originalPdf, convertFormat);
+					System.out.println("Successfully converted " + originalPdf + " to " + convertFormat + " File");
 				}else {
-					try {
-						generateDocxFromPDF(originalPdf);
-						System.out.println("Successfully converted " + originalPdf + " to docx File");
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					//generateDocxFromPDF(originalPdf);
+					System.out.println("Successfully converted " + originalPdf + " to docx File");
 				}
 				run = false;
 			} else if(actionChoice.toLowerCase().trim().equals("4")) {
@@ -99,21 +87,21 @@ public class ConvertPdfAction {
 
 	}
 
-	private void generateHTMLFromPDF(String filename) throws IOException {
-	    PDDocument pdf = Loader.loadPDF(new File(filename));
+	public void generateHTMLFromPDF(String filepath, String filename, String outputFolder) throws IOException {
+	    PDDocument pdf = Loader.loadPDF(new File(filepath));
     	int i = filename.lastIndexOf('.');
-    	String split = filename.substring(0,i-1);
-	    Writer output = new PrintWriter(split + ".html", "utf-8");
+    	String split = filename.substring(0,i);
+	    Writer output = new PrintWriter(outputFolder + "\\" + split + ".html", "utf-8");
 	    new PDFDomTree().writeText(pdf, output);
 	    output.close();
 	}
 
-	private void generateImageFromPDF(String filename, String extension) throws IOException {
-	    PDDocument document = Loader.loadPDF(new File(filename));
+	public void generateImageFromPDF(String filepath, String extension, String filename, String outputFolder) throws IOException {
+	    PDDocument document = Loader.loadPDF(new File(filepath));
 	    PDFRenderer pdfRenderer = new PDFRenderer(document);
     	int i = filename.lastIndexOf('.');
-    	String split = filename.substring(0,i-1);
-	    String outputFile = split + "." + extension;
+    	String split = filename.substring(0,i);
+	    String outputFile = outputFolder + "\\" +  split + "." + extension;
 	    for (int page = 0; page < document.getNumberOfPages(); ++page) {
 	        BufferedImage bim = pdfRenderer.renderImageWithDPI(
 	          page, 300, ImageType.RGB);
@@ -123,14 +111,14 @@ public class ConvertPdfAction {
 	    document.close();
 	}
 
-	private void generateDocxFromPDF(String filename) throws IOException {
+	public void generateDocxFromPDF(String filepath, String filename, String outputFolder) throws IOException {
 		XWPFDocument doc = new XWPFDocument();
-		String pdf = filename;
+		String pdf = filepath;
 		PdfReader reader = new PdfReader(pdf);
 		PdfReaderContentParser parser = new PdfReaderContentParser(reader);
 
     	int index = filename.lastIndexOf('.');
-    	String split = filename.substring(0,index-1);
+    	String split = filename.substring(0,index);
 
 		for (int i = 1; i <= reader.getNumberOfPages(); i++) {
 		    TextExtractionStrategy strategy =
@@ -141,7 +129,7 @@ public class ConvertPdfAction {
 		    run.setText(text);
 		    run.addBreak(BreakType.PAGE);
 		}
-		FileOutputStream out = new FileOutputStream(split + ".docx");
+		FileOutputStream out = new FileOutputStream(outputFolder + "\\" + split + ".docx");
 		doc.write(out);
 	}
 
