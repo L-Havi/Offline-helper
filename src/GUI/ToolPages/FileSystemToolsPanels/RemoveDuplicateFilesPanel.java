@@ -10,10 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.*;
 
 import GUI.ContentPanelBase;
@@ -116,13 +112,11 @@ public class RemoveDuplicateFilesPanel extends ContentPanelBase implements Actio
 		
 		JPanel titlePanel = new JPanel();
 		
-		titlePanel.setPreferredSize(new Dimension(400,50));
+		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.PAGE_AXIS));
 		
 		title = new JLabel(titleText);
-		title.setAlignmentX(Component.CENTER_ALIGNMENT);
-		title.setAlignmentY(Component.CENTER_ALIGNMENT);
 		title.setFont(titleFont);
-		title.setPreferredSize(new Dimension(400, 50));
+		title.setAlignmentX(CENTER_ALIGNMENT);
 		
 		titlePanel.add(title);
 		

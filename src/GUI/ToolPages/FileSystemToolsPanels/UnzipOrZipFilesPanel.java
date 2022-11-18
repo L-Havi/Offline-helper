@@ -13,6 +13,7 @@ import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -184,13 +185,11 @@ public class UnzipOrZipFilesPanel extends ContentPanelBase implements ActionList
 		
 		JPanel titlePanel = new JPanel();
 		
-		titlePanel.setPreferredSize(new Dimension(400,50));
+		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.PAGE_AXIS));
 		
 		title = new JLabel(titleText);
-		title.setAlignmentX(Component.CENTER_ALIGNMENT);
-		title.setAlignmentY(Component.CENTER_ALIGNMENT);
 		title.setFont(titleFont);
-		title.setPreferredSize(new Dimension(600, 50));
+		title.setAlignmentX(CENTER_ALIGNMENT);
 		
 		titlePanel.add(title);
 		
@@ -203,6 +202,8 @@ public class UnzipOrZipFilesPanel extends ContentPanelBase implements ActionList
 		
 		JPanel sourceFolderPanel = new JPanel();
 		JPanel destinationFolderPanel = new JPanel();
+		JPanel chosenSourceFolderPanel = new JPanel();
+		JPanel chosenDestinationFolderPanel = new JPanel();
 		JPanel zipOrUnzipPanel = new JPanel();
 		JPanel newNamePanel = new JPanel();
 		JPanel errorPanel = new JPanel();
@@ -222,6 +223,8 @@ public class UnzipOrZipFilesPanel extends ContentPanelBase implements ActionList
 
 		chooseSourceFolderButton.setFont(defaultFont);
 		chooseDestinationFolderButton.setFont(defaultFont);
+		chosenDestinationFolder.setFont(defaultFont);
+		chosenSourceFolder.setFont(defaultFont);
 		startButton.setFont(defaultFont);
 		
 		moveOrCopyLabel = BorderFactory.createTitledBorder("Zip/Unzip:");
@@ -240,10 +243,10 @@ public class UnzipOrZipFilesPanel extends ContentPanelBase implements ActionList
 
 		sourceFolderPanel.setLayout(new FlowLayout());
 		
-		sourceFolderPanel.add(chosenSourceFolder);
+		chosenSourceFolderPanel.add(chosenSourceFolder);
 		sourceFolderPanel.add(chooseSourceFolderButton);
 		
-		destinationFolderPanel.add(chosenDestinationFolder);
+		chosenDestinationFolderPanel.add(chosenDestinationFolder);
 		destinationFolderPanel.add(chooseDestinationFolderButton);
 		
 		zipOrUnzipPanel.add(zip);
@@ -270,7 +273,9 @@ public class UnzipOrZipFilesPanel extends ContentPanelBase implements ActionList
 		
 		bPanel.add(Box.createRigidArea(new Dimension(0, 1)));
 		bPanel.add(sourceFolderPanel);
+		bPanel.add(chosenSourceFolderPanel);
 		bPanel.add(destinationFolderPanel);
+		bPanel.add(chosenDestinationFolderPanel);
 		bPanel.add(zipOrUnzipPanel);
 		bPanel.add(newNamePanel);
 		bPanel.add(errorPanel);
