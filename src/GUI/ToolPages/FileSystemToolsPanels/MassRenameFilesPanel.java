@@ -138,10 +138,19 @@ public class MassRenameFilesPanel extends ContentPanelBase implements ActionList
 				try {
 					List<String> fileList = findFiles.findFiles(Paths.get(file.getAbsolutePath()), extensionsArray, subfolders);
 					renameFiles.renameFiles(name, fileList);
+					JOptionPane.showMessageDialog(null, "Successfully renamed Files to " + name + " in Folder " + file.getAbsolutePath(), "Rename Files in Folder", JOptionPane.INFORMATION_MESSAGE);
 				}catch (IOException ex) {
 		            ex.printStackTrace();
+		            JOptionPane.showMessageDialog(null, "Failed to rename Files to " + name + " in Folder " + file.getAbsolutePath(), "Rename Files in Folder", JOptionPane.ERROR_MESSAGE);
 		        }
 			}
+			
+			file = null;
+			name = null;
+			newName.setText("");
+			error.setText("");
+			extensions.setText("");
+			chosenFile.setText("Folder: ");
 			
 		} else if(e.getSource() == startButton && file == null && name != null) {
 			error.setText("Choose a Folder!");

@@ -141,7 +141,7 @@ public class DeleteAllFilesInFolderPanel extends ContentPanelBase {
 			
 			if(fileStrings.size() > 0 && (reply == JOptionPane.YES_OPTION )) {
 				deleteFiles.delete(sourcefile.getAbsolutePath(), fileStrings, subfolders);
-				JOptionPane.showMessageDialog(null, "Successfully deleted"  + fileStrings.size() + " files \nfrom Folder " + sourcefile.getAbsolutePath(), "Delete Files from Folder", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Successfully deleted "  + fileStrings.size() + " files \nfrom Folder " + sourcefile.getAbsolutePath(), "Delete Files from Folder", JOptionPane.INFORMATION_MESSAGE);
 			}
 			
 			error.setText("");

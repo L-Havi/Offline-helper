@@ -99,6 +99,10 @@ public class HashTextWithSHAPanel extends ContentPanelBase {
 				shaHexLabel.setText(sha + " (hex): "   + results[6]);
 				shaLengthLabel.setText(sha + " (length): "   + results[7]);
 			} else {
+				saltLabel.setText("Salt: ");
+				saltLengthLabel.setText("Salt length: ");
+				fullTextLabel.setText("Full hashed text: " + results[0]);
+				fullTextLengthLabel.setText("Full hashed text length: "  + results[1]);
 				inputTextLabel.setText("Input text: " + results[0]);
 				inputTextLengthLabel.setText("Input text length: " + results[1]);
 				shaHexLabel.setText(sha + " (hex): "   + results[2]);
