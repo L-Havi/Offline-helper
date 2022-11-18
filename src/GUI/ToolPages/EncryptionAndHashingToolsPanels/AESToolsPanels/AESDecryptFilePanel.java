@@ -20,6 +20,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -160,13 +161,11 @@ public class AESDecryptFilePanel extends ContentPanelBase {
 		
 		JPanel titlePanel = new JPanel();
 		
-		titlePanel.setPreferredSize(new Dimension(600,50));
+		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.PAGE_AXIS));
 		
 		title = new JLabel(titleText);
-		title.setAlignmentX(Component.CENTER_ALIGNMENT);
-		title.setAlignmentY(Component.CENTER_ALIGNMENT);
 		title.setFont(titleFont);
-		title.setPreferredSize(new Dimension(600, 50));
+		title.setAlignmentX(CENTER_ALIGNMENT);
 		
 		titlePanel.add(title);
 		
