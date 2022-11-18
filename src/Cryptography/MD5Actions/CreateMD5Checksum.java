@@ -88,9 +88,9 @@ public class CreateMD5Checksum {
 		  try (InputStream is = new FileInputStream(filepath)) {
 		      String checksum = DigestUtils.md5Hex(is);
 		      if(checkSum.trim().equals(checksum)) {
-			      return ("Checksum " + checkSum + " matches to File " + filepath);
+			      return ("Checksum matches to File " + filepath);
 		      } else {
-			      return ("Checksum " + checkSum + " does not match to File " + filepath);
+			      return ("Checksum does not match to File " + filepath);
 		      }
 		  } catch (IOException e) {
 		      e.printStackTrace();
