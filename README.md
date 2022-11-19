@@ -1,8 +1,8 @@
 # Offline helper
 
-A program that has a collection of tools divided in 4 categories. Those categories are File System Tools, Encryption & Hashing Tools, System Information Tools & PDF Tools. 
+A program that has a collection of tools divided into 4 categories. Those categories are File System Tools, Encryption & Hashing Tools, System Information Tools & PDF Tools. 
 
-Version 1.0.0 was a Java Maven CLI project but since version 2.0.0 it is GUI application. Library used for GUI is Java Swing. 
+Version 1.0.0 was a Java Maven CLI project but since version 2.0.0 it is a GUI application. The library used for GUI is Java Swing. 
 
 ## File System Tools
 
