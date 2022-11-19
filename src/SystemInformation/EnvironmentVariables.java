@@ -73,6 +73,11 @@ public class EnvironmentVariables {
 					result = new File(savePath);
 					pDDocument.close();
 				}
+				
+				if(pdf.exists()) {
+					pdf.delete();
+				}
+				
 				if(result.exists()) {
 					JOptionPane.showMessageDialog(null, "Create PDF containing environment variables to location " + savePath, "Get Environment variables to PDF", JOptionPane.INFORMATION_MESSAGE);
 				} else {

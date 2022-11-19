@@ -130,6 +130,10 @@ public class OperatingSystemInfo {
 					pDDocument.close();
 				}
 
+				if(pdf.exists()) {
+					pdf.delete();
+				}
+				
 				if(result.exists()) {
 					JOptionPane.showMessageDialog(null, "Created PDF containing operating system information to location " + savePath, "Get OS information to PDF", JOptionPane.INFORMATION_MESSAGE);
 				} else {
@@ -275,6 +279,13 @@ public class OperatingSystemInfo {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+	    		
+				for(File file : result) {
+					if(file.exists()) {
+						file.delete();
+					}
+				}
+	    		
 		    	File tempFile = new File(savePath + "\\memorybank_info.pdf");
 		    	if(tempFile.exists()) {
 		    		tempFile.delete();
@@ -320,6 +331,54 @@ public class OperatingSystemInfo {
 		    		tempFile.delete();
 		    	}
 		    	tempFile = new File(savePath + "\\virtualmemory_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("memorybank_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("gpu_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("hardware_information_base.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("firmware_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("battery_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("motherboard_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("otherhardware_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("ram_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("soundcard_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("storage_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("usb_info.pdf");
+		    	if(tempFile.exists()) {
+		    		tempFile.delete();
+		    	}
+		    	tempFile = new File("virtualmemory_info.pdf");
 		    	if(tempFile.exists()) {
 		    		tempFile.delete();
 		    	}
@@ -586,7 +645,16 @@ public class OperatingSystemInfo {
 						file.delete();
 					}
 				}
-	    		
+				
+				File temp = new File("network_info_firstpage.pdf");
+				if(temp.exists()) {
+					temp.delete();
+				}
+				temp = new File("network_info_otherpages.pdf");
+				if(temp.exists()) {
+					temp.delete();
+				}
+				
 	        }
 	        
 	        File success = new File(savePath + "\\network_info.pdf");
@@ -739,6 +807,11 @@ public class OperatingSystemInfo {
 						e.printStackTrace();
 					}
 				}
+				
+				if(pdf.exists()) {
+					pdf.delete();
+				}
+				
 				if(result.exists()) {
 					JOptionPane.showMessageDialog(null, "Created PDF containing Java information to location " + savePath, "Get Java information to PDF", JOptionPane.INFORMATION_MESSAGE);
 				} else {
@@ -1101,6 +1174,8 @@ public class OperatingSystemInfo {
 	
 	private File getUsbDevice(String savePath, UsbDevice usbDevice, int count) {
 		
+		System.out.println(count);
+		
     	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     	InputStream input = classLoader.getResourceAsStream("usb_info.pdf");
 		File usbPdf = new File("usb_info.pdf");
@@ -1110,20 +1185,19 @@ public class OperatingSystemInfo {
 			e1.printStackTrace();
 		}
 
-		File result = new File(savePath + "\\usb_info.pdf");
+		File result = new File(savePath + "\\usb_info" + count + ".pdf");
 		
 		List<String> info = new ArrayList<String>();
 
 		PDField field;
 		
+		info.add(Integer.toString(count));
     	info.add(usbDevice.getName());
     	info.add(usbDevice.getProductId());
     	info.add(usbDevice.getSerialNumber());
     	info.add(usbDevice.getUniqueDeviceId());
     	info.add(usbDevice.getVendor());
     	info.add(usbDevice.getVendorId());
-		
-		info.add(Integer.toString(count));
 		
 		PDDocument pDDocument = null;
 		try {
@@ -1186,6 +1260,8 @@ public class OperatingSystemInfo {
 	
 	private File getStorageDevices(String savePath, OSFileStore fileStore, int count) {
 		
+		System.out.println(count);
+		
     	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     	InputStream input = classLoader.getResourceAsStream("storage_info.pdf");
 		File storagePdf = new File("storage_info.pdf");
@@ -1195,7 +1271,7 @@ public class OperatingSystemInfo {
 			e1.printStackTrace();
 		}
 		
-		File result = new File(savePath + "\\storage_info.pdf");
+		File result = new File(savePath + "\\storage_info" + count + ".pdf");
 		
 		List<String> info = new ArrayList<String>();
 
@@ -1300,6 +1376,8 @@ public class OperatingSystemInfo {
 	
 	private File getSoundCards(String savePath, SoundCard soundCard, int count) {
 		
+		System.out.println(count);
+		
     	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     	InputStream input = classLoader.getResourceAsStream("soundcard_info.pdf");
 		File soundcardPdf = new File("soundcard_info.pdf");
@@ -1309,7 +1387,7 @@ public class OperatingSystemInfo {
 			e1.printStackTrace();
 		}
 
-		File result = new File(savePath + "\\soundcard_info.pdf");
+		File result = new File(savePath + "\\soundcard_info" + count + ".pdf");
 		
 		List<String> info = new ArrayList<String>();
 
@@ -1724,6 +1802,8 @@ public class OperatingSystemInfo {
 	
 	private File getBattery(String savePath, PowerSource powerSource, int count) {
 		
+		System.out.println(count);
+		
     	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     	InputStream input = classLoader.getResourceAsStream("battery_info.pdf");
 		File batteryPdf = new File("battery_info.pdf");
@@ -1733,7 +1813,7 @@ public class OperatingSystemInfo {
 			e1.printStackTrace();
 		}
 
-		File result = new File(savePath + "\\battery_info.pdf");
+		File result = new File(savePath + "\\battery_info" + count + ".pdf");
 		
 		List<String> info = new ArrayList<String>();
 
@@ -1927,6 +2007,8 @@ public class OperatingSystemInfo {
 	
 	private File getGpu(String savePath, GraphicsCard graphicsCard, int count) {
 
+		System.out.println(count);
+		
     	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     	InputStream input = classLoader.getResourceAsStream("gpu_info.pdf");
 		File gpuPdf = new File("gpu_info.pdf");
@@ -1936,7 +2018,7 @@ public class OperatingSystemInfo {
 			e1.printStackTrace();
 		}
 
-		File result = new File(savePath + "\\gpu_info.pdf");
+		File result = new File(savePath + "\\gpu_info" + count + ".pdf");
 		
 		List<String> info = new ArrayList<String>();
 
@@ -2004,6 +2086,8 @@ public class OperatingSystemInfo {
 	
 	private File getPhysicalMemory(String savePath, PhysicalMemory physicalMemory, int count) {
 		
+		System.out.println(count);
+		
     	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     	InputStream input = classLoader.getResourceAsStream("memorybank_info.pdf");
 		File physicalMemoryPdf = new File("memorybank_info.pdf");
@@ -2013,7 +2097,7 @@ public class OperatingSystemInfo {
 			e1.printStackTrace();
 		}
 		
-		File result = new File(savePath + "\\memorybank_info.pdf");
+		File result = new File(savePath + "\\memorybank_info" + count + ".pdf");
 		
 		List<String> info = new ArrayList<String>();
 
