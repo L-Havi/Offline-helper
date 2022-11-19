@@ -60,6 +60,7 @@ import GUI.ToolPages.FileSystemToolsPanels.UnzipOrZipFilesPanel;
 import GUI.ToolPages.PDFToolsPanels.ConvertPDFFileToAnotherFormatPanel;
 import GUI.ToolPages.PDFToolsPanels.EditPDFFileMetadataPanel;
 import GUI.ToolPages.PDFToolsPanels.ExtractPDFFileMetadataPanel;
+import GUI.ToolPages.PDFToolsPanels.ExtractPdfFileTextInfoPanel;
 import GUI.ToolPages.PDFToolsPanels.ExtractTextFromPDFFilePanel;
 import GUI.ToolPages.PDFToolsPanels.MergePDFFilesPanel;
 import GUI.ToolPages.PDFToolsPanels.SplitPDFFilePanel;
@@ -136,6 +137,7 @@ public class MainFrame extends JFrame implements ActionListener {
     final static String CONVERT_PDF_TO_ANOTHER_FORMAT = "Convert PDF File to Another format";
     final static String EXTRACT_PDF_FILE_METADATA = "Extract PDF File's metadata";
     final static String EDIT_PDF_METADATA = "Edit PDF File's metadata";
+    final static String EXTRACT_PDF_FILE_TEXT_INFO = "Extract PDF File's text information to txt-file";
     
     final static String SETTINGS = "Settings";
     final static String WELCOME = "Welcome";
@@ -153,7 +155,7 @@ public class MainFrame extends JFrame implements ActionListener {
     massChangeFiletypesMenuItem, getPathsInFolderMenuItem, getFolderSizeAndFileCountMenuItem, deleteAllFilesInFolderMenuItem;
     JMenuItem getOsInfoMenuItem, getNetworkInfoMenuItem, getEnvironmentVariablesMenuItem, getHardwareInfoMenuItem, getJavaInfoMenuItem;
     JMenuItem mergePdfFilesMenuItem, splitPdfFileMenuItem, extractTextFromPdfFileMenuItem, convertPdfToAnotherFormatMenuItem,
-    extractPdfFileMetadataMenuItem, editPdfMetadataMenuItem;
+    extractPdfFileMetadataMenuItem, editPdfMetadataMenuItem, extractPdfFileTextInfoMenuItem;
     JMenuItem settingsMenuItem, exitMenuItem, welcomePage;
     
     JMenuItem aesEncryptStringMenuItem, aesEncryptFileMenuItem, aesDecryptFileMenuItem, aesDecryptStringMenuItem;
@@ -243,6 +245,8 @@ public class MainFrame extends JFrame implements ActionListener {
         	cardLayout.show(centerPanel, EXTRACT_PDF_FILE_METADATA);
     	} else if(e.getSource() == editPdfMetadataMenuItem) {
         	cardLayout.show(centerPanel, EDIT_PDF_METADATA);
+    	} else if(e.getSource() == extractPdfFileTextInfoMenuItem) {
+        	cardLayout.show(centerPanel, EXTRACT_PDF_FILE_TEXT_INFO);
     	} else if(e.getSource() == settingsMenuItem) {
         	cardLayout.show(centerPanel, SETTINGS);
     	} else if(e.getSource() == aesEncryptStringMenuItem) {
@@ -338,6 +342,8 @@ public class MainFrame extends JFrame implements ActionListener {
 	    extractPdfFileMetadataMenuItem.addActionListener(this);
 	    editPdfMetadataMenuItem = new JMenuItem(EDIT_PDF_METADATA);
 	    editPdfMetadataMenuItem.addActionListener(this);
+	    extractPdfFileTextInfoMenuItem = new JMenuItem(EXTRACT_PDF_FILE_TEXT_INFO);
+	    extractPdfFileTextInfoMenuItem.addActionListener(this);
 		
 	    menu.add(mergePdfFilesMenuItem);
 	    menu.add(splitPdfFileMenuItem);
@@ -345,6 +351,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	    menu.add(convertPdfToAnotherFormatMenuItem);
 	    menu.add(extractPdfFileMetadataMenuItem);
 	    menu.add(editPdfMetadataMenuItem);
+	    menu.add(extractPdfFileTextInfoMenuItem);
 	    
 		return menu;
 	}
@@ -573,6 +580,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		JPanel convertPdfFileToAnotherFormatPage = new ConvertPDFFileToAnotherFormatPanel(CONVERT_PDF_TO_ANOTHER_FORMAT);
 		JPanel extractPdfFileMetadataPage = new ExtractPDFFileMetadataPanel(EXTRACT_PDF_FILE_METADATA);
 		JPanel editPdfFileMetadataPage = new EditPDFFileMetadataPanel(EDIT_PDF_METADATA);
+		JPanel extractPdfFileTextInfoPage = new ExtractPdfFileTextInfoPanel(EXTRACT_PDF_FILE_TEXT_INFO);
 		JPanel welcomePage = new WelcomePagePanel(WELCOME);
 		
 		pagePanels.put(SYSTEM_INFO_MENU, systemInfoToolsPage);
@@ -622,6 +630,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		pagePanels.put(CONVERT_PDF_TO_ANOTHER_FORMAT, convertPdfFileToAnotherFormatPage);
 		pagePanels.put(EXTRACT_PDF_FILE_METADATA, extractPdfFileMetadataPage);
 		pagePanels.put(EDIT_PDF_METADATA, editPdfFileMetadataPage);
+		pagePanels.put(EXTRACT_PDF_FILE_TEXT_INFO, extractPdfFileTextInfoPage);
 		pagePanels.put(WELCOME, welcomePage);
 		
 		return pagePanels;
