@@ -68,4 +68,4 @@ Version 1.0.0 was a Java Maven CLI project but since version 2.0.0 it is a GUI a
 6. Edit PDF metadata
 7. Extract PDF File's text data to a txt File
 
-Current rows of code in version 2.0.2: 35 515
+Current rows of code in version 2.0.2: 35 916
