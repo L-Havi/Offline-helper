@@ -123,20 +123,26 @@ public class ConvertPDFFileToAnotherFormatPanel extends ContentPanelBase {
 			if(chosenConvert.equals("html")) {
 				try {
 					convertAction.generateHTMLFromPDF(pdfFile.getAbsolutePath(), pdfFile.getName(), file.getAbsolutePath());
+					JOptionPane.showMessageDialog(null, "Succesfully converted PDF File to " + chosenConvert + " File", "Convert PDF to " + chosenConvert + " File", JOptionPane.INFORMATION_MESSAGE);
 				} catch (IOException ex) {
 					ex.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Failed to convert PDF File to " + chosenConvert + " File", "Convert PDF to " + chosenConvert + " File", JOptionPane.ERROR_MESSAGE);
 				}
 			} else if(chosenConvert.equals("jpeg") || chosenConvert.equals("jpg") || chosenConvert.equals("gif") || chosenConvert.equals("tiff") || chosenConvert.equals("png")){
 				try {
 					convertAction.generateImageFromPDF(pdfFile.getAbsolutePath(), chosenConvert, pdfFile.getName(), file.getAbsolutePath());
+					JOptionPane.showMessageDialog(null, "Succesfully converted PDF File to " + chosenConvert + " File", "Convert PDF to " + chosenConvert + " File", JOptionPane.INFORMATION_MESSAGE);
 				} catch (IOException ex) {
 					ex.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Failed to convert PDF File to " + chosenConvert + " File", "Convert PDF to " + chosenConvert + " File", JOptionPane.ERROR_MESSAGE);
 				}
 			}else {
 				try {
 					convertAction.generateDocxFromPDF(pdfFile.getAbsolutePath(), pdfFile.getName(), file.getAbsolutePath());
+					JOptionPane.showMessageDialog(null, "Succesfully converted PDF File to " + chosenConvert + " File", "Convert PDF to " + chosenConvert + " File", JOptionPane.INFORMATION_MESSAGE);
 				} catch (IOException ex) {
 					ex.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Failed to convert PDF File to " + chosenConvert + " File", "Convert PDF to " + chosenConvert + " File", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 			
