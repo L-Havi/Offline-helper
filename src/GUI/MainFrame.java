@@ -139,7 +139,7 @@ public class MainFrame extends JFrame implements ActionListener {
     final static String EDIT_PDF_METADATA = "Edit PDF File's metadata";
     final static String EXTRACT_PDF_FILE_TEXT_INFO = "Extract PDF File's text information to txt-file";
     
-    final static String SETTINGS = "Settings";
+    final static String SETTINGS = "Change Theme";
     final static String WELCOME = "Welcome";
     final static String EXIT = "Exit";
     

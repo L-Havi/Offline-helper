@@ -204,6 +204,7 @@ public class UnzipOrZipFilesPanel extends ContentPanelBase implements ActionList
 		JPanel destinationFolderPanel = new JPanel();
 		JPanel chosenSourceFolderPanel = new JPanel();
 		JPanel chosenDestinationFolderPanel = new JPanel();
+		JPanel zipHolderPanel = new JPanel();
 		JPanel zipOrUnzipPanel = new JPanel();
 		JPanel newNamePanel = new JPanel();
 		JPanel errorPanel = new JPanel();
@@ -249,9 +250,17 @@ public class UnzipOrZipFilesPanel extends ContentPanelBase implements ActionList
 		chosenDestinationFolderPanel.add(chosenDestinationFolder);
 		destinationFolderPanel.add(chooseDestinationFolderButton);
 		
+		zipHolderPanel.setLayout(new GridLayout(0,5));
+		
 		zipOrUnzipPanel.add(zip);
 		zipOrUnzipPanel.add(unzip);
 		zipOrUnzipPanel.setBorder(moveOrCopyLabel);
+		
+		zipHolderPanel.add(Box.createRigidArea(new Dimension(0, 1)));
+		zipHolderPanel.add(Box.createRigidArea(new Dimension(0, 1)));
+		zipHolderPanel.add(zipOrUnzipPanel);
+		zipHolderPanel.add(Box.createRigidArea(new Dimension(0, 1)));
+		zipHolderPanel.add(Box.createRigidArea(new Dimension(0, 1)));
 		
 		JLabel newNameLabel = new JLabel("Set new name for zip File (Used only for zipping)");
 		newName = new JTextField();
@@ -276,7 +285,7 @@ public class UnzipOrZipFilesPanel extends ContentPanelBase implements ActionList
 		bPanel.add(chosenSourceFolderPanel);
 		bPanel.add(destinationFolderPanel);
 		bPanel.add(chosenDestinationFolderPanel);
-		bPanel.add(zipOrUnzipPanel);
+		bPanel.add(zipHolderPanel);
 		bPanel.add(newNamePanel);
 		bPanel.add(errorPanel);
 		bPanel.add(startPanel);
