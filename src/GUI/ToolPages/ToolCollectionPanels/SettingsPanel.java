@@ -38,9 +38,13 @@ public class SettingsPanel extends ContentPanelBase implements ActionListener {
 	
 	Font titleFont = new Font("Sans Serif",Font.BOLD,36);
 	
+	Font defaultFont = new Font("Gill Sans MT",Font.PLAIN,20);
+	
 	JPanel titlePanel, buttonPanel;
 	
 	JButton confirmThemeButton;
+	
+	Dimension buttonsize2 = new Dimension(300,50);
 	
 	JRadioButton darkTheme, lightTheme, intellijTheme,draculaTheme;
 	
@@ -112,11 +116,26 @@ public class SettingsPanel extends ContentPanelBase implements ActionListener {
 	private JPanel getButtonPanel() {
 		
 		JPanel bPanel = new JPanel();
-		bPanel.setLayout(new BoxLayout(bPanel, BoxLayout.PAGE_AXIS));
+		bPanel.setLayout(new GridLayout(0,1));
 		
 		JPanel radioButtons = new JPanel();
+		JPanel button = new JPanel();
+		
+		JPanel radioButtonsHolder = new JPanel();
+		radioButtonsHolder.setLayout(new GridLayout(0,5));
+		
+		radioButtons.setLayout(new BoxLayout(radioButtons, BoxLayout.PAGE_AXIS));
+		radioButtons.setAlignmentX(CENTER_ALIGNMENT);
+		radioButtons.setMaximumSize(new Dimension(300,300));
+		
+		radioButtonsHolder.add(Box.createRigidArea(new Dimension(0, 1)));
+		radioButtonsHolder.add(Box.createRigidArea(new Dimension(0, 1)));
+		radioButtonsHolder.add(radioButtons);
+		radioButtonsHolder.add(Box.createRigidArea(new Dimension(0, 1)));
+		radioButtonsHolder.add(Box.createRigidArea(new Dimension(0, 1)));
 		
 		themeLabel = BorderFactory.createTitledBorder("Choose theme");
+		themeLabel.setTitleJustification(TitledBorder.CENTER);
 		
 		themes = new ButtonGroup();
 		
@@ -127,8 +146,12 @@ public class SettingsPanel extends ContentPanelBase implements ActionListener {
 		draculaTheme = new JRadioButton("Dracula Theme");
 		
 		confirmThemeButton = new TopPanelButton("Change theme");
-		confirmThemeButton.setPreferredSize(new Dimension(100,50));
+		confirmThemeButton.setFont(defaultFont);
+		confirmThemeButton.setPreferredSize(buttonsize2);
 		confirmThemeButton.addActionListener(this);
+		confirmThemeButton.setAlignmentX(CENTER_ALIGNMENT);
+		
+		button.add(confirmThemeButton);
 		
 		themes.add(darkTheme);
 		themes.add(lightTheme);
@@ -143,9 +166,9 @@ public class SettingsPanel extends ContentPanelBase implements ActionListener {
 		radioButtons.setBorder(themeLabel);
 		
 		bPanel.add(Box.createRigidArea(new Dimension(0, 50)));
-		bPanel.add(radioButtons);
-		bPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-		bPanel.add(confirmThemeButton);
+		bPanel.add(radioButtonsHolder);
+		bPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+		bPanel.add(button);
 		bPanel.add(Box.createRigidArea(new Dimension(0, 250)));
 		
 		return bPanel;

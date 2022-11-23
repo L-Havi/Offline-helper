@@ -19,63 +19,53 @@ public class TopPanelButton extends JButton implements MouseListener{
 	
 	Font defaultFont = new Font("Gill Sans MT",Font.BOLD,30);
     Color textColor = Color.decode("#ffffff");
-    Color backgroundColor = Color.decode("#14213D");
-    Color hoverColor = Color.decode("#00aced");
+    Color hoverTextColor = Color.decode("#000000");
+    Color backgroundColor = Color.decode("#000000");
+    Color hoverColor = Color.decode("#C0C0C0");
+    
+    Border blackline = BorderFactory.createLineBorder(Color.black);
+    Border whiteline = BorderFactory.createLineBorder(Color.white);
     
     public TopPanelButton(String s) {
         s = s.toUpperCase();
         this.setFocusPainted(false);
         this.setText(s);
-        this.setBorder(new RoundedBorder(10));
+        this.setBorder(whiteline);
         this.setPreferredSize(new Dimension(100,500));
         this.setForeground(textColor);
         this.setBackground(backgroundColor);
         this.setFont(defaultFont);
         this.setOpaque(false);
+        this.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                setBackgroundColor(hoverColor);
+                setForegroundColor(hoverTextColor);
+                setBorderColor(blackline);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                setBackgroundColor(backgroundColor);
+                setForegroundColor(textColor);
+                setBorderColor(whiteline);
+            }
+        });
+    }
+
+    private void setBackgroundColor(Color color) {
+    	this.setBackground(color); 
+    }
+
+    private void setForegroundColor(Color color) {
+    	this.setForeground(color); 
     }
     
-
+    private void setBorderColor(Border border) {
+    	this.setBorder(border);
+    }
+    
     @Override public void mouseClicked(MouseEvent me) {}
     @Override public void mouseReleased(MouseEvent me) {}
     @Override public void mousePressed(MouseEvent me) {}
-    
-    @Override
-    public void mouseEntered(MouseEvent e) { 
-        if (e.getSource()==this) {  
-            this.setBackground(this.hoverColor); 
-        }
-    }
-    
-    @Override
-    public void mouseExited(MouseEvent e) { 
-        if (e.getSource()==this) { 
-            this.setBackground(this.backgroundColor); 
-        }
-    }
-
-    private static class RoundedBorder implements Border {
-
-        private int radius;
-
-
-        RoundedBorder(int radius) {
-            this.radius = radius;
-        }
-
-
-        public Insets getBorderInsets(Component c) {
-            return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
-        }
-
-
-        public boolean isBorderOpaque() {
-            return true;
-        }
-
-
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            g.drawRoundRect(x, y, width-1, height-1, radius, radius);
-        }
-    }
+    @Override public void mouseEntered(MouseEvent me) {}
+    @Override public void mouseExited(MouseEvent me) {}
     
 }

@@ -177,6 +177,7 @@ public class MassCopyFolderContentsPanel extends ContentPanelBase implements Act
 		JPanel chosenSourceFolderPanel = new JPanel();
 		JPanel destinationFolderPanel = new JPanel();
 		JPanel chosenDestinationFolderPanel = new JPanel();
+		JPanel moveCopyHolderPanel = new JPanel();
 		JPanel moveOrCopyPanel = new JPanel();
 		JPanel errorPanel = new JPanel();
 		JPanel startPanel = new JPanel();
@@ -219,9 +220,17 @@ public class MassCopyFolderContentsPanel extends ContentPanelBase implements Act
 		chosenDestinationFolderPanel.add(chosenDestinationFolder);
 		destinationFolderPanel.add(chooseDestinationFolderButton);
 		
+		moveCopyHolderPanel.setLayout(new GridLayout(0,5));
+		
 		moveOrCopyPanel.add(move);
 		moveOrCopyPanel.add(copy);
 		moveOrCopyPanel.setBorder(moveOrCopyLabel);
+		
+		moveCopyHolderPanel.add(Box.createRigidArea(new Dimension(0, 1)));
+		moveCopyHolderPanel.add(Box.createRigidArea(new Dimension(0, 1)));
+		moveCopyHolderPanel.add(moveOrCopyPanel);
+		moveCopyHolderPanel.add(Box.createRigidArea(new Dimension(0, 1)));
+		moveCopyHolderPanel.add(Box.createRigidArea(new Dimension(0, 1)));
 		
 		errorPanel.add(error);
 		
@@ -232,7 +241,7 @@ public class MassCopyFolderContentsPanel extends ContentPanelBase implements Act
 		bPanel.add(chosenSourceFolderPanel);
 		bPanel.add(destinationFolderPanel);
 		bPanel.add(chosenDestinationFolderPanel);
-		bPanel.add(moveOrCopyPanel);
+		bPanel.add(moveCopyHolderPanel);
 		bPanel.add(errorPanel);
 		bPanel.add(startPanel);
 		
